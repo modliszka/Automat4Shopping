@@ -54,8 +54,22 @@ public class Ramka extends JFrame implements KeyListener{
 		setVisible(true);
 
 		polecenie.requestFocusInWindow();
+		
 	}
-	
+	/*
+	 gdzieœ w tym pliku 
+	 wyskakiwanie dod okienka do wprowadzania tych danych:
+	 Plansza.shop[0][0]=new Place("P","Woda","Napoje");
+		Product p=new Product();
+		p.nazwa="Woda mineralna ABC";
+		p.rodzaj="Woda";//jak 3 linie wy¿ej
+		p.wielkosc=1.5;
+		p.jednostka="l";
+		p.ilosc=0;
+		p.glRozroznik="gazowana";
+		p.dodRozroznik="";
+		Plansza.shop[0][0].add(p);
+	 */
 	
 	@Override
 	public void keyPressed(KeyEvent e) {	}

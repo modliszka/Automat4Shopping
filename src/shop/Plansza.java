@@ -9,18 +9,20 @@ public class Plansza extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private Image agentIcon;
-	public static Plansza instance;
+	//public static Plansza instance;
 	static int opcja=1;
 	static String abc="b";
+	public static Place[][] shop;
 	
-	public static Plansza getInstance(){
-		if (instance == null){
-			instance = new Plansza();
-		}
-		return instance;
-	}
+//	public static Plansza getInstance(){
+//		if (instance == null){
+//			instance = new Plansza();
+//		}
+//		return instance;
+//	}
 	protected Plansza(){
 		//RozmiescRegaly();
+		shop=new Place[10][10];
 		setFocusable(true);
 	}
 	
