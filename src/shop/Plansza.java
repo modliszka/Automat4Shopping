@@ -29,6 +29,9 @@ public class Plansza extends JPanel {
 	public void paint(Graphics g){
 		super.paint(g);
 		//g.drawImage((Image) new ImageIcon(this.getClass().getResource("plansza.gif")).getImage(), 0, 0, this); //t³o planszy
+		g.drawImage((Image) new ImageIcon(this.getClass().getResource("MapkaSklep.gif")).getImage(), 0, 0, this); //t³o planszy
+		
+		
 		for(int z=0;z<=600;z+=60){
 		 g.drawLine(z, 0, z, 600);
 		}
@@ -38,6 +41,8 @@ public class Plansza extends JPanel {
 				
 		agentIcon= new ImageIcon(this.getClass().getResource("agent/"+opcja+abc+".gif")).getImage();
 		g.drawImage((Image) agentIcon,35+Ramka.poz,17+Ramka.pion,this);
+	//	g.drawImage((Image) agentIcon,15+Ramka.poz,10+Ramka.pion,this);
+		
 	
 	}	
 }
