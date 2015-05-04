@@ -6,7 +6,7 @@ public class Product {
 	public double wielkosc; // np. 200
 	public String jednostka; // np. ml mo¿naby jakiœ enum zrobiæ
 	public int ilosc;
-	
+	public double cena;
 	public String glRozroznik; //nazwy do dogadania:)
 	public String dodRozroznik;
 }
