@@ -1,4 +1,4 @@
-package ramy;
+package ramyOpakowanie;
 
 public class Pudelko extends Opakowanie{
 

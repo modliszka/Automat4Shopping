@@ -1,4 +1,4 @@
-package ramy;
+package ramyDzialy;
 
 import shop.Product;
 

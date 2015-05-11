@@ -1,6 +1,6 @@
 package shop;
 
-import ramy.Opakowanie;
+import ramyOpakowanie.Opakowanie;
 
 public class Product {
 //	public String nazwa;

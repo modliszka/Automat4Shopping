@@ -1,4 +1,4 @@
-package ramy;
+package ramyPozostale;
 
 public class Portfel {
 
