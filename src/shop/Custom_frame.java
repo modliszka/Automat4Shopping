@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 //import javax.swing.JTextArea; //do czatu
 import javax.swing.JTextField;
 
-import slownik.Mapa;
+import vocabulary.Map;
 
 
 public class Custom_frame extends JFrame implements KeyListener{
@@ -18,7 +18,7 @@ public class Custom_frame extends JFrame implements KeyListener{
 	public static Board board;
 	protected JTextField polecenie;
 	public static boolean blockade=false;
-	public static Mapa mapka = new Mapa();
+	public static Map mapka = new Map();
 	public static Custom_frame instance;
 	
 	public Custom_frame(){
@@ -84,7 +84,7 @@ public class Custom_frame extends JFrame implements KeyListener{
 			 if(text!=""){
 				 text = text.toLowerCase();
 				try {
-					mapka.coRobic(text);
+					mapka.whatToDo(text);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
