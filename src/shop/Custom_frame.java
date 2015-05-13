@@ -16,9 +16,9 @@ public class Custom_frame extends JFrame implements KeyListener{
 	//public static JTextArea czat;
 	public static int hor=300,vert=300;
 	public static Board board;
-	protected JTextField polecenie;
+	protected JTextField command;
 	public static boolean blockade=false;
-	public static Map mapka = new Map();
+	public static Map custom_map = new Map();
 	public static Custom_frame instance;
 	
 	public Custom_frame(){
@@ -37,9 +37,9 @@ public class Custom_frame extends JFrame implements KeyListener{
 		czat.setLineWrap(true);
 		czat.setWrapStyleWord(true);*/
 		
-		polecenie=new JTextField();
-		polecenie.setFocusable(true);
-		polecenie.setBounds(5, 670, 600, 20);
+		command=new JTextField();
+		command.setFocusable(true);
+		command.setBounds(5, 670, 600, 20);
 		
 		board=new Board();
 		board.setBounds(5,5,601,601);
@@ -47,13 +47,13 @@ public class Custom_frame extends JFrame implements KeyListener{
 		
 		add(board);
 		
-		polecenie.addKeyListener(this); 
+		command.addKeyListener(this); 
 		
 		//add(czat);
-		add(polecenie);
+		add(command);
 		setVisible(true);
 
-		polecenie.requestFocusInWindow();
+		command.requestFocusInWindow();
 		
 	}
 	/*
@@ -80,16 +80,16 @@ public class Custom_frame extends JFrame implements KeyListener{
 		if(e.getKeyCode()==KeyEvent.VK_ENTER){
 			if(blockade==false){
 				
-			String text = polecenie.getText();
+			String text = command.getText();
 			 if(text!=""){
 				 text = text.toLowerCase();
 				try {
-					mapka.whatToDo(text);
+					custom_map.whatToDo(text);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
 			 }
-			polecenie.setText("");
+			command.setText("");
 			}
 			
 		}
