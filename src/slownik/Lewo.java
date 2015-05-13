@@ -12,10 +12,10 @@ public class Lewo implements Obiekt_mapy{
 	}
 	@Override
 	public void metoda() {
-		/*Ruch.kierunek = 'l';
-		if (Ruch.ilosc!=0){
-			Ruch.getInstance().rusz_sie(Ruch.kierunek,Ruch.ilosc);
-			Ruch.kierunek = 'n';Ruch.ilosc = 0;
+		/*Movement.kierunek = 'l';
+		if (Movement.ilosc!=0){
+			Movement.getInstance().move_yourself(Movement.kierunek,Movement.ilosc);
+			Movement.kierunek = 'n';Movement.ilosc = 0;
 		}*/
 		Mapa.pl=-1;
 		Mapa.flaga=true;

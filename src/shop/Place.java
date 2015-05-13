@@ -30,7 +30,7 @@ public class Place {
 		}
 		
 		if(problem){
-			System.out.println("B³êdny kierunek pó³ki");
+			System.out.println("Wrong shelf side");
 		}else{
 			list= new ArrayList<Product>();
 		}
@@ -40,7 +40,7 @@ public class Place {
 		if(!problem){
 			list.add(p);
 		}else{
-			System.out.println("Nie ma pó³ki");
+			System.out.println("There's no shelf");
 		}
 	}
 }

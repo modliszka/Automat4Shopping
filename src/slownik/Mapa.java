@@ -17,7 +17,7 @@ public class Mapa {
 	protected static String value;	
 	public static int pl;//prawo+ lewo-
 	public static int gd;//gora- dol+
-	public static int o_poz=0;//odl.poz
+	public static int o_poz=0;//odl.hor
 	public static int o_pion=0;//
 	public static boolean flaga=false;
 	public static char[] x=new char[2];
@@ -78,8 +78,8 @@ public class Mapa {
 			if(x[0]=='h')o_poz=a*pl;
 			if(x[1]=='v')o_pion=b*gd;
 			if(x[1]=='h')o_poz=b*pl;
-			if(flaga){Ruch.getInstance().rusz_sie(o_poz, o_pion);cosrobi=true;}
-			//if(!cosrobi)Ramka.czat.setText("Mo¿esz powtórzyæ? Nie bardzo rozumiem :(");
+			if(flaga){Movement.getInstance().move_yourself(o_poz, o_pion);cosrobi=true;}
+			//if(!cosrobi)Custom_frame.czat.setText("Mo¿esz powtórzyæ? Nie bardzo rozumiem :(");
 			cosrobi=false;
 			nr_slowa=0;	
 			a=0;

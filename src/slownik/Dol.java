@@ -13,10 +13,10 @@ public class Dol implements Obiekt_mapy{
 	protected Dol(){}
 	@Override
 	public void metoda() {
-	/*	Ruch.kierunek = 'd';
-		if (Ruch.ilosc!=0){
-			Ruch.getInstance().rusz_sie(Ruch.kierunek,Ruch.ilosc);
-			Ruch.kierunek = 'n';Ruch.ilosc = 0;
+	/*	Movement.kierunek = 'd';
+		if (Movement.ilosc!=0){
+			Movement.getInstance().move_yourself(Movement.kierunek,Movement.ilosc);
+			Movement.kierunek = 'n';Movement.ilosc = 0;
 		}*/
 		Mapa.gd=1;
 		Mapa.flaga=true;

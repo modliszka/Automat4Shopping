@@ -1,6 +1,6 @@
 package shop;
 
-import ramyOpakowanie.Opakowanie;
+import framePackaging.Packaging;
 
 public class Product {
 //	public String nazwa;
@@ -11,9 +11,9 @@ public class Product {
 //	public double cena;
 //	public String glRozroznik; //nazwy do dogadania:)
 //	public String dodRozroznik;
-String nazwa;
-Opakowanie opakowanie;
-Shelf polka; // pó³ka przypisana do danego produktu
+String name;
+Opakowanie packaging;
+Shelf shelf; // pó³ka przypisana do danego produktu
 
 
 }

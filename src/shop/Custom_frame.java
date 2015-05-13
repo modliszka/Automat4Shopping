@@ -11,17 +11,17 @@ import javax.swing.JTextField;
 import slownik.Mapa;
 
 
-public class Ramka extends JFrame implements KeyListener{
+public class Custom_frame extends JFrame implements KeyListener{
 	private static final long serialVersionUID = 1L;
 	//public static JTextArea czat;
-	public static int poz=300,pion=300;
-	public static Plansza plansza;
+	public static int hor=300,vert=300;
+	public static Board board;
 	protected JTextField polecenie;
-	public static boolean blokada=false;
+	public static boolean blockade=false;
 	public static Mapa mapka = new Mapa();
-	public static Ramka instance;
+	public static Custom_frame instance;
 	
-	public Ramka(){
+	public Custom_frame(){
 		super("Shop");
 		instance=this;
 		setSize(800, 750); 
@@ -41,11 +41,11 @@ public class Ramka extends JFrame implements KeyListener{
 		polecenie.setFocusable(true);
 		polecenie.setBounds(5, 670, 600, 20);
 		
-		plansza=new Plansza();
-		plansza.setBounds(5,5,601,601);
+		board=new Board();
+		board.setBounds(5,5,601,601);
 		
 		
-		add(plansza);
+		add(board);
 		
 		polecenie.addKeyListener(this); 
 		
@@ -59,7 +59,7 @@ public class Ramka extends JFrame implements KeyListener{
 	/*
 	 gdzieœ w tym pliku 
 	 wyskakiwanie dod okienka do wprowadzania tych danych:
-	 Plansza.shop[0][0]=new Place("P","Woda","Napoje");
+	 Board.shop[0][0]=new Place("P","Woda","Napoje");
 		Product p=new Product();
 		p.nazwa="Woda mineralna ABC";
 		p.rodzaj="Woda";//jak 3 linie wy¿ej
@@ -68,7 +68,7 @@ public class Ramka extends JFrame implements KeyListener{
 		p.ilosc=0;
 		p.glRozroznik="gazowana";
 		p.dodRozroznik="";
-		Plansza.shop[0][0].add(p);
+		Board.shop[0][0].add(p);
 	 */
 	
 	@Override
@@ -78,7 +78,7 @@ public class Ramka extends JFrame implements KeyListener{
 	@Override
 	public void keyReleased(KeyEvent e) {
 		if(e.getKeyCode()==KeyEvent.VK_ENTER){
-			if(blokada==false){
+			if(blockade==false){
 				
 			String text = polecenie.getText();
 			 if(text!=""){

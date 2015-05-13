@@ -7,7 +7,7 @@ public class Shop{
 	      EventQueue.invokeLater(new Runnable() {
 	          @Override
 	          public void run() {
-	              new Ramka();
+	              new Custom_frame();
 	          }
 	      });
 	}

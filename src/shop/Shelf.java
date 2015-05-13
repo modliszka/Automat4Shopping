@@ -5,5 +5,5 @@ public class Shelf {
 	public String In_section_location;
 	
 	// Dzia³ w którym znajduje siê dana pu³ka
-	Section dzial;
+	Section section;
 }
