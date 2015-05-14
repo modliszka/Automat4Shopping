@@ -1,0 +1,28 @@
+@RELATION teas
+
+@ATTRIBUTE kind		{czarna,zielona,biala,ziolowa}
+@ATTRIBUTE package	{torebki,sypana,granulowana}
+@ATTRIBUTE taste	{zwykly,pomaranczy,pokrzywy,rumianku,malinowy}
+@ATTRIBUTE amount 	{do15,od15do35,od35do70,od70do110,od110do140,od140}
+@ATTRIBUTE tolerancy	{tak,nie}
+
+@DATA
+czarna,torebki,zwykly,od35do70,nie
+czarna,sypana,zwykly,od35do70,nie
+czarna,torebki,pomaranczy,od15do35,tak
+czarna,torebki,zwykly,od110do140,nie
+czarna,sypana,zwykly,od140,nie
+czarna,torebki,pomaranczy,od110do140,tak
+zielona,torebki,pomaranczy,od15do35,tak
+zielona,torebki,malinowy,od15do35,tak
+zielona,torebki,pomaranczy,od110do140,tak
+zielona,torebki,malinowy,od110do140,tak
+ziolowa,torebki,pokrzywy,od15do35,nie
+ziolowa,sypana,rumianku,od35do70,nie
+ziolowa,torebki,pokrzywy,od110do140,nie
+ziolowa,sypana,rumianku,od110do140,nie
+biala,torebki,zwykly,od35do70,tak
+biala,torebki,zwykly,od110do140,tak
+czarna,granulowana,zwykly,od35do70,nie
+czarna,granulowana,zwykly,od35do70,nie
+czarna,granulowana,zwykly,od110do140,nie

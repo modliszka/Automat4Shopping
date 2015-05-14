@@ -1,0 +1,10 @@
+@relation predict_trees
+
+@attribute kind {czarna,zielona,biala,ziolowa}
+@attribute package {torebki,sypana,granulowana}
+@attribute taste {zwykly,pomaranczy,pokrzywy,rumianku,malinowy}
+@attribute amount {do15,od15do35,od35do70,od70do110,od110do140,od140}
+@attribute tolerancy {tak,nie}
+
+@data
+biala,torebki,zwykly,od140,?

@@ -8,4 +8,6 @@ public class Beverages extends Product {
    Date expirationDate;
    String flavor;
    String type;
+   Boolean isSparkling;
+   String volume;
 }

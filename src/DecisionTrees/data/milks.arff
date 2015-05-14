@@ -1,0 +1,23 @@
+@relation milk
+
+@attribute kind		{krowie,kozie,sojowe,migdalowe,kokosowe,ryzowe,owsiane}
+@attribute czy_pasteryzowane	{true,false}
+@attribute fat_amount	numeric
+@attribute czy_homogenizowane 	{true,false}
+@attribute flavour		{naturalne,czekoladowe,truskawkowe,waniliowe}
+@attribute volumne		numeric
+@attribute decision	{true,false}
+
+@data
+krowie,true,0.5,true,naturalne,1,true
+kozie,true,0.5,true,naturalne,0.5,false
+sojowe,false,0,false,czekoladowe,1.5,true
+migdalowe,false,0,true,naturalne,0.7,false
+kokosowe,false,0,false,naturalne,0.2,true
+ryzowe,false,0,false,naturalne,0.5,false
+owsiane,false,0,true,naturalne,0.2,false
+krowie,true,1.5,true,naturalne,2,true
+krowie,true,3.2,true,naturalne,2,true
+krowie,true,1.5,true,czekoladowe,0.3,true
+krowie,false,3.2,true,naturalne,2,false
+

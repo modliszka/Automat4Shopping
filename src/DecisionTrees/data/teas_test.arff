@@ -1,0 +1,26 @@
+@relation teas-weka.filters.unsupervised.instance.Resample-S2-Z90.0
+
+@attribute kind {czarna,zielona,biala,ziolowa}
+@attribute package {torebki,sypana,granulowana}
+@attribute taste {zwykly,pomaranczy,pokrzywy,rumianku,malinowy}
+@attribute amount {do15,od15do35,od35do70,od70do110,od110do140,od140}
+@attribute tolerancy {tak,nie}
+
+@data
+czarna,sypana,zwykly,od140,nie
+ziolowa,sypana,rumianku,od35do70,nie
+zielona,torebki,pomaranczy,od110do140,tak
+zielona,torebki,malinowy,od15do35,tak
+zielona,torebki,pomaranczy,od110do140,tak
+ziolowa,torebki,pokrzywy,od110do140,nie
+biala,torebki,zwykly,od110do140,tak
+zielona,torebki,malinowy,od110do140,tak
+czarna,sypana,zwykly,od35do70,nie
+ziolowa,torebki,pokrzywy,od15do35,nie
+czarna,torebki,zwykly,od110do140,nie
+ziolowa,sypana,rumianku,od110do140,nie
+zielona,torebki,pomaranczy,od110do140,tak
+ziolowa,torebki,pokrzywy,od15do35,nie
+czarna,torebki,zwykly,od35do70,nie
+czarna,torebki,zwykly,od35do70,nie
+zielona,torebki,malinowy,od15do35,tak

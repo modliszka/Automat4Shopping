@@ -1,0 +1,19 @@
+@relation milk-weka.filters.unsupervised.instance.Resample-S1-Z80.0
+
+@attribute kind {krowie,kozie,sojowe,migdalowe,kokosowe,ryzowe,owsiane}
+@attribute czy_pasteryzowane {true,false}
+@attribute fat_amount numeric
+@attribute czy_homogenizowane {true,false}
+@attribute flavour {naturalne,czekoladowe,truskawkowe,waniliowe}
+@attribute volumne numeric
+@attribute decision {true,false}
+
+@data
+kokosowe,false,0,false,naturalne,0.2,true
+owsiane,false,0,true,naturalne,0.2,false
+krowie,true,3.2,true,naturalne,2,true
+krowie,true,3.2,true,naturalne,2,true
+krowie,true,1.5,true,czekoladowe,0.3,true
+sojowe,false,0,false,czekoladowe,1.5,true
+owsiane,false,0,true,naturalne,0.2,false
+migdalowe,false,0,true,naturalne,0.7,false
