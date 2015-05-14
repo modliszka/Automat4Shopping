@@ -143,7 +143,7 @@ public class TreeLearning
 		*/
 
 		// Load the data source and learn the model
-		String testSetFilename="./src/DecisionTrees/data/teas.arff";		
+		String testSetFilename="./src/DecisionTrees/data/teas_test.arff";		
 		Instances testSet = null;
 		try {
 			DataSource testSetSource = new DataSource(testSetFilename);
@@ -185,13 +185,14 @@ public class TreeLearning
 			System.out.println("Unable to cross validate and create confusion matrix against entered cases");
 			System.out.println("");
 		}
+		/*
 		try {
 			learntModel.buildClassifier(testSet);
 			System.out.println(learntModel.toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 }
