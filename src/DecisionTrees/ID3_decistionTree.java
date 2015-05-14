@@ -127,7 +127,7 @@ class ID3_decistionTree {
       return filtered;
     }
     
-    // zwracamy liczbe klas (tutaj 1 lub 2) występującą w podanych instancjach
+    // zwracamy liczbe klas występującą w podanych instancjach
     public static int numClasses(ArrayList<Instance> insts) {
       HashMap<String, Boolean> classes = new HashMap<String, Boolean>();
       for (Instance i : insts) {

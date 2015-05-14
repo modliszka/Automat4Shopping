@@ -47,6 +47,12 @@ public class TreeLearning
 			// Print out the loaded tree
 			System.out.println("");
 			System.out.println(learntModel.toString());
+			
+			//pobieranie rezultatów
+			//http://stackoverflow.com/questions/28031068/get-weka-classifier-results
+			System.out.println("=====");
+			//System.out.println(train.toSummaryString());
+			
 		}
 		catch (Exception e)
 		{
@@ -68,6 +74,7 @@ public class TreeLearning
 	        double label = learntModel.classifyInstance(test.instance(0));
 	        test.instance(0).setClassValue(label);
 
+	        System.out.println("=====");
 	        System.out.println("czy można wziąć ten produkt? Odp: "+test.instance(0).stringValue(4));		
 
 		}
