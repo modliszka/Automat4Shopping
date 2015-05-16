@@ -6,5 +6,5 @@ import shop.Product;
 
 public class Teas extends Product {
 	double weight;
-	Date dataWaznosci;
+	Date expirationDate;
 }
