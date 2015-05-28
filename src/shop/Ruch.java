@@ -2,15 +2,20 @@ package shop;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.Timer;
+
+import si.Pair;
 
 
 public class Ruch extends Plansza implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	public static int poz_k;//miejsce docelowe
-	public static int pion_k;
+	public static int poz_k = ramy_wiedzy.Agent.getInstance().getLoc().pobierzWspolrzednaX();;//miejsce docelowe
+	public static int pion_k = ramy_wiedzy.Agent.getInstance().getLoc().pobierzWspolrzednaY();
 	private final int PRZERWA=30;
 	public static Timer czas;
+	ArrayList<Pair> points = new ArrayList<Pair>();
 	public int krok=1;
 	
 	
@@ -21,34 +26,49 @@ public class Ruch extends Plansza implements ActionListener {
 			}
 		return instance;
 	}
-	protected Ruch(){}
+	public Ruch(){
+		
+		czas=new javax.swing.Timer(PRZERWA, this);
+	}
 	
 	public void rusz_sie(){
-		czas=new javax.swing.Timer(PRZERWA, this);
+		
 		Ramka.blokada=true;
 		czas.start();
+		
 	}
 
 	public void rusz_sie(int a, int b){
-		poz_k=Ramka.poz/60+a;
-		pion_k=Ramka.pion/60+b;
+		
+		
+		poz_k += a;
+		pion_k += b;
+		//System.out.println("ide do: " + poz_k +", " + pion_k);
 		if(poz_k<0)poz_k=0;
 		if(poz_k>9)poz_k=9;
 		if(pion_k<0)pion_k=0;
 		if(pion_k>9)pion_k=9;
 		
+		points.add(new Pair(poz_k,pion_k));
 		rusz_sie();
+		
+		//System.out.println("ide do: " + poz_k +", " + pion_k);
+		
+		
+		
 	}
 
 	
 	public void actionPerformed(ActionEvent e){
-		
-		if(poz_k*60!=Ramka.poz || pion_k*60!=Ramka.pion){
+		//System.out.println(points.toString());
+		int pozk = points.get(0).getX();
+		int piok = points.get(0).getY();
+		if(pozk*60!=ramy_wiedzy.Agent.getInstance().getX() || piok*60!=ramy_wiedzy.Agent.getInstance().getY()){
 
-			if(Ramka.poz<poz_k*60){ Ramka.poz+=3;Plansza.opcja=3;}
-				else if(Ramka.poz>poz_k*60) {Ramka.poz-=3;Plansza.opcja=2;}
-					else if(Ramka.pion>pion_k*60) {Ramka.pion-=3;Plansza.opcja=4;}
-						else if(Ramka.pion<pion_k*60) {Ramka.pion+=3;Plansza.opcja=1;}
+			if(ramy_wiedzy.Agent.getInstance().getX()<pozk*60){ /*Ramka.poz+=3*/;ramy_wiedzy.Agent.getInstance().setX(ramy_wiedzy.Agent.getInstance().getX() + 3);Plansza.opcja=3;}
+				else if(ramy_wiedzy.Agent.getInstance().getX()>pozk*60) {ramy_wiedzy.Agent.getInstance().setX(ramy_wiedzy.Agent.getInstance().getX() - 3);Plansza.opcja=2;}
+					else if(ramy_wiedzy.Agent.getInstance().getY()>piok*60) {ramy_wiedzy.Agent.getInstance().setY(ramy_wiedzy.Agent.getInstance().getY() - 3);Plansza.opcja=4;}
+						else if(ramy_wiedzy.Agent.getInstance().getY()<piok*60) {ramy_wiedzy.Agent.getInstance().setY(ramy_wiedzy.Agent.getInstance().getY() + 3);Plansza.opcja=1;}
 			switch (krok) {
 				case 1:Plansza.abc="b";krok++;break;
 				case 2:Plansza.abc="a";krok++;break;
@@ -57,14 +77,22 @@ public class Ruch extends Plansza implements ActionListener {
 				case 5:Plansza.abc="b";krok=1;break;
 			}
 			
+			//System.out.println("wsp " + ramy_wiedzy.Agent.getInstance().getX() + ", " + ramy_wiedzy.Agent.getInstance().getY());
 			Ramka.plansza.repaint();
 			
-		}else{			
-			Plansza.opcja=1;
-			czas.stop();
-			Ramka.plansza.repaint();
-			Ramka.blokada=false;
+		}else{	
+			
+			points.remove(0);
+			//System.out.println(points.toString());
+			if(points.size()==0){
+				Plansza.opcja=1;
+				czas.stop();
+				Ramka.plansza.repaint();
+				Ramka.blokada=false;
+			}
+			
 		}
-	}	
+	}
+	
 }
 

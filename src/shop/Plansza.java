@@ -40,8 +40,10 @@ public class Plansza extends JPanel {
 		}
 				
 		agentIcon= new ImageIcon(this.getClass().getResource("agent/"+opcja+abc+".gif")).getImage();
-		g.drawImage((Image) agentIcon,35+Ramka.poz,17+Ramka.pion,this);
-	//	g.drawImage((Image) agentIcon,15+Ramka.poz,10+Ramka.pion,this);
+		//g.drawImage((Image) agentIcon,35+Ramka.poz,17+Ramka.pion,this);
+	//	g.drawImage((Image) agentIcon,15 + Ramka.ramyAgent.getLoc().pobierzWspolrzednaX() * 60,15 + Ramka.ramyAgent.getLoc().pobierzWspolrzednaY() * 60,this);
+		g.drawImage((Image) agentIcon,ramy_wiedzy.Agent.getInstance().getX(),ramy_wiedzy.Agent.getInstance().getY(),this);
+		//	g.drawImage((Image) agentIcon,15+Ramka.poz,10+Ramka.pion,this);
 		
 	
 	}	

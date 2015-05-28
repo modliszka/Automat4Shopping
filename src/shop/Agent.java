@@ -8,4 +8,5 @@ public class Agent {
 	List Products_list = new ArrayList();
 	List Alternative_products = new ArrayList();
 	List Section_location = new ArrayList();
+
 }

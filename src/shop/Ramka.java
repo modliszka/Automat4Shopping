@@ -20,6 +20,7 @@ public class Ramka extends JFrame implements KeyListener{
 	public static boolean blokada=false;
 	public static Mapa mapka = new Mapa();
 	public static Ramka instance;
+	public static ramy_wiedzy.Agent ramyAgent = new ramy_wiedzy.Agent();
 	
 	public Ramka(){
 		super("Shop");
@@ -54,6 +55,8 @@ public class Ramka extends JFrame implements KeyListener{
 		setVisible(true);
 
 		polecenie.requestFocusInWindow();
+		
+		new si.Astar();
 		
 	}
 	/*
