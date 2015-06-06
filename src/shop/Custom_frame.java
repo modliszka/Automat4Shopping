@@ -29,40 +29,36 @@ public class Custom_frame extends JFrame implements KeyListener{
 		setResizable(false);
 		setLayout(null);
 
+		board=new Board();
+		board.setBounds(5,5,601,601);		
+		add(board);
+
+		
 		/*
 		czat=new JTextArea();
 		czat.setFocusable(false);
 		czat.setOpaque(false);//przezr.tlo
 		czat.setBounds(5, 615, 600, 50);
 		czat.setLineWrap(true);
-		czat.setWrapStyleWord(true);*/
+		czat.setWrapStyleWord(true);
+		add(czat);*/
 		
 		command=new JTextField();
 		command.setFocusable(true);
 		command.setBounds(5, 670, 600, 20);
-		
-		board=new Board();
-		board.setBounds(5,5,601,601);
-		
-		
-		add(board);
-		
 		command.addKeyListener(this); 
-		
-		//add(czat);
 		add(command);
-		setVisible(true);
 
-		command.requestFocusInWindow();
-		
+		setVisible(true);
+		command.requestFocusInWindow(); 
 	}
 	/*
-	 gdzieœ w tym pliku 
+	 gdzieï¿½ w tym pliku 
 	 wyskakiwanie dod okienka do wprowadzania tych danych:
 	 Board.shop[0][0]=new Place("P","Woda","Napoje");
 		Product p=new Product();
 		p.nazwa="Woda mineralna ABC";
-		p.rodzaj="Woda";//jak 3 linie wy¿ej
+		p.rodzaj="Woda";//jak 3 linie wyï¿½ej
 		p.wielkosc=1.5;
 		p.jednostka="l";
 		p.ilosc=0;
@@ -77,22 +73,41 @@ public class Custom_frame extends JFrame implements KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if(e.getKeyCode()==KeyEvent.VK_ENTER){
-			if(blockade==false){
-				
-			String text = command.getText();
-			 if(text!=""){
-				 text = text.toLowerCase();
-				try {
-					custom_map.whatToDo(text);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
+		int keyCode = e.getKeyCode();
+		//System.out.println(keyCode);
+	    switch( keyCode ) {
+		    case KeyEvent.VK_ENTER : {
+		    	if(blockade==false){				
+					String text = command.getText();
+					if(text!=""){
+						text = text.toLowerCase();
+						try {
+							custom_map.whatToDo(text);
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+					}
+					command.setText("");
 				}
-			 }
-			command.setText("");
-			}
-			
-		}
+		    }
+			case KeyEvent.VK_UP:
+		        // handle up
+		    	//System.out.println("jest gora");
+		    	Movement.getInstance().move_yourself(0, -1); //poziom,pion (na minus to w gÃ³rÄ™)
+		        break;
+		    case KeyEvent.VK_DOWN:
+		        // handle down 
+		    	Movement.getInstance().move_yourself(0, 1);
+		        break;
+		    case KeyEvent.VK_LEFT:
+		        // handle left
+		    	Movement.getInstance().move_yourself(-1, 0);
+		        break;
+		    case KeyEvent.VK_RIGHT :
+		        // handle right
+		    	Movement.getInstance().move_yourself(1, 0);	
+		        break;
+	    }
 	}
 	
 }
