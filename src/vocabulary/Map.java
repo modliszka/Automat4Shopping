@@ -44,10 +44,10 @@ public class Map {
 		catch(IOException e){System.out.println("Error");}
 
 		
-		map.put("right",Right.getInstance());
-		map.put("left",Left.getInstance());
-		map.put("up", Up.getInstance());
-		map.put("down", Down.getInstance());
+		map.put("prawo",Right.getInstance());
+		map.put("lewo",Left.getInstance());
+		map.put("gora", Up.getInstance());
+		map.put("dol", Down.getInstance());
 		
 		}
 	private void FillEquipmentMap(){
@@ -79,7 +79,7 @@ public class Map {
 			if(x[1]=='v')o_vert=b*ud;
 			if(x[1]=='h')o_hor=b*rl;
 			if(flag){Movement.getInstance().move_yourself(o_hor, o_vert);doesomething=true;}
-			//if(!doesomething)Custom_frame.czat.setText("Mo¿esz powtórzyæ? Nie bardzo rozumiem :(");
+			//if(!doesomething)Custom_frame.czat.setText("Moï¿½esz powtï¿½rzyï¿½? Nie bardzo rozumiem :(");
 			doesomething=false;
 			word_nr=0;	
 			a=0;
