@@ -25,13 +25,13 @@ public class Movement extends Board implements ActionListener {
 	
 	public void move_yourself(){
 		time=new javax.swing.Timer(INTERVAL, this);
-		Custom_frame.blockade=true;
+		MainWindow.blockade=true;
 		time.start();
 	}
 
 	public void move_yourself(int a, int b){
-		hor_k=Custom_frame.hor/60+a;
-		vert_k=Custom_frame.vert/60+b;
+		hor_k=MainWindow.hor/60+a;
+		vert_k=MainWindow.vert/60+b;
 		if(hor_k<0)hor_k=0;
 		if(hor_k>9)hor_k=9;
 		if(vert_k<0)vert_k=0;
@@ -43,12 +43,12 @@ public class Movement extends Board implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e){
 		
-		if(hor_k*60!=Custom_frame.hor || vert_k*60!=Custom_frame.vert){
+		if(hor_k*60!=MainWindow.hor || vert_k*60!=MainWindow.vert){
 
-			if(Custom_frame.hor<hor_k*60){ Custom_frame.hor+=3;Board.option=3;}
-				else if(Custom_frame.hor>hor_k*60) {Custom_frame.hor-=3;Board.option=2;}
-					else if(Custom_frame.vert>vert_k*60) {Custom_frame.vert-=3;Board.option=4;}
-						else if(Custom_frame.vert<vert_k*60) {Custom_frame.vert+=3;Board.option=1;}
+			if(MainWindow.hor<hor_k*60){ MainWindow.hor+=3;Board.option=3;}
+				else if(MainWindow.hor>hor_k*60) {MainWindow.hor-=3;Board.option=2;}
+					else if(MainWindow.vert>vert_k*60) {MainWindow.vert-=3;Board.option=4;}
+						else if(MainWindow.vert<vert_k*60) {MainWindow.vert+=3;Board.option=1;}
 			switch (step) {
 				case 1:Board.abc="b";step++;break;
 				case 2:Board.abc="a";step++;break;
@@ -57,13 +57,13 @@ public class Movement extends Board implements ActionListener {
 				case 5:Board.abc="b";step=1;break;
 			}
 			
-			Custom_frame.board.repaint();
+			MainWindow.board.repaint();
 			
 		}else{			
 			Board.option=1;
 			time.stop();
-			Custom_frame.board.repaint();
-			Custom_frame.blockade=false;
+			MainWindow.board.repaint();
+			MainWindow.blockade=false;
 		}
 	}	
 }

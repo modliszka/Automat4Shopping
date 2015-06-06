@@ -28,8 +28,8 @@ public class Board extends JPanel {
 	
 	public void paint(Graphics g){
 		super.paint(g);
-		//g.drawImage((Image) new ImageIcon(this.getClass().getResource("board.gif")).getImage(), 0, 0, this); //t³o planszy
-		g.drawImage((Image) new ImageIcon(this.getClass().getResource("MapkaSklep.gif")).getImage(), 0, 0, this); //t³o planszy
+		//g.drawImage((Image) new ImageIcon(this.getClass().getResource("board.gif")).getImage(), 0, 0, this); //tï¿½o planszy
+		g.drawImage((Image) new ImageIcon(this.getClass().getResource("MapkaSklep.gif")).getImage(), 0, 0, this); //tï¿½o planszy
 		
 		
 		for(int z=0;z<=600;z+=60){
@@ -40,7 +40,7 @@ public class Board extends JPanel {
 		}
 				
 		agentIcon= new ImageIcon(this.getClass().getResource("agent/"+option+abc+".gif")).getImage();
-		g.drawImage((Image) agentIcon,35+Custom_frame.hor,17+Custom_frame.vert,this);
+		g.drawImage((Image) agentIcon,35+MainWindow.hor,17+MainWindow.vert,this);
 	//	g.drawImage((Image) agentIcon,15+Custom_frame.hor,10+Custom_frame.vert,this);
 		
 	
