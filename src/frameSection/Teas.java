@@ -5,6 +5,11 @@ import java.util.Date;
 import shop.Product;
 
 public class Teas extends Product {
-	double weight;
-	Date expirationDate;
+	//double weight;
+	//Date expirationDate;
+	String tKind, tPackage, tTaste, tAmount; 
+	
+	Teas() {
+		
+	}
 }

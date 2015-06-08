@@ -1,0 +1,15 @@
+@relation waters
+
+@attribute kind {gazowana,niegazowana}
+@attribute taste {naturalny,pomaranczy,truskawkowy, jablkowy,porzeczkowy,cytrynowy,brzoskwiniowy}
+@attribute brand {polanicka,nestle,cisowianka,dobrowianka, kroplaBeskidu,muszyna,primavera,zywiec,muszynianka}
+@attribute amount numeric
+@attribute calciumCations numeric
+@attribute magnesiumCations numeric
+@attribute bicarbonateAnions numeric
+@attribute minerals numeric
+@attribute price numeric
+@attribute tolerancy {tak,nie}
+
+@data
+gazowana,naturalny,kroplaBeskidu,1.75,41,16,219,347,1.99,tak

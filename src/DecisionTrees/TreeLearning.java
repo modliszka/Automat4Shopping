@@ -4,7 +4,16 @@ import weka.core.*;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
+
+import frameSection.Chocolates;
 
 //tworzenie instances od zera
 //https://ianma.wordpress.com/2010/01/16/weka-with-java-eclipse-getting-started/
@@ -17,189 +26,116 @@ import java.util.*;
 
 public class TreeLearning
 {
-	public static void main(String[] args)
+	private J48 treeModel;
+	private Instances train;
+
+	public TreeLearning(String trainFileName) throws Exception
 	{
-		new TreeLearning();
-	}
-
-	J48 learntModel;
-	Instances train;
-
-	public TreeLearning()
-	{
-		loadTree();
-		checkExample();
-		learnTree();
-		
-	}
-
-	public void loadTree()
-	{
-		try {
-			String filename="./src/DecisionTrees/data/teas.arff";
-			// Load the data source and learn the model
-			DataSource source = new DataSource(filename);
-			train = source.getDataSet();			
-			train.setClassIndex(train.numAttributes() - 1);
-
-			learntModel = new J48();
-			learntModel.buildClassifier(train);
-			// Print out the loaded tree
-			System.out.println("");
-			System.out.println(learntModel.toString());
-			
-			//pobieranie rezultatów
-			//http://stackoverflow.com/questions/28031068/get-weka-classifier-results
-			System.out.println("=====");
-			//System.out.println(train.toSummaryString());
-			
-		}
-		catch (Exception e)
-		{
-			System.out.println("");
-			System.out.println(e.toString());
-			System.out.println("File could not be loaded, please try again");
-			System.out.println("");
-		}
-	}
-	
-	public void checkExample()
-	{
-		try {			
-			String predictFilename="./src/DecisionTrees/data/teas_predict.arff";
-			DataSource predictSource = new DataSource(predictFilename);
-	        Instances test = predictSource.getDataSet();
-	        test.setClassIndex(test.numAttributes() - 1);
-	        
-	        double label = learntModel.classifyInstance(test.instance(0));
-	        test.instance(0).setClassValue(label);
-
-	        System.out.println("=====");
-	        System.out.println("czy można wziąć ten produkt? Odp: "+test.instance(0).stringValue(4));		
-
-		}
-		catch (Exception e)
-		{
-			System.out.println("");
-			System.out.println(e.toString());
-			System.out.println("File could not be loaded, please try again");
-			System.out.println("");
-		}
-	}
-
-	
-	public void learnTree()
-	{
-		// Apply the decision tree against read in cases
-		if (train == null)
-		{
-			System.out.println("Training data must be loaded from a .arff file to determine attributes");
-			System.out.println("");
-		}
-		
-		//wczytywanie z konsoli
-		/*
-		//Clone the set of instances
-		Instances newCases = new Instances(train);
-		newCases.delete();
-		
-		while (true)
-		{
-			Console console = System.console();
-			Instance newInsatnce = new DenseInstance(newCases.numAttributes());
-			System.out.println("");
-			System.out.println("Enter values for the attributes...");
-
-			for (int i = 0; i < newCases.numAttributes(); ++i)
-			{
-				Attribute attribute = newCases.attribute(i);
-				String value = console.readLine(attribute.name() + ": ");
-
-				newInsatnce.setValue(attribute, value);
-			}
-
-			newCases.add(newInsatnce);
-
-			System.out.println("");
-
-			if ( ! console.readLine("Add another case? [y/n] ").toLowerCase().equals("y"))
-				break;
-		}*/
-		
-		/*
-		 * wczytywanie pojedynczej instancji
-		 * 
-		//Clone the set of instances
-		Instances newCases = new Instances(train);
-		newCases.delete();
-
-		Instance newInstance = new DenseInstance(newCases.numAttributes());
-		//String[] atrr = {"biala","torebki","pomaranczy","od35do70","tak"};
-		
-		String[] atrr = {"zielona","granulowana","pomaranczy","od35do70","nie"};
-		
-		System.out.println("newCases.numAttributes(): "+newCases.numAttributes()+"\n");
-		for (int i = 0; i < newCases.numAttributes(); ++i)
-		{
-			Attribute attribute = newCases.attribute(i);
-			String value = atrr[i];
-			System.out.println(attribute.name()+" ");
-			newInstance.setValue(attribute, value);
-		}
-		newCases.add(newInstance);				
-		*/
-
+		String trainFile = "./src/DecisionTrees/data/"+trainFileName+".arff";
 		// Load the data source and learn the model
-		String testSetFilename="./src/DecisionTrees/data/teas_test.arff";		
-		Instances testSet = null;
-		try {
-			DataSource testSetSource = new DataSource(testSetFilename);
-			testSet = testSetSource.getDataSet();
-			testSet.setClassIndex(testSet.numAttributes() - 1);
-		} catch (Exception e1) {
-			System.out.println("Problem z wczytaniem pliku .arff: "+e1.toString());
-		}		
+		DataSource source = new DataSource(trainFile);
+		train = source.getDataSet();			
+		train.setClassIndex(train.numAttributes() - 1);
+		
+		treeModel = new J48();
+		treeModel.buildClassifier(train);		
+	}
+	
+	public void treeTraining(String testFileName) throws Exception {
+		String trainFile = "./src/DecisionTrees/tests/"+testFileName+"Train.arff";
+		BufferedReader reader = new BufferedReader(new FileReader(trainFile));
+		Instances test = new Instances(reader);
+		test.setClassIndex(test.numAttributes() - 1);		
+		reader.close();
+		
+		Instances predicted = new Instances(test);		
+		for(int i = 0; i < test.numInstances(); i++)
+		{
+			double clsLabel = treeModel.classifyInstance(test.instance(i));
+			predicted.instance(i).setClassValue(clsLabel);
+		}
+		
+		String filePath = "./src/DecisionTrees/tests/"+testFileName+"Output.arff";
+		BufferedWriter writer = null;	
+		writer = new BufferedWriter(new FileWriter(filePath));
+		writer.write(predicted.toString());
+		writer.close();		
+	}
+	
+
+ 
+	
+	public void writeTree(String treeGraph) throws IOException, Exception
+	{
+		/*BufferedWriter writer = null;		
+		writer = new BufferedWriter(new FileWriter(treeGraph));
+		writer.write(treeModel.toString()  + "\n\n" + treeModel.graph());		
+		writer.close();*/
 		
 
-		try
-		{
-			// Do evaluate model against the learnt model
-			Evaluation eval = new Evaluation(testSet);	//testSet zamiast newCases
-
-			if (testSet.numInstances() >= 10)//&& console.readLine("Cross Validate? [y/n]: ").toLowerCase().equals("y"))
-			{
-				eval.crossValidateModel(learntModel, testSet, 10, new Random(1));
-				
-				/*
-				 * Sprawdzian krzyżowy (lub walidacja krzyżowa, kroswalidacja, sprawdzanie krzyżowe) – metoda statystyczna, 
-				 * polegająca na podziale próby statystycznej na podzbiory, a następnie przeprowadzaniu wszelkich analiz na niektórych z nich (zbiór uczący), 
-				 * podczas gdy pozostałe służą do potwierdzenia wiarygodności jej wyników (zbiór testowy, zbiór walidacyjny).
-				 * */				
-			}
-			else
-			{
-				eval.evaluateModel(learntModel, testSet);
-			}
-
-			// Print confusion matrix
-			System.out.println(eval.toSummaryString("\nResults\n======\n", false));
-			System.out.println(eval.toMatrixString());
-		}
-		catch (Exception e)
-		{
-			System.out.println("");
-			System.out.println(e.toString());
-			System.out.println("Unable to cross validate and create confusion matrix against entered cases");
-			System.out.println("");
-		}
-		/*
-		try {
-			learntModel.buildClassifier(testSet);
-			System.out.println(learntModel.toString());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		System.out.println("");
+		System.out.println(treeModel.toString());
+		System.out.println("\n\n");
+		System.out.println(treeModel.graph());
+		
+		//pobieranie rezultatów
+		//http://stackoverflow.com/questions/28031068/get-weka-classifier-results
+		System.out.println("=====");
 	}
-
+	
+	
+	public String checkChocolate(Chocolates choc) throws Exception
+	{
+		String path = "./src/DecisionTrees/predict/chocolate.arff";
+		String decision = "";
+		String fileContent = 
+				"@relation chocolates\n"
+				+ "@attribute brand {alpenGold,wedel,goplana,heidi,milka,terravita,tesco,wawel}\n"
+				+ "@attribute taste {mleczna,gorzka,biala}\n"
+				+ "@attribute kind {zwykla,babelkowa,nadziewana,zowocami}\n"
+				+ "@attribute additives {brak,karmelowa,orzechowa,wisniowa,malinowa,truskawkowa,fistaszki,kokosowym,pomaranczowa,jogurtowa,tiramisu,kasztanki,michalki,wisiniaChili}\n"
+				+ "@attribute cocoaContent numeric\n"
+				+ "@attribute amount numeric %g\n"
+				+ "@attribute energy numeric\n"
+				+ "@attribute fats numeric\n"
+				+ "@attribute carbohydrates numeric\n"
+				+ "@attribute protein numeric\n"
+				+ "@attribute roughage numeric\n"
+				+ "@attribute price numeric\n"
+				+ "@attribute tolerancy {tak,nie}\n"
+				+ "\n"
+				+ "@data\n";
+		
+		String line = fileContent +","+ choc.getBrand() +","+ choc.getTaste() +","+ choc.getKind() +","+ choc.getAdditive() +","+
+				choc.getCocoaContent() +","+ choc.getAmount() +","+ choc.getEnergy() +","+ choc.getFats() +","+
+				choc.getCarbohydrates() +","+ choc.getProtein() +","+ choc.getPrice() + ",?";
+		
+		BufferedWriter writer = null;	
+		writer = new BufferedWriter(new FileWriter(path));
+		writer.write(line);
+		writer.close();
+		
+		//BufferedReader reader = new BufferedReader(new FileReader(path));
+		
+		DataSource predictSource = new DataSource(path);
+		Instances item = predictSource.getDataSet();
+		item.setClassIndex(item.numAttributes() - 1);
+		
+		double label = treeModel.classifyInstance(item.instance(0));
+		item.instance(0).setClassValue(label);
+		
+		//File file = new File(path);
+		//file.delete();
+		
+		String itemLine = item.instance(0).toString();
+		if(itemLine.contains("tak")) decision = "tak";
+		else if (itemLine.contains("nie")) decision = "nie";
+		
+		
+		System.out.println("=====");
+		System.out.println(line);
+        System.out.println("Odp: "+item.instance(0).stringValue(4));	
+		
+		return decision;
+	}
 }

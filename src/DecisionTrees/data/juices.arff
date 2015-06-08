@@ -1,0 +1,22 @@
+@relation juices
+
+@attribute brand {cappy,caprio,dawton,drWitt,fortuna,garden,hortex,kubus,leon,tymbark,tesco,vitellia}
+@attribute package {karton,butelkaPlast}
+@attribute kind {sok,napoj,nektar}
+@attribute taste {multiwitamina,ananas,mandarynka,pomaranczy,truskawkowy,jablkowy,porzeczkowy, cytrynowy,brzoskwiniowy}
+@attribute amount numeric %l
+@attribute energy numeric %kcal; na 100 ml wszystko ponizsze
+@attribute carbohydrates numeric %g
+@attribute vitaminA numeric %ug
+@attribute vitaminB3 numeric  %mg
+%niacyna
+@attribute vitaminC numeric %mg
+@attribute vitaminE numeric %mg
+@attribute price numeric %zl
+@attribute tolerancy {tak,nie}
+
+@data
+cappy,butelkaPlast,napoj,multiwitamina,1,46,10.8,360,20,0,1.8,4.69,tak
+hortex,karton,sok,ananas,1,53,12.8,0,0,0,0,4.29,nie
+fortuna,karton,sok,mandarynka,1,44,10,0,0,0,0,4.69,tak
+tymbark,karton,sok,jablkowy,1,43,10.5,0,0,0,0,3.99,nie

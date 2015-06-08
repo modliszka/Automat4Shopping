@@ -1,0 +1,47 @@
+@relation chocolates
+
+@attribute brand {alpenGold,wedel,goplana,heidi,milka,terravita,tesco,wawel}
+@attribute taste {mleczna,gorzka,biala}
+@attribute kind {zwykla,babelkowa,nadziewana,zowocami}
+@attribute additives {brak,karmelowa,orzechowa,wisniowa,malinowa,truskawkowa,fistaszki,kokosowym,pomaranczowa,jogurtowa,tiramisu,kasztanki,michalki,wisiniaChili}
+@attribute cocoaContent numeric
+@attribute amount numeric %g
+@attribute energy numeric
+@attribute fats numeric
+@attribute carbohydrates numeric
+@attribute protein numeric
+@attribute roughage numeric
+@attribute price numeric
+@attribute tolerancy {tak,nie}
+
+@data
+alpenGold,mleczna,babelkowa,brak,25,80,525,28.5,60.5,5.6,2.2,2.89,tak
+alpenGold,gorzka,nadziewana,karmelowa,?,90,535,32.5,54.5,3.8,3.9,2.49,nie
+alpenGold,biala,zowocami,orzechowa,0,100,565,36.5,50.5,7.1,2.2,3.89,nie
+alpenGold,gorzka,zowocami,orzechowa,43,100,550,35.5,45,7.2,8.1,3.89,tak
+goplana,mleczna,zowocami,fistaszki,30,100,535,31,53,9.2,?,2.89,nie
+heidi,gorzka,zwykla,brak,85,80,627,57.35,18.41,7.9,?,6.99,nie
+heidi,gorzka,zowocami,wisniowa,50,100,475,26.43,52.94,6.25,?,8.99,nie
+heidi,gorzka,zowocami,pomaranczowa,50,100,423,22.96,49.17,5.01,?,8.99,nie
+milka,mleczna,nadziewana,karmelowa,?,100,495,26,59,4.8,1.2,3.39,nie
+milka,mleczna,zowocami,orzechowa,30,100,540,32.5,54.5,7.4,1.9,3.39,tak
+milka,mleczna,nadziewana,jogurtowa,30,300,555,33,57,5.4,1.1,7.99,tak
+milka,mleczna,nadziewana,wisniowa,?,100,520,28.5,59.5,4.4,1.1,3.39,tak
+milka,mleczna,zowocami,orzechowa,30,250,555,35,49.5,8.1,3.3,10.49,tak
+wedel,gorzka,nadziewana,wisniowa,50,100,484,26,56,4.7,4.8,2.99,tak
+wedel,mleczna,nadziewana,malinowa,29,100,483,26,59,3.5,1.5,2.99,nie
+wedel,mleczna,nadziewana,fistaszki,29,290,543,32,54,8.2,?,10.99,nie
+wedel,biala,zwykla,brak,0,100,564,36,56,6.1,0,2.99,nie
+wedel,gorzka,nadziewana,kokosowym,50,100,532,32,52,6,5.8,2.99,nie
+wawel,gorzka,zwykla,brak,70,100,544,39,34,8.3,?,4.49,tak
+wawel,gorzka,zowocami,pomaranczowa,70,100,496,34.8,37.3,7.5,?,4.39,tak
+wawel,mleczna,nadziewana,kasztanki,35,100,531,31,56,4.6,?,2.29,tak
+wawel,mleczna,nadziewana,michalki,43,100,526,32.5,49.7,7.8,?,2.2,tak
+wawel,mleczna,zowocami,wisiniaChili,43,100,519,30,55,4.1,?,4.49,tak
+terravita,gorzka,zwykla,brak,45,100,520,29,57.8,3.9,6.2,2.69,tak
+terravita,mleczna,nadziewana,tiramisu,25,100,558,35.3,52.7,5.4,?,2.69,tak
+terravita,mleczna,zowocami,orzechowa,25,100,549,33.7,53.2,6.5,3.4,7.49,tak
+tesco,mleczna,nadziewana,truskawkowa,31,100,547,33,56,5.9,1.3,2.69,nie
+tesco,biala,zwykla,brak,0,100,555,33.2,58.5,5.5,0,2.69,nie
+tesco,mleczna,zwykla,brak,30,100,540,30.2,58.6,6.3,2.5,2.69,nie
+tesco,gorzka,zwykla,brak,52,100,514,29,52,6.8,8.8,2.69,nie
