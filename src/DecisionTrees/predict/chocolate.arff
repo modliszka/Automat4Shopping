@@ -1,0 +1,17 @@
+@relation chocolates
+@attribute brand {alpenGold,wedel,goplana,heidi,milka,terravita,tesco,wawel}
+@attribute taste {mleczna,gorzka,biala}
+@attribute kind {zwykla,babelkowa,nadziewana,zowocami}
+@attribute additives {brak,karmelowa,orzechowa,wisniowa,malinowa,truskawkowa,fistaszki,kokosowym,pomaranczowa,jogurtowa,tiramisu,kasztanki,michalki,wisiniaChili}
+@attribute cocoaContent numeric
+@attribute amount numeric
+@attribute energy numeric
+@attribute fats numeric
+@attribute carbohydrates numeric
+@attribute protein numeric
+@attribute roughage numeric
+@attribute price numeric
+@attribute tolerancy {tak,nie}
+
+@data
+alpenGold,mleczna,nadziewana,wisniowa,18,90,558,0.0,0.0,0.0,0.0,4.1899999999999995,?

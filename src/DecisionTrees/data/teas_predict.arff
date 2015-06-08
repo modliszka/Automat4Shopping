@@ -1,5 +1,6 @@
 @relation predict_trees
 
+@attribute brands {lipton,tesco,tetley,herbapol,saga,dilmah}
 @attribute kind {czarna,zielona,biala,ziolowa}
 @attribute package {torebki,sypana,granulowana}
 @attribute taste {zwykly,pomaranczy,pokrzywy,rumianku,malinowy}

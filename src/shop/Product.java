@@ -11,9 +11,9 @@ public class Product {
 //	public double cena;
 //	public String glRozroznik; //nazwy do dogadania:)
 //	public String dodRozroznik;
-String name;
-String packaging;
-Shelf shelf; // p�ka przypisana do danego produktu
+	String name;
+	String packaging;
+	Shelf shelf; // półka przypisana do danego produktu
 
 
 }

@@ -1,0 +1,28 @@
+@relation teas-weka.filters.unsupervised.instance.Resample-S2-Z90.0
+
+@attribute brand {lipton,tesco,tetley,herbapol,saga,dilmah,minutka,bigActive}
+@attribute kind {czarna,zielona,biala,ziolowa}
+@attribute package {torebki,sypana,granulowana}
+@attribute taste {zwykly,pomarancza,pokrzywy,rumianek,malinowy,melisa,mieta}
+@attribute amount numeric
+@attribute price numeric
+@attribute tolerancy {tak,nie}
+
+@data
+minutka,czarna,sypana,zwykly,200,8.99,nie
+saga,ziolowa,sypana,rumianek,45,4.96,nie
+saga,zielona,torebki,pomarancza,70,4.12,nie
+saga,ziolowa,torebki,pokrzywy,70,3.22,nie
+herbapol,zielona,torebki,malinowy,20,4.77,tak
+herbapol,zielona,torebki,pomarancza,70,8,tak
+herbapol,ziolowa,torebki,pokrzywy,20,8,tak
+lipton,biala,torebki,zwykly,70,4.77,nie
+lipton,zielona,torebki,malinowy,70,5.23,nie
+lipton,czarna,sypana,zwykly,45,3.55,nie
+tetley,ziolowa,torebki,pokrzywy,20,3.6,tak
+tetley,czarna,torebki,zwykly,70,4.9,tak
+tetley,ziolowa,sypana,rumianek,70,3.7,tak
+dilmah,zielona,torebki,pomarancza,70,7,tak
+tesco,czarna,torebki,zwykly,45,2.89,nie
+tesco,czarna,torebki,zwykly,80,4.23,nie
+bigActive,zielona,torebki,malinowy,20,6.99,tak

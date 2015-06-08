@@ -7,7 +7,12 @@ public class Shop{
 	      EventQueue.invokeLater(new Runnable() {
 	          @Override
 	          public void run() {
-	              new MainWindow();
+	              try {
+					new MainWindow();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	          }
 	      });
 	}

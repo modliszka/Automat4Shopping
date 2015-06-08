@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.*;
 
 import frameSection.Chocolates;
+import frameSection.Teas;
 
 //tworzenie instances od zera
 //https://ianma.wordpress.com/2010/01/16/weka-with-java-eclipse-getting-started/
@@ -76,7 +77,7 @@ public class TreeLearning
 		System.out.println("");
 		System.out.println(treeModel.toString());
 		System.out.println("\n\n");
-		System.out.println(treeModel.graph());
+		//System.out.println(treeModel.graph());
 		
 		//pobieranie rezultatów
 		//http://stackoverflow.com/questions/28031068/get-weka-classifier-results
@@ -95,7 +96,7 @@ public class TreeLearning
 				+ "@attribute kind {zwykla,babelkowa,nadziewana,zowocami}\n"
 				+ "@attribute additives {brak,karmelowa,orzechowa,wisniowa,malinowa,truskawkowa,fistaszki,kokosowym,pomaranczowa,jogurtowa,tiramisu,kasztanki,michalki,wisiniaChili}\n"
 				+ "@attribute cocoaContent numeric\n"
-				+ "@attribute amount numeric %g\n"
+				+ "@attribute amount numeric\n"
 				+ "@attribute energy numeric\n"
 				+ "@attribute fats numeric\n"
 				+ "@attribute carbohydrates numeric\n"
@@ -106,9 +107,58 @@ public class TreeLearning
 				+ "\n"
 				+ "@data\n";
 		
-		String line = fileContent +","+ choc.getBrand() +","+ choc.getTaste() +","+ choc.getKind() +","+ choc.getAdditive() +","+
+		String line = fileContent + choc.getBrand() +","+ choc.getTaste() +","+ choc.getKind() +","+ choc.getAdditive() +","+
 				choc.getCocoaContent() +","+ choc.getAmount() +","+ choc.getEnergy() +","+ choc.getFats() +","+
-				choc.getCarbohydrates() +","+ choc.getProtein() +","+ choc.getPrice() + ",?";
+				choc.getCarbohydrates() +","+ choc.getProtein() +","+ choc.getRoughage() + ","+ choc.getPrice() +",?\n";
+		
+		BufferedWriter writer = null;	
+		writer = new BufferedWriter(new FileWriter(path));
+		writer.write(line);
+		writer.close();
+				
+		BufferedReader reader = new BufferedReader(new FileReader(path));
+		Instances item = new Instances(reader);
+		item.setClassIndex(item.numAttributes() - 1);		
+		double clsLabel = treeModel.classifyInstance(item.instance(0));
+		item.instance(0).setClassValue(clsLabel);
+		reader.close();
+		
+		double label = treeModel.classifyInstance(item.instance(0));
+		item.instance(0).setClassValue(label);
+		
+		File file = new File(path);
+		file.delete();
+		
+		String itemLine = item.instance(0).toString();
+		if(itemLine.contains("tak")) decision = "tak";
+		else if (itemLine.contains("nie")) decision = "nie";
+		
+		
+		System.out.println("=====");
+		//System.out.println(line);
+        System.out.println("Odp: "+item.instance(0).toString());	
+		
+		return decision;
+	}
+	
+	public String checkTea(Teas tea) throws Exception
+	{
+		String path = "./src/DecisionTrees/predict/tea.arff";
+		String decision = "";
+		String fileContent = 
+				"@relation teas\n"
+				+ "@attribute brand     {lipton,tesco,tetley,herbapol,saga,dilmah,minutka,bigActive}\n"
+				+ "@ATTRIBUTE kind		{czarna,zielona,biala,ziolowa}\n"
+				+ "@ATTRIBUTE package	{torebki,sypana,granulowana}\n"
+				+ "@ATTRIBUTE taste	    {zwykly,pomarancza,pokrzywy,rumianek,malinowy,melisa,mieta}\n"
+				+ "@attribute amount    numeric\n"
+				+ "@attribute price     numeric\n"
+				+ "@attribute tolerancy {tak,nie}\n"
+				+ "\n"
+				+ "@data\n";
+		
+		String line = fileContent +tea.getBrand() +","+ tea.getKind() +","+ tea.getPackage() +","+ tea.getTaste() +","+ 
+				tea.getAmount() +","+ tea.getPrice() + ",?"; 
 		
 		BufferedWriter writer = null;	
 		writer = new BufferedWriter(new FileWriter(path));
@@ -117,8 +167,15 @@ public class TreeLearning
 		
 		//BufferedReader reader = new BufferedReader(new FileReader(path));
 		
-		DataSource predictSource = new DataSource(path);
-		Instances item = predictSource.getDataSet();
+		//DataSource predictSource = new DataSource(path);
+		//Instances item = predictSource.getDataSet();
+		
+		BufferedReader reader = new BufferedReader(new FileReader(path));
+		Instances item = new Instances(reader);
+		item.setClassIndex(item.numAttributes() - 1);		
+		double clsLabel = treeModel.classifyInstance(item.instance(0));
+		item.instance(0).setClassValue(clsLabel);
+		reader.close();
 		item.setClassIndex(item.numAttributes() - 1);
 		
 		double label = treeModel.classifyInstance(item.instance(0));
@@ -133,8 +190,8 @@ public class TreeLearning
 		
 		
 		System.out.println("=====");
-		System.out.println(line);
-        System.out.println("Odp: "+item.instance(0).stringValue(4));	
+		//System.out.println(line);
+        System.out.println("Odp: "+item.instance(0).toString());	
 		
 		return decision;
 	}

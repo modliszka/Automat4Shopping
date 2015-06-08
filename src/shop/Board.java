@@ -2,8 +2,13 @@ package shop;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.List;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import frameSection.AvaibleProducts;
+import frameSection.Teas;
 
 public class Board extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -22,6 +27,15 @@ public class Board extends JPanel {
 //	}
 	protected Board(){
 		//RozmiescRegaly();
+		AvaibleProducts products;
+		try {
+			products = new AvaibleProducts();
+			List<Teas> list = products.getTeas();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		shop=new Place[10][10];
 		setFocusable(true);
 	}

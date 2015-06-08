@@ -1,0 +1,11 @@
+@relation teas
+@attribute brand     {lipton,tesco,tetley,herbapol,saga,dilmah,minutka,bigActive}
+@ATTRIBUTE kind		{czarna,zielona,biala,ziolowa}
+@ATTRIBUTE package	{torebki,sypana,granulowana}
+@ATTRIBUTE taste	    {zwykly,pomarancza,pokrzywy,rumianek,malinowy,melisa,mieta}
+@attribute amount    numeric
+@attribute price     numeric
+@attribute tolerancy {tak,nie}
+
+@data
+saga,zielona,torebki,rumianek,120,3.0,?

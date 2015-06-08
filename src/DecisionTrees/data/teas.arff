@@ -1,28 +1,47 @@
 @RELATION teas
 
+@attribute brands 	{lipton,tesco,tetley,herbapol,saga,dilmah,minutka,bigActive}
 @ATTRIBUTE kind		{czarna,zielona,biala,ziolowa}
 @ATTRIBUTE package	{torebki,sypana,granulowana}
-@ATTRIBUTE taste	{zwykly,pomaranczy,pokrzywy,rumianku,malinowy}
-@ATTRIBUTE amount 	{do15,od15do35,od35do70,od70do110,od110do140,od140}
+@ATTRIBUTE taste	{zwykly,pomarancza,pokrzywy,rumianek,malinowy,melisa,mieta}
+@ATTRIBUTE amount 	numeric
+@ATTRIBUTE price 	numeric
 @ATTRIBUTE tolerancy	{tak,nie}
 
 @DATA
-czarna,torebki,zwykly,od35do70,nie
-czarna,sypana,zwykly,od35do70,nie
-czarna,torebki,pomaranczy,od15do35,tak
-czarna,torebki,zwykly,od110do140,nie
-czarna,sypana,zwykly,od140,nie
-czarna,torebki,pomaranczy,od110do140,tak
-zielona,torebki,pomaranczy,od15do35,tak
-zielona,torebki,malinowy,od15do35,tak
-zielona,torebki,pomaranczy,od110do140,tak
-zielona,torebki,malinowy,od110do140,tak
-ziolowa,torebki,pokrzywy,od15do35,nie
-ziolowa,sypana,rumianku,od35do70,nie
-ziolowa,torebki,pokrzywy,od110do140,nie
-ziolowa,sypana,rumianku,od110do140,nie
-biala,torebki,zwykly,od35do70,tak
-biala,torebki,zwykly,od110do140,tak
-czarna,granulowana,zwykly,od35do70,nie
-czarna,granulowana,zwykly,od35do70,nie
-czarna,granulowana,zwykly,od110do140,nie
+lipton,czarna,torebki,zwykly,40,4,nie
+lipton,czarna,torebki,zwykly,130,8,nie
+lipton,biala,torebki,melisa,40,4,nie
+lipton,biala,torebki,zwykly,130,8,nie
+minutka,czarna,sypana,zwykly,200,10,nie
+minutka,czarna,torebki,pomarancza,130,6,tak
+minutka,czarna,sypana,zwykly,300,12,nie
+minutka,czarna,torebki,pomarancza,120,5,tak
+minutka,zielona,torebki,pomarancza,20,6.5,tak
+minutka,zielona,torebki,mieta,130,6.2,tak
+bigActive,zielona,torebki,pomarancza,20,6.5,tak
+bigActive,zielona,torebki,malinowy,130,6.2,tak
+bigActive,zielona,torebki,pomarancza,20,8.23,nie
+bigActive,zielona,torebki,malinowy,130,10,nie
+bigActive,zielona,torebki,pomarancza,20,11.3,nie
+bigActive,zielona,torebki,malinowy,130,8.9,nie
+dilmah,zielona,torebki,malinowy,20,5.4,tak
+dilmah,zielona,torebki,pomarancza,130,5.9,tak
+dilmah,ziolowa,sypana,rumianek,40,3.99,nie
+dilmah,ziolowa,sypana,rumianek,130,7,nie
+dilmah,zielona,torebki,mieta,130,6.9,tak
+herbapol,ziolowa,torebki,pokrzywy,130,4,tak
+herbapol,ziolowa,granulowana,pokrzywy,130,4,tak
+tetley,czarna,torebki,pomarancza,20,5,tak
+tetley,biala,torebki,zwykly,40,4,tak
+tetley,biala,torebki,zwykly,130,3,tak
+tetley,ziolowa,torebki,mieta,130,7,tak
+tesco,ziolowa,torebki,pokrzywy,20,1.99,nie
+tesco,czarna,granulowana,zwykly,40,3,nie
+tesco,ziolowa,torebki,pokrzywy,130,4,nie
+tesco,czarna,sypana,zwykly,130,6,tak
+saga,czarna,granulowana,zwykly,40,3.5,nie
+saga,czarna,granulowana,zwykly,130,5,nie
+saga,czarna,sypana,zwykly,40,3,nie
+saga,czarna,torebki,malinowy,80,4.5,nie
+saga,zielona,sypana,zwykly,100,5,tak
