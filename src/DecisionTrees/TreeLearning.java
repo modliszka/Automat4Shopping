@@ -107,9 +107,21 @@ public class TreeLearning
 				+ "\n"
 				+ "@data\n";
 		
-		String line = fileContent + choc.getBrand() +","+ choc.getTaste() +","+ choc.getKind() +","+ choc.getAdditive() +","+
-				choc.getCocoaContent() +","+ choc.getAmount() +","+ choc.getEnergy() +","+ choc.getFats() +","+
-				choc.getCarbohydrates() +","+ choc.getProtein() +","+ choc.getRoughage() + ","+ choc.getPrice() +",?\n";
+		String br = choc.getBrand()=="" ? "?" : choc.getBrand();
+		String ta = choc.getTaste()=="" ? "?" : choc.getTaste();
+		String ki = choc.getKind()=="" ? "?" : choc.getKind();
+		String ad = choc.getAdditive()=="" ? "?" : choc.getAdditive();
+		String co = choc.getCocoaContent()==0 ? "?" : ""+choc.getCocoaContent();
+		String am = choc.getAmount()==0 ? "?" : ""+choc.getAmount();
+		String en = choc.getEnergy()==0 ? "?" : ""+choc.getEnergy();
+		String fa = choc.getFats()==0 ? "?" : ""+choc.getFats();
+		String ca = choc.getCarbohydrates()==0 ? "?" : ""+choc.getCarbohydrates();
+		String prot = choc.getProtein()==0 ? "?" : ""+choc.getProtein();
+		String ro = choc.getRoughage()==0 ? "?" : ""+choc.getRoughage();
+		String pri = choc.getPrice()==0 ? "?" : ""+choc.getPrice();
+		
+		String line = fileContent + br +","+ ta +","+ ki +","+ ad +","+co +","+ am +","+ en +","+ fa +","+
+				ca +","+ prot +","+ ro + ","+ pri +",?\n";
 		
 		BufferedWriter writer = null;	
 		writer = new BufferedWriter(new FileWriter(path));
@@ -157,8 +169,15 @@ public class TreeLearning
 				+ "\n"
 				+ "@data\n";
 		
-		String line = fileContent +tea.getBrand() +","+ tea.getKind() +","+ tea.getPackage() +","+ tea.getTaste() +","+ 
-				tea.getAmount() +","+ tea.getPrice() + ",?"; 
+		
+		String br = tea.getBrand()=="" ? "?" : tea.getBrand();
+		String ki = tea.getKind()=="" ? "?" : tea.getKind();
+		String pa = tea.getPackage()=="" ? "?" : tea.getPackage();
+		String ta = tea.getTaste()=="" ? "?" : tea.getTaste();
+		String am = tea.getAmount()==0 ? "?" : ""+tea.getAmount();
+		String pri = tea.getPrice()==0 ? "?" : ""+tea.getPrice();
+		
+		String line = fileContent + br +","+ ki +","+ pa +","+ ta+","+ am +","+ pri +",?\n";
 		
 		BufferedWriter writer = null;	
 		writer = new BufferedWriter(new FileWriter(path));

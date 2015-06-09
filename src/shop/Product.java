@@ -6,14 +6,21 @@ public class Product {
 //	public String nazwa;
 //	public String rodzaj;
 //	public double wielkosc; // np. 200
-//	public String jednostka; // np. ml moï¿½naby jakiï¿½ enum zrobiï¿½
+//	public String jednostka; // np. ml moï¿½naby jakiœ enum zrobic
 //	public int ilosc;
 //	public double cena;
 //	public String glRozroznik; //nazwy do dogadania:)
 //	public String dodRozroznik;
 	String name;
 	String packaging;
-	Shelf shelf; // pÃ³Å‚ka przypisana do danego produktu
+	Shelf shelf; // pó³ka przypisana do danego produktu
 
 
 }
+
+
+/*
+ * 
+ * 
+ * 
+ */

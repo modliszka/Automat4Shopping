@@ -64,13 +64,14 @@ public class AvaibleProducts {
 			chocs.add(x);
 		}
 		
-		
+		/*
 		//random 10 herbat
 		teas = new ArrayList<Teas>();	
 		TreeLearning treeT = null;
 		try {
 			treeT = new TreeLearning("teas");
-			treeT.writeTree("teas");				
+			treeT.writeTree("teas");		
+			treeT.treeTraining("teas");		
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -109,8 +110,7 @@ public class AvaibleProducts {
 			else x.setIsGood(false);
 			
 			teas.add(x);
-		}		
-		treeT.treeTraining("teas");
+		}	*/	
 	}
 	
 	public List<Chocolates> getChocolates(){ return chocs;}

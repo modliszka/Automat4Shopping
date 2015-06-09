@@ -27,10 +27,11 @@ public class Board extends JPanel {
 //	}
 	protected Board(){
 		//RozmiescRegaly();
-		AvaibleProducts products;
+		//AvaibleProducts products;
 		try {
-			products = new AvaibleProducts();
-			List<Teas> list = products.getTeas();
+			//products = new AvaibleProducts();
+			Teas tea = new Teas(5);
+			List<Teas> list = tea.getTeas();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
