@@ -1,19 +1,16 @@
 package DecisionTrees;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.core.*;
-import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
 
 import frameSection.Chocolates;
+import frameSection.Juices;
 import frameSection.Teas;
 
 //tworzenie instances od zera
@@ -62,10 +59,7 @@ public class TreeLearning
 		writer.write(predicted.toString());
 		writer.close();		
 	}
-	
-
- 
-	
+		
 	public void writeTree(String treeGraph) throws IOException, Exception
 	{
 		/*BufferedWriter writer = null;		
@@ -73,7 +67,6 @@ public class TreeLearning
 		writer.write(treeModel.toString()  + "\n\n" + treeModel.graph());		
 		writer.close();*/
 		
-
 		System.out.println("");
 		System.out.println(treeModel.toString());
 		System.out.println("\n\n");
@@ -88,7 +81,6 @@ public class TreeLearning
 	public String checkChocolate(Chocolates choc) throws Exception
 	{
 		String path = "./src/DecisionTrees/predict/chocolate.arff";
-		String decision = "";
 		String fileContent = 
 				"@relation chocolates\n"
 				+ "@attribute brand {alpenGold,wedel,goplana,heidi,milka,terravita,tesco,wawel}\n"
@@ -112,51 +104,23 @@ public class TreeLearning
 		String ki = choc.getKind()=="" ? "?" : choc.getKind();
 		String ad = choc.getAdditive()=="" ? "?" : choc.getAdditive();
 		String co = choc.getCocoaContent()==0 ? "?" : ""+choc.getCocoaContent();
-		String am = choc.getAmount()==0 ? "?" : ""+choc.getAmount();
-		String en = choc.getEnergy()==0 ? "?" : ""+choc.getEnergy();
-		String fa = choc.getFats()==0 ? "?" : ""+choc.getFats();
-		String ca = choc.getCarbohydrates()==0 ? "?" : ""+choc.getCarbohydrates();
-		String prot = choc.getProtein()==0 ? "?" : ""+choc.getProtein();
-		String ro = choc.getRoughage()==0 ? "?" : ""+choc.getRoughage();
-		String pri = choc.getPrice()==0 ? "?" : ""+choc.getPrice();
+		String am = choc.getAmount()==-1 ? "?" : ""+choc.getAmount();
+		String en = choc.getEnergy()==-1 ? "?" : ""+choc.getEnergy();
+		String fa = choc.getFats()==-1 ? "?" : ""+choc.getFats();
+		String ca = choc.getCarbohydrates()==-1 ? "?" : ""+choc.getCarbohydrates();
+		String prot = choc.getProtein()==-1 ? "?" : ""+choc.getProtein();
+		String ro = choc.getRoughage()==-1 ? "?" : ""+choc.getRoughage();
+		String pri = choc.getPrice()==-1 ? "?" : ""+choc.getPrice();
 		
 		String line = fileContent + br +","+ ta +","+ ki +","+ ad +","+co +","+ am +","+ en +","+ fa +","+
-				ca +","+ prot +","+ ro + ","+ pri +",?\n";
-		
-		BufferedWriter writer = null;	
-		writer = new BufferedWriter(new FileWriter(path));
-		writer.write(line);
-		writer.close();
+				ca +","+ prot +","+ ro + ","+ pri +",?\n";		
 				
-		BufferedReader reader = new BufferedReader(new FileReader(path));
-		Instances item = new Instances(reader);
-		item.setClassIndex(item.numAttributes() - 1);		
-		double clsLabel = treeModel.classifyInstance(item.instance(0));
-		item.instance(0).setClassValue(clsLabel);
-		reader.close();
-		
-		double label = treeModel.classifyInstance(item.instance(0));
-		item.instance(0).setClassValue(label);
-		
-		File file = new File(path);
-		file.delete();
-		
-		String itemLine = item.instance(0).toString();
-		if(itemLine.contains("tak")) decision = "tak";
-		else if (itemLine.contains("nie")) decision = "nie";
-		
-		
-		System.out.println("=====");
-		//System.out.println(line);
-        System.out.println("Odp: "+item.instance(0).toString());	
-		
-		return decision;
+		return Predict(path,line);
 	}
 	
 	public String checkTea(Teas tea) throws Exception
 	{
 		String path = "./src/DecisionTrees/predict/tea.arff";
-		String decision = "";
 		String fileContent = 
 				"@relation teas\n"
 				+ "@attribute brand     {lipton,tesco,tetley,herbapol,saga,dilmah,minutka,bigActive}\n"
@@ -174,20 +138,65 @@ public class TreeLearning
 		String ki = tea.getKind()=="" ? "?" : tea.getKind();
 		String pa = tea.getPackage()=="" ? "?" : tea.getPackage();
 		String ta = tea.getTaste()=="" ? "?" : tea.getTaste();
-		String am = tea.getAmount()==0 ? "?" : ""+tea.getAmount();
-		String pri = tea.getPrice()==0 ? "?" : ""+tea.getPrice();
+		String am = tea.getAmount()==-1 ? "?" : ""+tea.getAmount();
+		String pri = tea.getPrice()==-1 ? "?" : ""+tea.getPrice();
 		
-		String line = fileContent + br +","+ ki +","+ pa +","+ ta+","+ am +","+ pri +",?\n";
+		String line = fileContent + br +","+ ki +","+ pa +","+ ta+","+ am +","+ pri +",?\n";	
 		
+		return Predict(path,line);
+	}
+	
+	
+	public String checkJuice(Juices juice) throws Exception
+	{
+		String path = "./src/DecisionTrees/predict/tea.arff";
+		String fileContent = 
+				"@relation teas\n"
+				+ "@attribute brand     {cappy,caprio,dawton,drWitt,fortuna,garden,hortex,kubus,leon,tymbark,tesco,vitellia}\n"
+				+ "@ATTRIBUTE package   {karton,butelkaPlast,butelkaSzklana}\n"
+				+ "@ATTRIBUTE kind {sok,napoj,nektar}\n"
+				+ "@ATTRIBUTE taste {multiwitamina,ananas,mandarynka,pomaranczy,truskawkowy,jablkowy,porzeczkowy, cytrynowy,brzoskwiniowy}\n"
+				+ "@attribute amount    numeric\n"
+				+ "@attribute energy    numeric\n"
+				+ "@attribute carbohydrates    numeric\n"
+				+ "@attribute vitaminA    numeric\n"
+				+ "@attribute vitaminB3    numeric\n"
+				+ "@attribute vitaminC    numeric\n"
+				+ "@attribute vitaminE    numeric\n"
+				+ "@attribute price     numeric\n"
+				+ "@attribute tolerancy {tak,nie}\n"
+				+ "\n"
+				+ "@data\n";
+
+		
+		String br = juice.getBrand()=="" ? "?" : juice.getBrand();
+		String ki = juice.getKind()=="" ? "?" : juice.getKind();
+		String pa = juice.getWrapping()=="" ? "?" : juice.getWrapping();
+		String ta = juice.getTaste()=="" ? "?" : juice.getTaste();
+		String en = juice.getEnergy()==-1 ? "?" : ""+juice.getEnergy();
+		String ca = juice.getCarbohydrates()==-1 ? "?" : ""+juice.getCarbohydrates();
+		String va = juice.getVitaminA()==-1 ? "?" : ""+juice.getVitaminA();
+		String vc = juice.getVitaminB3()==-1 ? "?" : ""+juice.getVitaminB3();
+		String vb = juice.getVitaminC()==-1 ? "?" : ""+juice.getVitaminC();
+		String ve = juice.getVitaminE()==-1 ? "?" : ""+juice.getVitaminE();
+		String am = juice.getAmount()==-1 ? "?" : ""+juice.getAmount();
+		String pri = juice.getPrice()==-1 ? "?" : ""+juice.getPrice();
+		
+		String line = fileContent + br +","+ pa +","+ ki +","+ ta+","+ am +","+ en +","+ ca +","+ va +","+ vb +","+ vc +","+ ve +","+ pri +",?\n";	
+		
+		return Predict(path,line);
+	}
+
+	private String Predict(String path,String line) throws Exception {
 		BufferedWriter writer = null;	
 		writer = new BufferedWriter(new FileWriter(path));
 		writer.write(line);
 		writer.close();
-		
 		//BufferedReader reader = new BufferedReader(new FileReader(path));
 		
 		//DataSource predictSource = new DataSource(path);
 		//Instances item = predictSource.getDataSet();
+		String decision = "";
 		
 		BufferedReader reader = new BufferedReader(new FileReader(path));
 		Instances item = new Instances(reader);
@@ -212,6 +221,6 @@ public class TreeLearning
 		//System.out.println(line);
         System.out.println("Odp: "+item.instance(0).toString());	
 		
-		return decision;
+        return decision;
 	}
 }

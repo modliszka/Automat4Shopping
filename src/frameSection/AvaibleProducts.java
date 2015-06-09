@@ -13,7 +13,7 @@ public class AvaibleProducts {
 	public AvaibleProducts() throws Exception {
 		//utworz liste dostepnych czekolad w sklepie
 		//wczytane z pliku lub random
-		Random r = new Random();
+		/*Random r = new Random();
 		
 		//random 10 czekolad
 		chocs = new ArrayList<Chocolates>();
@@ -64,7 +64,7 @@ public class AvaibleProducts {
 			chocs.add(x);
 		}
 		
-		/*
+		
 		//random 10 herbat
 		teas = new ArrayList<Teas>();	
 		TreeLearning treeT = null;

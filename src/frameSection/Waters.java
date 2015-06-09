@@ -1,7 +1,12 @@
 package frameSection;
 
-public class Waters {
-	String brand, taste, kind;
-	double amount,calciumCations,magnesiumCations,bicarbonateAnions,minerals,price;
+public class Waters extends Products{
+	String taste;
+	double calciumCations,magnesiumCations,bicarbonateAnions,minerals;
 
+	public Waters(){
+		super();
+		
+	}
+	
 }
