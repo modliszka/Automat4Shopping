@@ -2,13 +2,10 @@ package shop;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import frameSection.Juices;
-import frameSection.Teas;
 
 public class Board extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -27,14 +24,6 @@ public class Board extends JPanel {
 //	}
 	protected Board(){
 		//RozmiescRegaly();
-		try {
-			Teas tea = new Teas(5);
-			Juices juic = new Juices(5);
-			//List<Teas> list = tea.getTeas();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		shop=new Place[10][10];
 		setFocusable(true);
@@ -42,8 +31,8 @@ public class Board extends JPanel {
 	
 	public void paint(Graphics g){
 		super.paint(g);
-		//g.drawImage((Image) new ImageIcon(this.getClass().getResource("board.gif")).getImage(), 0, 0, this); //t�o planszy
-		g.drawImage((Image) new ImageIcon(this.getClass().getResource("MapkaSklep.gif")).getImage(), 0, 0, this); //t�o planszy
+		//g.drawImage((Image) new ImageIcon(this.getClass().getResource("board.gif")).getImage(), 0, 0, this);
+		g.drawImage((Image) new ImageIcon(this.getClass().getResource("MapkaSklep.gif")).getImage(), 0, 0, this); //tło planszy
 		
 		
 		for(int z=0;z<=600;z+=60){

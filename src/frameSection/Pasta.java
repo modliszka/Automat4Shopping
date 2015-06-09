@@ -1,5 +1,5 @@
 package frameSection;
 
-public class Pastas extends Products{
+public class Pasta extends Product{
 	double energy,fats,carbohydrates,protein,roughage,cookingTime;
 }

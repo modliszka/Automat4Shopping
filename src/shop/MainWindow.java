@@ -63,11 +63,14 @@ public class MainWindow extends JFrame implements KeyListener{
 
 		setVisible(true);
 		command.requestFocusInWindow(); 
+		
+		
+		addProductsToBoard();
 	}
 	/*
 	 gdzies w tym pliku 
 	 wyskakiwanie dod okienka do wprowadzania tych danych:
-	 Board.shop[0][0]=new Place("P","Woda","Napoje");
+	 Board.shop[0][0]=new Place("R","water","beverages");
 		Product p=new Product();
 		p.nazwa="Woda mineralna ABC";
 		p.rodzaj="Woda";//jak 3 linie wyzej
@@ -79,6 +82,12 @@ public class MainWindow extends JFrame implements KeyListener{
 		Board.shop[0][0].add(p);
 	 */
 	
+	private void addProductsToBoard() {
+		Board.shop[0][1]=new Place("R","chocolates","candies");
+		Board.shop[0][3]=new Place("R","teas","teas");
+		Board.shop[0][6]=new Place("R","juices","beverages");
+	}
+
 	@Override
 	public void keyPressed(KeyEvent e) {	}
 	public void keyTyped(KeyEvent e) {	}

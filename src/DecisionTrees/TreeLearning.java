@@ -9,9 +9,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import frameSection.Chocolates;
-import frameSection.Juices;
-import frameSection.Teas;
+import frameSection.Chocolate;
+import frameSection.Juice;
+import frameSection.Tea;
 
 //tworzenie instances od zera
 //https://ianma.wordpress.com/2010/01/16/weka-with-java-eclipse-getting-started/
@@ -78,7 +78,7 @@ public class TreeLearning
 	}
 	
 	
-	public String checkChocolate(Chocolates choc) throws Exception
+	public String checkChocolate(Chocolate choc) throws Exception
 	{
 		String path = "./src/DecisionTrees/predict/chocolate.arff";
 		String fileContent = 
@@ -118,7 +118,7 @@ public class TreeLearning
 		return Predict(path,line);
 	}
 	
-	public String checkTea(Teas tea) throws Exception
+	public String checkTea(Tea tea) throws Exception
 	{
 		String path = "./src/DecisionTrees/predict/tea.arff";
 		String fileContent = 
@@ -147,7 +147,7 @@ public class TreeLearning
 	}
 	
 	
-	public String checkJuice(Juices juice) throws Exception
+	public String checkJuice(Juice juice) throws Exception
 	{
 		String path = "./src/DecisionTrees/predict/tea.arff";
 		String fileContent = 

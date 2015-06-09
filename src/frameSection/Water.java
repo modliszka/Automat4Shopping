@@ -1,10 +1,10 @@
 package frameSection;
 
-public class Waters extends Products{
+public class Water extends Product{
 	String taste;
 	double calciumCations,magnesiumCations,bicarbonateAnions,minerals;
 
-	public Waters(){
+	public Water(){
 		super();
 		
 	}
