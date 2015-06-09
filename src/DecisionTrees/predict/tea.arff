@@ -1,11 +1,14 @@
 @relation teas
-@attribute brand     {lipton,tesco,tetley,herbapol,saga,dilmah,minutka,bigActive}
-@ATTRIBUTE kind		{czarna,zielona,biala,ziolowa}
-@ATTRIBUTE package	{torebki,sypana,granulowana}
-@ATTRIBUTE taste	    {zwykly,pomarancza,pokrzywy,rumianek,malinowy,melisa,mieta}
+@attribute brand     {cappy,caprio,dawton,drWitt,fortuna,garden,hortex,kubus,leon,tymbark,tesco,vitellia}
+@ATTRIBUTE package   {karton,butelkaPlast,butelkaSzklana}
+@ATTRIBUTE kind {sok,napoj,nektar}
+@ATTRIBUTE taste {multiwitamina,ananas,mandarynka,pomaranczy,truskawkowy,jablkowy,porzeczkowy, cytrynowy,brzoskwiniowy}
+@attribute vitamin   {brak,a,b3,c,a_c,a_b3_c,e,a_e}
 @attribute amount    numeric
+@attribute energy    numeric
+@attribute carbohydrates    numeric
 @attribute price     numeric
 @attribute tolerancy {tak,nie}
 
 @data
-saga,biala,sypana,pokrzywy,20.0,6.289999999999999,?
+leon,butelkaSzklana,nektar,multiwitamina,e,100.0,62,9.45,7.23,?

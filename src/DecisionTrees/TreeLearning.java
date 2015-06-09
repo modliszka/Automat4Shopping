@@ -156,13 +156,10 @@ public class TreeLearning
 				+ "@ATTRIBUTE package   {karton,butelkaPlast,butelkaSzklana}\n"
 				+ "@ATTRIBUTE kind {sok,napoj,nektar}\n"
 				+ "@ATTRIBUTE taste {multiwitamina,ananas,mandarynka,pomaranczy,truskawkowy,jablkowy,porzeczkowy, cytrynowy,brzoskwiniowy}\n"
+				+ "@attribute vitamin   {brak,a,b3,c,a_c,a_b3_c,e,a_e}\n"
 				+ "@attribute amount    numeric\n"
 				+ "@attribute energy    numeric\n"
 				+ "@attribute carbohydrates    numeric\n"
-				+ "@attribute vitaminA    numeric\n"
-				+ "@attribute vitaminB3    numeric\n"
-				+ "@attribute vitaminC    numeric\n"
-				+ "@attribute vitaminE    numeric\n"
 				+ "@attribute price     numeric\n"
 				+ "@attribute tolerancy {tak,nie}\n"
 				+ "\n"
@@ -170,19 +167,16 @@ public class TreeLearning
 
 		
 		String br = juice.getBrand()=="" ? "?" : juice.getBrand();
-		String ki = juice.getKind()=="" ? "?" : juice.getKind();
 		String pa = juice.getWrapping()=="" ? "?" : juice.getWrapping();
+		String ki = juice.getKind()=="" ? "?" : juice.getKind();
 		String ta = juice.getTaste()=="" ? "?" : juice.getTaste();
+		String vi = juice.getVitamin()=="" ? "?" : juice.getVitamin();
 		String en = juice.getEnergy()==-1 ? "?" : ""+juice.getEnergy();
 		String ca = juice.getCarbohydrates()==-1 ? "?" : ""+juice.getCarbohydrates();
-		String va = juice.getVitaminA()==-1 ? "?" : ""+juice.getVitaminA();
-		String vc = juice.getVitaminB3()==-1 ? "?" : ""+juice.getVitaminB3();
-		String vb = juice.getVitaminC()==-1 ? "?" : ""+juice.getVitaminC();
-		String ve = juice.getVitaminE()==-1 ? "?" : ""+juice.getVitaminE();
 		String am = juice.getAmount()==-1 ? "?" : ""+juice.getAmount();
 		String pri = juice.getPrice()==-1 ? "?" : ""+juice.getPrice();
 		
-		String line = fileContent + br +","+ pa +","+ ki +","+ ta+","+ am +","+ en +","+ ca +","+ va +","+ vb +","+ vc +","+ ve +","+ pri +",?\n";	
+		String line = fileContent + br +","+ pa +","+ ki +","+ ta+","+vi+","+ am +","+ en +","+ ca +","+ pri +",?\n";	
 		
 		return Predict(path,line);
 	}

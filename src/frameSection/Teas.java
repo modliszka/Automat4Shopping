@@ -48,16 +48,16 @@ public class Teas extends Products {
 			double rPr = 2.86 + 7*temp;
 			
 			String[] rABr = x.getAllBrands();
-			String rBr = rABr[r.nextInt((rABr.length-1))];
+			String rBr = rABr[r.nextInt(rABr.length)];
 
 			String[] rATa = x.getAllTastes();
-			String rTa = rATa[r.nextInt((rATa.length-1))];			
+			String rTa = rATa[r.nextInt(rATa.length)];			
 
 			String[] rAKi = x.getAllKinds();
-			String rKi = rAKi[r.nextInt((rAKi.length-1))];
+			String rKi = rAKi[r.nextInt(rAKi.length)];
 
 			String[] rAPa = x.getAllPackages();
-			String rPa = rAPa[r.nextInt((rAPa.length-1))];
+			String rPa = rAPa[r.nextInt(rAPa.length)];
 			
 			x.setAmount(rAm);
 			x.setPrice(rPr);

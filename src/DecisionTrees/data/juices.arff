@@ -4,19 +4,126 @@
 @attribute package {karton,butelkaPlast,butelkaSzklana}
 @attribute kind {sok,napoj,nektar}
 @attribute taste {multiwitamina,ananas,mandarynka,pomaranczy,truskawkowy,jablkowy,porzeczkowy, cytrynowy,brzoskwiniowy}
+@attribute vitamin {brak,a,b3,c,a_c,a_b3_c,e,a_e} 
 @attribute amount numeric %l
 @attribute energy numeric %kcal; na 100 ml wszystko ponizsze
 @attribute carbohydrates numeric %g
-@attribute vitaminA numeric %ug
-@attribute vitaminB3 numeric  %mg
-%niacyna
-@attribute vitaminC numeric %mg
-@attribute vitaminE numeric %mg
 @attribute price numeric %zl
 @attribute tolerancy {tak,nie}
 
 @data
-cappy,butelkaPlast,napoj,multiwitamina,1,46,10.8,360,20,0,1.8,4.69,tak
-hortex,karton,sok,ananas,1,53,12.8,0,0,0,0,4.29,nie
-fortuna,karton,sok,mandarynka,1,44,10,0,0,5,0,4.69,tak
-tymbark,karton,sok,jablkowy,1,43,10.5,0,0,0,0,3.99,nie
+cappy,butelkaPlast,napoj,multiwitamina,a_b3_c,100,46,10.8,4.69,tak
+cappy,butelkaPlast,napoj,jablkowy,brak,100,33,9.0,5.71,nie
+cappy,butelkaPlast,napoj,mandarynka,c,100,54,6.85,6.18,tak
+cappy,butelkaPlast,napoj,pomaranczy,e,100,38,10.6,5.23,tak
+cappy,butelkaPlast,sok,truskawkowy,a_b3_c,10,38,7.95,8.35,tak
+cappy,karton,napoj,ananas,c,100,35,6.2,3.99,nie
+cappy,karton,napoj,mandarynka,a_b3_c,200,45,7.8,5.63,nie
+cappy,karton,napoj,pomaranczy,e,200,48,7.4,1.39,tak
+cappy,karton,napoj,porzeczkowy,c,100,56,8.2,2.35,nie
+cappy,karton,napoj,truskawkowy,a_c,50,65,10.05,7.47,nie
+cappy,karton,sok,pomaranczy,c,200,60,9.75,4.11,tak
+cappy,karton,napoj,pomaranczy,a_e,10,61,9.65,1.39,tak
+caprio,butelkaPlast,sok,mandarynka,e,25,55,9.35,4.8,tak
+caprio,butelkaPlast,sok,porzeczkowy,a_c,200,36,3.65,4,nie
+caprio,karton,napoj,pomaranczy,a,10,41,6.35,7.87,nie
+caprio,karton,napoj,truskawkowy,b3,150,40,10.65,5.67,tak
+caprio,karton,sok,multiwitamina,brak,100,52,7.0,5.79,nie
+caprio,karton,sok,multiwitamina,c,200,42,10.9,4.18,tak
+caprio,karton,sok,porzeczkowy,a,75,34,10.95,3.31,nie
+caprio,karton,sok,truskawkowy,a_b3_c,25,63,8.55,1.87,tak
+caprio,karton,nektar,cytrynowy,e,100,66,8.2,8.03,nie
+dawton,butelkaPlast,napoj,jablkowy,a,200,51,6.9,2.27,tak
+dawton,butelkaPlast,napoj,mandarynka,a_c,200,41,9.9,6,nie
+dawton,butelkaPlast,napoj,multiwitamina,a,100,42,10.95,3.23,tak
+dawton,butelkaPlast,napoj,truskawkowy,a_b3_c,75,47,6.5,1.31,tak
+dawton,butelkaPlast,napoj,truskawkowy,a_c,25,64,8.15,2.95,tak
+dawton,butelkaPlast,napoj,truskawkowy,c,200,63,6.9,4.10,nie
+dawton,butelkaPlast,sok,multiwitamina,e,100,39,7.55,2.83,tak
+dawton,butelkaPlast,sok,porzeczkowy,a,100,55,9.4,8.91,nie
+dawton,karton,napoj,ananas,b3,100,60,6.45,7.71,nie
+dawton,karton,napoj,jablkowy,brak,100,43,8.35,2.19,nie
+dawton,karton,napoj,porzeczkowy,a,200,38,8.1,3.87,nie
+dawton,karton,sok,ananas,c,100,61,7.55,7.23,nie
+dawton,karton,sok,multiwitamina,b3,200,62,6.1,5.23,tak
+dawton,karton,sok,pomaranczy,a,200,63,6.6,7.43,nie
+dawton,butelkaPlast,napoj,brzoskwiniowy,a_c,200,60,11.0,2.59,nie
+dawton,karton,nektar,multiwitamina,e,100,35,9.9,5.55,tak
+drWitt,karton,nektar,mandarynka,b3,75,34,8.8,8.67,nie
+drWitt,butelkaPlast,napoj,truskawkowy,a_b3_c,200,63,9.85,7.23,nie
+drWitt,karton,napoj,multiwitamina,c,100,45,8.1,7.55,tak
+drWitt,karton,sok,jablkowy,c,100,36,9.0,4.59,nie
+drWitt,karton,sok,mandarynka,a_c,150,34,10.35,6.83,tak
+drWitt,karton,sok,truskawkowy,a_b3_c,75,52,7.1,4.43,tak
+fortuna,butelkaPlast,sok,cytrynowy,brak,25,46,6.8,6.18,nie
+fortuna,butelkaPlast,sok,cytrynowy,e,200,46,8.25,7.63,nie
+fortuna,karton,napoj,jablkowy,b3,20,51,10.65,1.55,nie
+fortuna,karton,napoj,multiwitamina,a_b3_c,200,52,7.5,5.07,tak
+fortuna,karton,napoj,pomaranczy,a_c,50,37,6.95,4.59,tak
+fortuna,karton,napoj,truskawkowy,c,10,47,10.85,2.19,nie
+fortuna,karton,sok,ananas,a,25,35,9.65,7.95,nie
+fortuna,karton,sok,pomaranczy,a_b3_c,30,59,7.7,6.27,tak
+garden,butelkaPlast,napoj,mandarynka,a_b3_c,200,64,6.15,6.27,tak
+garden,butelkaPlast,napoj,pomaranczy,c,100,38,6.35,2.87,tak
+garden,butelkaPlast,napoj,porzeczkowy,a,100,46,6.0,7.95,tak
+garden,butelkaPlast,napoj,truskawkowy,c,100,65,9.6,4.51,nie
+garden,butelkaPlast,sok,jablkowy,b3,100,38,10.9,3.79,tak
+garden,butelkaPlast,sok,porzeczkowy,brak,200,53,6.15,4.35,nie
+garden,karton,napoj,ananas,a_c,75,46,9.75,1.23,tak
+garden,karton,napoj,jablkowy,b3,100,33,6.1,4.43,tak
+garden,karton,sok,cytrynowy,a_c,50,33,9.55,2.99,tak
+garden,butelkaSzklana,sok,brzoskwiniowy,e,200,62,10.85,4.51,nie
+hortex,butelkaPlast,napoj,ananas,a_c,200,39,8.5,4.18,tak
+hortex,butelkaPlast,napoj,multiwitamina,a_c,100,51,10.15,8.03,nie
+hortex,butelkaPlast,napoj,pomaranczy,a_c,150,34,6.15,2,tak
+hortex,butelkaPlast,napoj,pomaranczy,brak,200,38,7.3,7.47,nie
+hortex,butelkaPlast,napoj,porzeczkowy,e,200,62,10.35,7.55,nie
+hortex,butelkaPlast,sok,ananas,brak,30,33,9.15,7.55,nie
+hortex,karton,napoj,truskawkowy,a,200,61,9.6,5.63,tak
+hortex,karton,napoj,truskawkowy,b3,150,54,10.55,6.18,nie
+hortex,karton,napoj,truskawkowy,e,200,53,10.5,7.71,nie
+hortex,karton,sok,multiwitamina,a,30,64,7.6,8.67,tak
+hortex,karton,sok,porzeczkowy,a_c,100,32,9.85,3.39,tak
+hortex,karton,sok,porzeczkowy,brak,200,35,9.8,2.91,nie
+hortex,karton,sok,truskawkowy,b3,10,39,7.0,5.55,tak
+hortex,karton,sok,truskawkowy,c,100,49,10.95,3.31,tak
+hortex,butelkaPlast,nektar,truskawkowy,a_e,200,48,9.5,1.55,tak
+hortex,butelkaSzklana,napoj,truskawkowy,b3,50,66,9.95,2.83,tak
+hortex,butelkaSzklana,nektar,ananas,a_b3_c,100,46,10.95,5.30,tak
+hortex,butelkaSzklana,nektar,cytrynowy,a_b3_c,100,56,7.5,7.47,nie
+kubus,butelkaPlast,sok,jablkowy,e,50,32,7.45,8.51,nie
+kubus,butelkaPlast,sok,mandarynka,brak,200,66,9.15,6.35,tak
+kubus,butelkaPlast,sok,pomaranczy,brak,150,62,6.3,5.39,tak
+kubus,butelkaPlast,sok,porzeczkowy,e,200,62,7.5,4.59,nie
+kubus,karton,napoj,multiwitamina,a,100,55,8.3,4.43,tak
+kubus,karton,napoj,multiwitamina,e,100,46,8.5,1.55,tak
+kubus,karton,sok,mandarynka,a,200,59,10.9,8.99,nie
+kubus,karton,sok,porzeczkowy,a_c,25,56,10.6,4,nie
+leon,butelkaPlast,napoj,mandarynka,a_b3_c,30,64,7.7,4.99,nie
+leon,butelkaPlast,sok,ananas,a,30,33,6.4,2.99,tak
+leon,butelkaPlast,sok,jablkowy,a,100,54,6.7,8.51,nie
+leon,butelkaPlast,sok,porzeczkowy,a_c,200,38,10.4,3.95,nie
+leon,butelkaPlast,sok,truskawkowy,e,100,60,10.45,7.15,nie
+leon,karton,napoj,ananas,c,25,44,8.5,4.83,nie
+leon,karton,napoj,multiwitamina,brak,50,62,7.6,6.18,nie
+leon,karton,sok,mandarynka,c,200,35,7.95,8.11,tak
+leon,karton,sok,multiwitamina,a_c,200,66,7.9,6.83,tak
+leon,karton,sok,porzeczkowy,a_c,100,41,10.05,2.43,nie
+leon,karton,sok,truskawkowy,c,200,44,9.45,5.07,tak
+tesco,butelkaPlast,napoj,cytrynowy,a_b3_c,75,55,6.4,7.79,nie
+tesco,butelkaPlast,sok,ananas,c,25,41,8.2,7.07,nie
+tesco,butelkaPlast,sok,jablkowy,a,50,60,6.35,5.07,tak
+tesco,butelkaPlast,sok,truskawkowy,e,150,59,8.45,7.07,tak
+tesco,karton,napoj,cytrynowy,a,100,59,7.2,6.99,nie
+tesco,karton,napoj,truskawkowy,e,100,66,7.05,6.10,nie
+tymbark,butelkaPlast,napoj,ananas,b3,50,48,8.05,2.19,nie
+tymbark,butelkaPlast,napoj,jablkowy,a_b3_c,100,39,9.25,7.23,nie
+tymbark,butelkaPlast,sok,pomaranczy,a_b3_c,200,65,6.4,8.99,tak
+tymbark,butelkaPlast,sok,truskawkowy,brak,150,57,7.4,5.87,tak
+tymbark,karton,napoj,cytrynowy,a_c,100,40,8.4,2.83,nie
+tymbark,karton,napoj,pomaranczy,a,10,45,9.85,4.18,tak
+tymbark,karton,napoj,porzeczkowy,a_b3_c,150,39,8.1,3,nie
+tymbark,karton,nektar,porzeczkowy,brak,200,45,9.85,7.55,nie
+vitellia,karton,napoj,jablkowy,a_e,100,63,7.45,5.30,tak
+vitellia,karton,nektar,mandarynka,c,200,61,7.45,8.35,tak
+vitellia,karton,nektar,pomaranczy,a_b3_c,100,47,7.15,4.51,tak

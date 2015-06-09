@@ -50,16 +50,16 @@ public class Chocolates extends Products {
 			double rPr = 1.23 + 8*Math.round(r.nextDouble()* 100.0) / 100.0; //Math.round(a * 100.0) / 100.0;
 			
 			String[] rABr = x.getAllBrands();
-			String rBr = rABr[r.nextInt((rABr.length-1))];
+			String rBr = rABr[r.nextInt(rABr.length)];
 
 			String[] rATa = x.getAllTastes();
-			String rTa = rATa[r.nextInt((rATa.length-1))];			
+			String rTa = rATa[r.nextInt(rATa.length)];			
 
 			String[] rAKi = x.getAllKinds();
-			String rKi = rAKi[r.nextInt((rAKi.length-1))];
+			String rKi = rAKi[r.nextInt(rAKi.length)];
 
 			String[] rAAd = x.getAllAdditives();
-			String rAd = rAAd[r.nextInt((rAAd.length-1))];
+			String rAd = rAAd[r.nextInt(rAAd.length)];
 			
 			x.setAmount(rAm);
 			x.setCocoaContent(rCoCo);

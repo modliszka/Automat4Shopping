@@ -7,7 +7,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import frameSection.AvaibleProducts;
+import frameSection.Juices;
 import frameSection.Teas;
 
 public class Board extends JPanel {
@@ -27,11 +27,10 @@ public class Board extends JPanel {
 //	}
 	protected Board(){
 		//RozmiescRegaly();
-		//AvaibleProducts products;
 		try {
-			//products = new AvaibleProducts();
 			Teas tea = new Teas(5);
-			List<Teas> list = tea.getTeas();
+			Juices juic = new Juices(5);
+			//List<Teas> list = tea.getTeas();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
