@@ -27,8 +27,7 @@ public class TreeLearning
 	private J48 treeModel;
 	private Instances train;
 
-	public TreeLearning(String trainFileName) throws Exception
-	{
+	public TreeLearning(String trainFileName) throws Exception{
 		String trainFile = "./src/DecisionTrees/data/"+trainFileName+".arff";
 		// Load the data source and learn the model
 		DataSource source = new DataSource(trainFile);
@@ -47,8 +46,7 @@ public class TreeLearning
 		reader.close();
 		
 		Instances predicted = new Instances(test);		
-		for(int i = 0; i < test.numInstances(); i++)
-		{
+		for(int i = 0; i < test.numInstances(); i++){
 			double clsLabel = treeModel.classifyInstance(test.instance(i));
 			predicted.instance(i).setClassValue(clsLabel);
 		}
@@ -131,8 +129,7 @@ public class TreeLearning
 				+ "@attribute price     numeric\n"
 				+ "@attribute tolerancy {tak,nie}\n"
 				+ "\n"
-				+ "@data\n";
-		
+				+ "@data\n";		
 		
 		String br = tea.getBrand()=="" ? "?" : tea.getBrand();
 		String ki = tea.getKind()=="" ? "?" : tea.getKind();
@@ -164,7 +161,6 @@ public class TreeLearning
 				+ "@attribute tolerancy {tak,nie}\n"
 				+ "\n"
 				+ "@data\n";
-
 		
 		String br = juice.getBrand()=="" ? "?" : juice.getBrand();
 		String pa = juice.getWrapping()=="" ? "?" : juice.getWrapping();
@@ -186,7 +182,6 @@ public class TreeLearning
 		writer = new BufferedWriter(new FileWriter(path));
 		writer.write(line);
 		writer.close();
-		//BufferedReader reader = new BufferedReader(new FileReader(path));
 		
 		//DataSource predictSource = new DataSource(path);
 		//Instances item = predictSource.getDataSet();
@@ -212,7 +207,6 @@ public class TreeLearning
 		
 		
 		System.out.println("=====");
-		//System.out.println(line);
         System.out.println("Odp: "+item.instance(0).toString());	
 		
         return decision;

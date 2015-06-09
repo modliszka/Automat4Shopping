@@ -42,11 +42,11 @@ public class Place {
 			Random r = new Random();				
 			productsList= new ArrayList<>();
 			
-			if(product =="chocolate"){		//random 10 czekolad				
+			if(product =="chocolates"){		//random 10 czekolad				
 				TreeLearning treeC = null;
 				try {
-					treeC = new TreeLearning("chocolates");
-					treeC.writeTree("chocolates");				
+					treeC = new TreeLearning(product);
+					treeC.writeTree(product);				
 				} catch (Exception e) {
 					System.out.println(e);
 				}				
@@ -56,7 +56,7 @@ public class Place {
 					int rAm = (7 + r.nextInt(23) )*10;
 					int rCoCo = r.nextInt(85);
 					int rEn = 500 + r.nextInt(100);
-					double rPr = 1.23 + 8*Math.round(r.nextDouble()* 100.0) / 100.0; //Math.round(a * 100.0) / 100.0;
+					double rPr = 1.23 + 8*Math.round(r.nextDouble()* 100.0) / 100.0; 
 					
 					String[] rABr = x.getAllBrands();
 					String rBr = rABr[r.nextInt(rABr.length)];
@@ -97,9 +97,9 @@ public class Place {
 				//random 10 herbat	
 				TreeLearning treeT = null;
 				try {
-					treeT = new TreeLearning("teas");
-					treeT.writeTree("teas");	
-					treeT.treeTraining("teas");			
+					treeT = new TreeLearning(product);
+					treeT.writeTree(product);	
+					treeT.treeTraining(product);			
 				} catch (Exception e) {
 					System.out.println(e);
 				}				
@@ -146,8 +146,8 @@ public class Place {
 			else if (product=="juices"){
 				TreeLearning tree = null;
 				try {
-					tree = new TreeLearning("juices");
-					tree.writeTree("juices");				
+					tree = new TreeLearning(product);
+					tree.writeTree(product);				
 				} catch (Exception e) {
 					System.out.println(e);
 				}		
@@ -156,7 +156,7 @@ public class Place {
 					Juice x = new Juice();		
 					
 					int rEn = 32 + r.nextInt(35);
-					double rPr = 1.23 + 8*Math.round(r.nextDouble()* 100.0) / 100.0; //Math.round(a * 100.0) / 100.0;
+					double rPr = 1.23 + 8*Math.round(r.nextDouble()* 100.0) / 100.0;
 					double rCa = 6 + 5*Math.round(r.nextDouble()* 100.0) / 100.0;
 
 					int[] rAAm = x.getAllAmounts();
