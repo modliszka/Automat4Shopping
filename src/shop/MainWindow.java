@@ -165,8 +165,7 @@ public class MainWindow extends JFrame implements KeyListener{
 							e1.printStackTrace();
 						}
 					}
-					command.setText("");
-					
+					command.setText("");					
 			    }
 				case KeyEvent.VK_UP:
 			        // handle up

@@ -1,4 +1,4 @@
 *.class
 bin/*
-src/DecisionTrees/predict/*
+src/DecisionTrees/predict/*.arff
 /bin/
