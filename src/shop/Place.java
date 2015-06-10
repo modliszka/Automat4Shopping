@@ -10,6 +10,7 @@ import frameSection.Pasta;
 import frameSection.Product;
 import frameSection.Tea;
 import frameSection.Water;
+import frameSection.Yoghurts;
 
 public class Place {
 	
@@ -303,6 +304,56 @@ public class Place {
 					x.setTaste(rTa);
 					x.setKind(rKi);
 					x.setMinerals(rMi);
+					
+					x.setAdditionalFeature(rKi+" "+rTa+" "+rAm+"ml");
+					
+					String[] yn = {"tak","nie"};
+					String isGood=yn[r.nextInt(2)];
+					
+					//sprawdz czy klient bedzie chcial ten produkt
+					/*String isGood="";
+					try {
+						isGood = treeP.checkTea(x);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}*/
+					
+					if(isGood=="tak") x.setIsGood(true);
+					else x.setIsGood(false);
+					
+					productsList.add(x);
+				}		
+			}
+			else if (product=="yoghurts"){
+				/*TreeLearning treeP = null;
+				try {
+					treeP = new TreeLearning(product);
+					treeP.writeTree(product);	
+					treeP.treeTraining(product);			
+				} catch (Exception e) {
+					System.out.println(e);
+				}*/	
+				
+				for(int i=0; i<8; i++){
+					Yoghurts x = new Yoghurts();
+					double rPr = 0.69 + 6*r.nextInt(100) / 100.0;
+					
+					int rAm = 150 + r.nextInt(520); //150-550 ml
+										
+					String[] rABr = x.getAllBrands();
+					String rBr = rABr[r.nextInt(rABr.length)];
+
+					String[] rATa = x.getAllTastes();
+					String rTa = rATa[r.nextInt(rATa.length)];			
+
+					String[] rAKi = x.getAllKinds();
+					String rKi = rAKi[r.nextInt(rAKi.length)];
+					
+					x.setAmount(rAm);
+					x.setPrice(rPr);
+					x.setBrand(rBr);
+					x.setTaste(rTa);
+					x.setKind(rKi);
 					
 					x.setAdditionalFeature(rKi+" "+rTa+" "+rAm+"ml");
 					

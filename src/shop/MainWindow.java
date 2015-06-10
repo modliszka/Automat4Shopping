@@ -23,7 +23,7 @@ import vocabulary.Map;
 public class MainWindow extends JFrame implements KeyListener, ActionListener{
 	public static MainWindow instance;
 	private static final long serialVersionUID = 1L;
-	public static int hor=300,vert=300;
+	public static int hor=60,vert=540; //pozycja agenta
 	public static Board board;
 	public static JTextArea productsShoppingList;
 	private static JTextArea productsInShopList;
@@ -173,6 +173,7 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 		board.shop[3][3]=new Place("R","teas","teas");
 		board.shop[6][5]=new Place("R","pastas","dry food");
 		board.shop[6][4]=new Place("R","waters","beverages");
+		board.shop[6][6]=new Place("R","yoghurts","dairy");
 		
 		/*for(Product p: Board.shop[0][6].productsList){
 			productsList.append(p.getBrand()+" "+p.getKind());			

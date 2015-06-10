@@ -8,6 +8,14 @@
 @attribute volumne		numeric
 @attribute decision	{true,false}
 
+%jogurty
+%@attribute {owocowe,pitny,probiotyczny,kremowy,naturalny,dlaDzieci}
+% {bakoma,danone,miliko,mlekovita,muller,tesco,zott}
+%typ {light,grecki}
+%dodatki {brak,truskawki_ziarna,sliwki_ziarna,jablka_pomarancze,truskawki,maliny,wisnie,kiwi}
+
+%150-400
+
 @data
 krowie,true,0.5,true,naturalne,1,true
 kozie,true,0.5,true,naturalne,0.5,false

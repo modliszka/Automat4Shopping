@@ -18,6 +18,7 @@ import frameSection.Juice;
 import frameSection.Pasta;
 import frameSection.Tea;
 import frameSection.Water;
+import frameSection.Yoghurts;
 import ProductInterface.ProductToList;
 
 import java.awt.event.ActionListener;
@@ -29,7 +30,7 @@ public class AddProductWindow extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private DefaultListModel<String> listModel, listModelProdAttr;
 	private JList<String> productKindList, productsList, productAttrList;
-	private String[] kindsList, attrList, products= {"Czekolada","Sok/Napój","Herbata","Makaron","Woda"};
+	private String[] kindsList, attrList, products= {"Czekolada","Sok/Napój","Herbata","Makaron","Woda","Jogurt"};
 	public static int V=300, H=400;
 
 	public AddProductWindow() {
@@ -101,6 +102,15 @@ public class AddProductWindow extends JFrame implements ActionListener {
 						for(String s: kindsList)
 							listModel.addElement(s);
 						attrList = w.getAllTastes();
+						for(String s: attrList)
+							listModelProdAttr.addElement(s);
+						break;
+					case 5:
+						Yoghurts y = new Yoghurts();
+						kindsList = y.getAllKinds();
+						for(String s: kindsList)
+							listModel.addElement(s);
+						attrList = y.getAllTastes();
 						for(String s: attrList)
 							listModelProdAttr.addElement(s);
 						break;
