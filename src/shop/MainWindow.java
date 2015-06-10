@@ -1,6 +1,8 @@
 package shop;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -20,6 +22,7 @@ public class MainWindow extends JFrame implements KeyListener{
 	public static Board board;
 	public static JTextArea productsList;
 	protected static JButton doProductListButton;
+	protected static JButton clearProductListButton;
 	protected static JTextField command;
 	public static boolean blockade=false;
 	public static Map custom_map = new Map();
@@ -27,7 +30,7 @@ public class MainWindow extends JFrame implements KeyListener{
 	public MainWindow(){
 		super("Shop");
 		instance=this;
-		setSize(800, 750); 
+		setSize(1024, 750); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLayout(null);
@@ -37,21 +40,81 @@ public class MainWindow extends JFrame implements KeyListener{
 		board.setBounds(5,5,601,601);		
 		add(board);		
 		
+		/*
+		 //pole do poleceÅ„ dot. chodzenia
+		command=new JTextField();
+		command.setFocusable(true);
+		command.setBounds(5, 670, 600, 20);
+		command.addKeyListener(this); 
+		add(command);
+
+		setVisible(true);
+		command.requestFocusInWindow(); 
+		
+		
+		addProductsToBoard();
+		 */
+		
 		//Lista produktow po prawej stronie
 		productsList=new JTextArea();
 		productsList.setFocusable(false);
 		productsList.setOpaque(false);//przezr.tlo
-		productsList.setBounds(615, 5, 100, 100);
+		productsList.setBounds(615, 5, 100, 300);
 		productsList.setLineWrap(true);
 		productsList.setWrapStyleWord(true);
-		add(productsList);
+		productsList.setEnabled(true);
+		//
+		productsList.setVisible(true);
+		productsList.setLocation(700, 400);
+		//frmProdhelper.getContentPane().add(textArea);
+		getContentPane().add(productsList);
+	//	productsList.setText("yufutfty");
+		
+		//
+		clearProductListButton = new JButton("Wyczyœæ listê produktów");
+		clearProductListButton.setBounds(60, 400, 220, 30);
+		clearProductListButton.setVerticalTextPosition(AbstractButton.CENTER);
+		clearProductListButton.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
+		clearProductListButton.setEnabled(true);
+		//
+		clearProductListButton.setVisible(true);
+		clearProductListButton.setLocation(700, 200);
+		
+		clearProductListButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				productsList.setText("");
+				Shop.myProductsList.clear();
+				
+			}
+		});
+		add(clearProductListButton);
+		
+		
+		
+		//
 		
 		//przycisk do okna z tworzeniem listy zakupow
 		doProductListButton = new JButton("Dodaj produkty do listy");
+		doProductListButton.setBounds(60, 400, 220, 30);
 		doProductListButton.setVerticalTextPosition(AbstractButton.CENTER);
 		doProductListButton.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
 		doProductListButton.setEnabled(true);
-		//doProductListButton.addActionListener(this);
+		//
+		doProductListButton.setVisible(true);
+		doProductListButton.setLocation(700, 100);
+		
+		doProductListButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				ProductHelper.function();
+				
+			}
+		});
 		add(doProductListButton);
 		
 		//pole do poleceÅ„ dot. chodzenia
