@@ -48,12 +48,10 @@ public class Movement extends Board implements ActionListener {
 		move_yourself();
 		
 		System.out.println(hor_k+" "+vert_k);
-		System.out.println(mainWindow.board.shop[0][6]);
 		//mainWindow.productsList.append("asdasdasdas"); // dodaje tekst do listy
 		if(MainWindow.board.shop[hor_k][vert_k] != null){
-			System.out.println("nie jest pusto!");
 			for(Product p: MainWindow.board.shop[hor_k][vert_k].productsList){
-				mainWindow.productsList.append(p.getBrand()+" "+p.getKind());
+				mainWindow.productsInShopList.append(p.getBrand()+" "+p.getKind()+" "+ p.getPrice()+"zł\n");
 			}
 		}
 		
