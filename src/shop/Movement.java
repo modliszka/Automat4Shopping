@@ -69,13 +69,14 @@ public class Movement extends Board implements ActionListener {
 						mainWindow.getProductsInShopList().append(productKind.toUpperCase()+"\n"); //p.getProductKind() = myProductList.name //toLowerCase
 					}				
 					productsInShop.add(p);
-					mainWindow.getProductsInShopList().append(p.getBrand()+" "+p.getAdditionalFeature()+" "+ p.getPrice()+"zł "+p.getIsGood()+"\n");
+					String price = String.format("%.2f", p.getPrice());
+					mainWindow.getProductsInShopList().append(p.getBrand()+" "+p.getAdditionalFeature()+" "+ price+"zł "+p.getIsGood()+"\n");
 				}
 				mainWindow.getProductsInShopList().append("\n");
 			}
 
 			//sprawdzam czy na liście jest produkt z listy zakupów
-			mainWindow.productsInTrolley.setText("");
+			boolean ifCleaningTrolleyIsNeeding=true;
 			for(ProductToList ptl: mainWindow.myProductsList){
 				//System.out.println("na liscie " +ptl.name.toLowerCase());
 				if(ptl.name.toLowerCase().equals(productKind)){
@@ -133,8 +134,17 @@ public class Movement extends Board implements ActionListener {
 							}
 						}
 					}
-					mainWindow.productsInTrolley.append(chosenProduct.getBrand()+" "+chosenProduct.getAdditionalFeature()+" "+chosenProduct.getPrice()+"zł\n");
+					if(ifCleaningTrolleyIsNeeding)
+						mainWindow.productsInTrolley.setText("");
 					
+					if(chosenProduct.getKind()!=null)
+						mainWindow.productsInTrolley.append(chosenProduct.getBrand()+" "+chosenProduct.getAdditionalFeature()+" "+
+								String.format("%.2f", chosenProduct.getPrice())+"zł\n");
+					else
+						mainWindow.productsInTrolley.append("Nie mamy takiego produktu na stanie, wybierz coś innego.");
+					
+					
+					ifCleaningTrolleyIsNeeding=false;
 				}
 			}
 			

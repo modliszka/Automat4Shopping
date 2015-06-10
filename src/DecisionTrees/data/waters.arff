@@ -4,9 +4,9 @@
 @attribute taste {naturalny,pomaranczy,truskawkowy, jablkowy,porzeczkowy,cytrynowy,brzoskwiniowy}
 @attribute brand {polanicka,nestle,cisowianka,dobrowianka, kroplaBeskidu,muszyna,primavera,zywiec,muszynianka}
 @attribute amount numeric
-@attribute calciumCations numeric
-@attribute magnesiumCations numeric
-@attribute bicarbonateAnions numeric
+%@attribute calciumCations numeric
+%@attribute magnesiumCations numeric
+%@attribute bicarbonateAnions numeric
 @attribute minerals numeric
 @attribute price numeric
 @attribute tolerancy {tak,nie}

@@ -6,8 +6,10 @@ import java.util.Random;
 import DecisionTrees.TreeLearning;
 import frameSection.Chocolate;
 import frameSection.Juice;
+import frameSection.Pasta;
 import frameSection.Product;
 import frameSection.Tea;
+import frameSection.Water;
 
 public class Place {
 	
@@ -56,7 +58,7 @@ public class Place {
 					int rAm = (7 + r.nextInt(23) )*10;
 					int rCoCo = r.nextInt(85);
 					int rEn = 500 + r.nextInt(100);
-					double rPr = 1.23 + 8*Math.round(r.nextDouble()* 100.0) / 100.0; 
+					double rPr = 1.23 + 8*r.nextInt(100) / 100.0; 
 					
 					String[] rABr = x.getAllBrands();
 					String rBr = rABr[r.nextInt(rABr.length)];
@@ -109,8 +111,7 @@ public class Place {
 				for(int i=0; i<8; i++){
 					Tea x = new Tea();
 					int rAm = (2 + r.nextInt(18) )*10;
-					double temp = Math.round(r.nextDouble()* 100.0) / 100.0;
-					double rPr = 2.86 + 7*temp;
+					double rPr = 2.86 + 7*r.nextInt(100) / 100.0;
 					
 					String[] rABr = x.getAllBrands();
 					String rBr = rABr[r.nextInt(rABr.length)];
@@ -160,8 +161,8 @@ public class Place {
 					Juice x = new Juice();		
 					
 					int rEn = 32 + r.nextInt(35);
-					double rPr = 1.23 + 8*Math.round(r.nextDouble()* 100.0) / 100.0;
-					double rCa = 6 + 5*Math.round(r.nextDouble()* 100.0) / 100.0;
+					double rPr = 1.23 + 8*r.nextInt(100)/ 100.0; //ThreadLocalRandom.current().nextInt(1000)/100.0
+					double rCa = 6 + 5*r.nextInt(100) / 100.0;
 
 					int[] rAAm = x.getAllAmounts();
 					int rAm = rAAm[r.nextInt((rAAm.length))];
@@ -209,6 +210,118 @@ public class Place {
 					
 					productsList.add(x);
 				}
+			}
+			else if (product=="pastas"){
+				/*TreeLearning treeP = null;
+				try {
+					treeP = new TreeLearning(product);
+					treeP.writeTree(product);	
+					treeP.treeTraining(product);			
+				} catch (Exception e) {
+					System.out.println(e);
+				}*/	
+				
+				for(int i=0; i<8; i++){
+					Pasta x = new Pasta();
+					double rPr = 2.1 + 7.4*r.nextInt(100) / 100.0;
+					int rCt = 6 + r.nextInt(9);
+
+					int[] rAAm = x.getAllAmounts();
+					int rAm = rAAm[r.nextInt((rAAm.length))];
+					
+					//en od 310 do 420
+					//ct 6-15
+					//am 300,400,500,500,650
+					//pr 2.1-9.5
+					
+					String[] rABr = x.getAllBrands();
+					String rBr = rABr[r.nextInt(rABr.length)];
+
+					String[] rAFk = x.getAllflourKinds();
+					String rTa = rAFk[r.nextInt(rAFk.length)];			
+
+					String[] rAKi = x.getAllKinds();
+					String rKi = rAKi[r.nextInt(rAKi.length)];
+					
+					x.setAmount(rAm);
+					x.setPrice(rPr);
+					x.setBrand(rBr);
+					x.setTaste(rTa);
+					x.setKind(rKi);
+					x.setCookingTime(rCt);
+					
+					x.setAdditionalFeature(rKi+" "+rTa+" "+rAm+"g");
+					
+					String[] yn = {"tak","nie"};
+					String isGood=yn[r.nextInt(2)];
+					
+					//sprawdz czy klient bedzie chcial ten produkt
+					/*String isGood="";
+					try {
+						isGood = treeP.checkTea(x);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}*/
+					
+					if(isGood=="tak") x.setIsGood(true);
+					else x.setIsGood(false);
+					
+					productsList.add(x);
+				}		
+			}
+			else if (product=="waters"){
+				/*TreeLearning treeP = null;
+				try {
+					treeP = new TreeLearning(product);
+					treeP.writeTree(product);	
+					treeP.treeTraining(product);			
+				} catch (Exception e) {
+					System.out.println(e);
+				}*/	
+				
+				for(int i=0; i<8; i++){
+					Water x = new Water();
+					double rPr = 0.69 + 5*r.nextInt(100) / 100.0;
+					double rMi = (23 + r.nextInt(120))*10;
+					//23-120 [10mg]
+
+					int[] rAAm = x.getAllAmounts();
+					int rAm = rAAm[r.nextInt((rAAm.length))]*10;
+										
+					String[] rABr = x.getAllBrands();
+					String rBr = rABr[r.nextInt(rABr.length)];
+
+					String[] rATa = x.getAllTastes();
+					String rTa = rATa[r.nextInt(rATa.length)];			
+
+					String[] rAKi = x.getAllKinds();
+					String rKi = rAKi[r.nextInt(rAKi.length)];
+					
+					x.setAmount(rAm);
+					x.setPrice(rPr);
+					x.setBrand(rBr);
+					x.setTaste(rTa);
+					x.setKind(rKi);
+					x.setMinerals(rMi);
+					
+					x.setAdditionalFeature(rKi+" "+rTa+" "+rAm+"ml");
+					
+					String[] yn = {"tak","nie"};
+					String isGood=yn[r.nextInt(2)];
+					
+					//sprawdz czy klient bedzie chcial ten produkt
+					/*String isGood="";
+					try {
+						isGood = treeP.checkTea(x);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}*/
+					
+					if(isGood=="tak") x.setIsGood(true);
+					else x.setIsGood(false);
+					
+					productsList.add(x);
+				}		
 			}
 		}
 	}

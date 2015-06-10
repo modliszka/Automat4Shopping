@@ -18,6 +18,7 @@ public class Juice extends Product {
 	private String[] vitamins = {"brak","a","b3","c","a_c","a_b3_c","e","a_e"};	
 
 	private int[] amounts = {10,25,200,200,100,30,100,50,200,75,100,100,200,100,150,200}; //*10ml
+	public int[] getAllAmounts() { return amounts;}
 	
 	public Juice(){
 		brand=vitamin="";
@@ -30,7 +31,6 @@ public class Juice extends Product {
 		setProductKind("sok/napój");
 	}
 
-	public int[] getAllAmounts() { return amounts;}
 	public String[] getAllBrands() { return brands;}
 	public String[] getAllTastes() { return tastes;}
 	public String[] getAllKinds() { return kinds;}

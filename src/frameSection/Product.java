@@ -11,6 +11,7 @@ public class Product {
 	protected boolean isGood;	
 	protected String feature;
 	protected String taste;
+	protected int energy;
 
 	public String getBrand() { return brand;}
 	public String getKind() { return kind;}
@@ -19,7 +20,9 @@ public class Product {
 	public boolean getIsGood() { return isGood;}
 	public String getProductKind() { return productKind;}
 	public String getTaste() { return taste;}
+	public int getEnergy() { return energy;}
 
+	public void setEnergy(int x) { this.energy = x;} 
 	public void setBrand(String x) { this.brand = x;}
 	public void setKind(String x) { this.kind = x;}
 	public void setAmount(int x) { this.amount = x;} 

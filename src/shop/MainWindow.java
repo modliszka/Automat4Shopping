@@ -66,7 +66,7 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 		doProductListButton.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
 		doProductListButton.setEnabled(true);
 		doProductListButton.setVisible(true);
-		//doProductListButton.setLocation(700, 100);
+		doProductListButton.setFocusable(false);
 		
 		doProductListButton.addActionListener(this);
 		/*(new ActionListener() {				
@@ -83,7 +83,7 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 		clearShoppingListButton.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
 		clearShoppingListButton.setEnabled(true);
 		clearShoppingListButton.setVisible(true);
-		//clearProductListButton.setLocation(700, 200);
+		clearShoppingListButton.setFocusable(false);
 		
 		clearShoppingListButton.addActionListener(new ActionListener() {			
 			@Override
@@ -169,8 +169,10 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 	
 	private void addProductsToBoard() {
 		board.shop[0][1]=new Place("R","chocolates","candies");
-		board.shop[3][5]=new Place("R","teas","teas");
 		board.shop[0][6]=new Place("R","juices","beverages");
+		board.shop[3][3]=new Place("R","teas","teas");
+		board.shop[6][5]=new Place("R","pastas","dry food");
+		board.shop[6][4]=new Place("R","waters","beverages");
 		
 		/*for(Product p: Board.shop[0][6].productsList){
 			productsList.append(p.getBrand()+" "+p.getKind());			

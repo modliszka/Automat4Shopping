@@ -2,25 +2,22 @@
 
 @attribute brand {adriana,animak,barilla,lubella,malma,melissa,tesco}
 @attribute kind {spaghetti,piora,swiderki,krajanka,muszelki,nitki,wstazki,rurki,lasagne,bucatini}
+@attribute flour {zwykly,jajeczny,wyborowy,zMakiGraham} %http://dietetycy.org.pl/makarony-gatunki-cechy-wszystko-makaronach/
 @attribute amount numeric %g
 @attribute energy numeric
-@attribute fats numeric
-@attribute carbohydrates numeric
-@attribute protein numeric
-@attribute roughage numeric
 @attribute price numeric
 @attribute cookingTime numeric %min
 @attribute tolerancy {tak,nie}
 
 @data
-lubella,wstazki,500,351,1.4,70,13,3,4.29,8,nie
-adriana,swiderki,500,357,1.6,69.3,12.7,0,3.99,?,tak
-lubella,spaghetti,300,351,1.4,70,13,3,2,10,tak
-lubella,spaghetti,650,351,1.4,70,13,3,3.99,10,tak
-lubella,piora,300,351,1.4,70,13,3,2,10,tak
-lubella,swiderki,400,356,1.5,70,14,3.3,4.79,8,nie
-lubella,lasagne,500,350,1.6,69,13,3.6,8.99,?,nie
-melissa,bucatini,500,354,1.5,72.1,12,?,2.49,12,nie
-melissa,piora,500,323,2,64,12,7,4.49,14,tak
-tesco,swiderki,500,360,1.5,72.5,13.5,1.6,7.29,14,nie
+lubella,wstazki,zwykly,500,351,4.29,8,nie
+adriana,swiderki,jajeczny,500,357,3.99,?,tak
+lubella,spaghetti,jajeczny,300,351,10,tak
+lubella,spaghetti,zwykly,650,351,3.99,10,tak
+lubella,piora,zMakiGraham,300,351,2,10,tak
+lubella,swiderki,zwykly,400,356,4.79,8,nie
+lubella,lasagne,wyborowy,500,350,8.99,?,nie
+melissa,bucatini,jajeczny,500,354,2.49,12,nie
+melissa,piora,zwykly,500,323,4.49,14,tak
+tesco,swiderki,jajeczny,500,360,7.29,14,nie
 
