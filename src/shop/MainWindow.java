@@ -168,7 +168,13 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 	}
 	
 	private void addProductsToBoard() {
-		board.shop[0][1]=new Place("R","chocolates","candies",8);
+		board.shop[5][6]=new Place("R","chocolates","candies",3);
+		board.shop[6][6]=new Place("R","chocolates","candies",2);
+		board.shop[7][6]=new Place("R","chocolates","candies",2);
+		board.shop[6][5]=new Place("R","chocolates","candies",4);
+		board.shop[6][4]=new Place("R","chocolates","candies",2);
+		board.shop[6][3]=new Place("R","chocolates","candies",3);
+		
 		board.shop[2][9]=new Place("R","juices","beverages",2);
 		board.shop[3][9]=new Place("R","juices","beverages",2);
 		board.shop[4][9]=new Place("R","juices","beverages",3);
@@ -176,11 +182,21 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 		board.shop[6][9]=new Place("R","juices","beverages",4);
 		board.shop[7][9]=new Place("R","juices","beverages",2);
 		
-		board.shop[3][3]=new Place("R","teas","teas",5);
-		board.shop[3][4]=new Place("R","teas","teas",3);
-		board.shop[6][5]=new Place("R","pastas","dry food",8);
-		board.shop[6][4]=new Place("R","waters","beverages",8);
-		board.shop[6][6]=new Place("R","yoghurts","dairy",8);
+		board.shop[0][2]=new Place("R","teas","teas",2);
+		board.shop[0][3]=new Place("R","teas","teas",3);
+		board.shop[0][4]=new Place("R","teas","teas",4);
+		board.shop[0][5]=new Place("R","teas","teas",3);
+		
+		board.shop[0][6]=new Place("R","pastas","dry food",2);
+		board.shop[0][7]=new Place("R","pastas","dry food",3);
+		board.shop[0][8]=new Place("R","pastas","dry food",2);
+		
+		board.shop[9][6]=new Place("R","waters","beverages",2);
+		board.shop[9][7]=new Place("R","waters","beverages",4);
+		board.shop[9][8]=new Place("R","waters","beverages",3);
+		
+		board.shop[3][3]=new Place("R","yoghurts","dairy",5);
+		board.shop[3][4]=new Place("R","yoghurts","dairy",4);
 		
 		/*for(Product p: Board.shop[0][6].productsList){
 			productsList.append(p.getBrand()+" "+p.getKind());			

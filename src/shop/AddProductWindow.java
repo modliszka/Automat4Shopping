@@ -152,7 +152,7 @@ public class AddProductWindow extends JFrame implements ActionListener {
 		addProd.setVerticalTextPosition(AbstractButton.CENTER);
 		addProd.setHorizontalTextPosition(AbstractButton.LEADING);
 		addProd.addActionListener(this);
-		addProd.setBounds(109, 223, 155, 23);
+		addProd.setBounds(109, 223, 200, 23);
 		add(addProd);
 				
 		setVisible(true);
