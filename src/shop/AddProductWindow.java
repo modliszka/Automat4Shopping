@@ -32,7 +32,7 @@ public class AddProductWindow extends JFrame implements ActionListener {
 	private DefaultListModel<String> listModel, listModelProdAttr;
 	private JList<String> productKindList, productsList, productAttrList;
 	private String[] kindsList, attrList, products= {"Czekolada","Sok/Napój","Herbata","Makaron","Woda","Jogurt"};
-	public static int V=300, H=400;
+	public static int V=500, H=400;
 
 	public AddProductWindow() {
 		super("Add Product Window");
@@ -47,7 +47,7 @@ public class AddProductWindow extends JFrame implements ActionListener {
 		productKindList = new JList(listModel);		
 		//productKindList.setBounds(110, 11, 98, 100);	
 		JScrollPane productKindListScroll = new JScrollPane(productKindList);
-		productKindListScroll.setBounds(110, 11, 98, 100);	
+		productKindListScroll.setBounds(170, 10, 150, 200);	
 		getContentPane().add(productKindListScroll);
 		
 
@@ -55,7 +55,7 @@ public class AddProductWindow extends JFrame implements ActionListener {
 		productAttrList = new JList(listModelProdAttr);	
 		//productAttrList.setBounds(10, 112, 98, 200);	
 		JScrollPane productAttrListScroll = new JScrollPane(productAttrList);
-		productAttrListScroll.setBounds(10, 112, 98, 200);
+		productAttrListScroll.setBounds(340, 10, 150, 200);
 		getContentPane().add(productAttrListScroll);
 		
 		productsList = new JList(products);		
@@ -125,7 +125,7 @@ public class AddProductWindow extends JFrame implements ActionListener {
 			}			
 		});
 		JScrollPane productsListScroll = new JScrollPane(productsList);
-		productsListScroll.setBounds(10, 11, 98, 100);
+		productsListScroll.setBounds(10, 10, 150, 200);
 		getContentPane().add(productsListScroll);
 //		add(productsList);
 //		add(productKindList);
