@@ -2,7 +2,10 @@ package shop;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.Timer;
+
+import frameSection.Product;
 
 
 public class Movement extends Board implements ActionListener {
@@ -13,6 +16,11 @@ public class Movement extends Board implements ActionListener {
 	public static Timer time;
 	public int step=1;
 	
+	private MainWindow mainWindow;
+	
+	public void setMainWindow(MainWindow mainWindow){
+		this.mainWindow = mainWindow;
+	}
 	
 	private static Movement instance = null;
 	public static Movement getInstance(){
@@ -38,6 +46,17 @@ public class Movement extends Board implements ActionListener {
 		if(vert_k>9)vert_k=9;
 		
 		move_yourself();
+		
+		System.out.println(hor_k+" "+vert_k);
+		System.out.println(mainWindow.board.shop[0][6]);
+		//mainWindow.productsList.append("asdasdasdas"); // dodaje tekst do listy
+		if(MainWindow.board.shop[hor_k][vert_k] != null){
+			System.out.println("nie jest pusto!");
+			for(Product p: MainWindow.board.shop[hor_k][vert_k].productsList){
+				mainWindow.productsList.append(p.getBrand()+" "+p.getKind());
+			}
+		}
+		
 	}
 
 	

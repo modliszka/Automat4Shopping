@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import frameSection.Product;
 import vocabulary.Map;
 
 
@@ -27,7 +28,7 @@ public class MainWindow extends JFrame implements KeyListener{
 	public MainWindow(){
 		super("Shop");
 		instance=this;
-		setSize(800, 750); 
+		setSize(900, 750); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLayout(null);
@@ -37,7 +38,9 @@ public class MainWindow extends JFrame implements KeyListener{
 		board.setBounds(5,5,601,601);		
 		add(board);		
 		
-		//Lista produktow po prawej stronie
+		addProductsToBoard();
+		
+		//Lista zakupów po prawej stronie
 		productsList=new JTextArea();
 		productsList.setFocusable(false);
 		productsList.setOpaque(false);//przezr.tlo
@@ -47,9 +50,10 @@ public class MainWindow extends JFrame implements KeyListener{
 		add(productsList);
 		
 		//przycisk do okna z tworzeniem listy zakupow
-		doProductListButton = new JButton("Dodaj produkty do listy");
+		doProductListButton = new JButton("Dodaj produkty do listy zakupów");
 		doProductListButton.setVerticalTextPosition(AbstractButton.CENTER);
 		doProductListButton.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
+		doProductListButton.setBounds(610, 5, 250, 40);
 		doProductListButton.setEnabled(true);
 		//doProductListButton.addActionListener(this);
 		add(doProductListButton);
@@ -65,27 +69,29 @@ public class MainWindow extends JFrame implements KeyListener{
 		command.requestFocusInWindow(); 
 		
 		
-		addProductsToBoard();
+		Movement.getInstance().setMainWindow(this);
 	}
-	/*
-	 gdzies w tym pliku 
-	 wyskakiwanie dod okienka do wprowadzania tych danych:
-	 Board.shop[0][0]=new Place("R","water","beverages");
-		Product p=new Product();
-		p.nazwa="Woda mineralna ABC";
-		p.rodzaj="Woda";//jak 3 linie wyzej
-		p.wielkosc=1.5;
-		p.jednostka="l";
-		p.ilosc=0;
-		p.glRozroznik="gazowana";
-		p.dodRozroznik="";
-		Board.shop[0][0].add(p);
-	 */
 	
 	private void addProductsToBoard() {
-		Board.shop[0][1]=new Place("R","chocolates","candies");
-		Board.shop[0][3]=new Place("R","teas","teas");
-		Board.shop[0][6]=new Place("R","juices","beverages");
+		board.shop[0][1]=new Place("R","chocolates","candies");
+		board.shop[3][5]=new Place("R","teas","teas");
+		board.shop[0][6]=new Place("R","juices","beverages");
+		
+		/*for(Product p: Board.shop[0][6].productsList){
+			productsList.append(p.getBrand()+" "+p.getKind());			
+			
+		 wyskakiwanie dod okienka do wprowadzania tych danych:
+		 Board.shop[0][0]=new Place("R","water","beverages");
+			Product p=new Product();
+			p.nazwa="Woda mineralna ABC";
+			p.rodzaj="Woda";//jak 3 linie wyzej
+			p.wielkosc=1.5;
+			p.jednostka="l";
+			p.ilosc=0;
+			p.glRozroznik="gazowana";
+			p.dodRozroznik="";
+			Board.shop[0][0].add(p);
+		}*/
 	}
 
 	@Override

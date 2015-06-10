@@ -14,7 +14,7 @@ public class Board extends JPanel {
 	//public static Board instance;
 	static int option=1;
 	static String abc="b";
-	public static Place[][] shop;
+	public Place[][] shop;//=new Place[10][10];
 	
 //	public static Board getInstance(){
 //		if (instance == null){
