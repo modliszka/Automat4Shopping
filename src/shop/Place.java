@@ -17,7 +17,7 @@ public class Place {
 	boolean problem;
 	ArrayList<Product> productsList;
 	
-	protected Place(String shelfSide, String product, String productKind){
+	protected Place(String shelfSide, String product, String productKind, int howMany){
 		switch (shelfSide) {
 			case "L"://left
 				problem=false;
@@ -54,7 +54,7 @@ public class Place {
 					System.out.println(e);
 				}				
 				
-				for(int i=0; i<8; i++){
+				for(int i=0; i<howMany; i++){
 					Chocolate x = new Chocolate();
 					int rAm = (7 + r.nextInt(23) )*10;
 					int rCoCo = r.nextInt(85);
@@ -109,7 +109,7 @@ public class Place {
 					System.out.println(e);
 				}				
 				
-				for(int i=0; i<8; i++){
+				for(int i=0; i<howMany; i++){
 					Tea x = new Tea();
 					int rAm = (2 + r.nextInt(18) )*10;
 					double rPr = 2.86 + 7*r.nextInt(100) / 100.0;
@@ -158,7 +158,7 @@ public class Place {
 					System.out.println(e);
 				}		
 				
-				for(int i=0; i<8; i++){
+				for(int i=0; i<howMany; i++){
 					Juice x = new Juice();		
 					
 					int rEn = 32 + r.nextInt(35);
@@ -222,7 +222,7 @@ public class Place {
 					System.out.println(e);
 				}*/	
 				
-				for(int i=0; i<8; i++){
+				for(int i=0; i<howMany; i++){
 					Pasta x = new Pasta();
 					double rPr = 2.1 + 7.4*r.nextInt(100) / 100.0;
 					int rCt = 6 + r.nextInt(9);
@@ -280,7 +280,7 @@ public class Place {
 					System.out.println(e);
 				}*/	
 				
-				for(int i=0; i<8; i++){
+				for(int i=0; i<howMany; i++){
 					Water x = new Water();
 					double rPr = 0.69 + 5*r.nextInt(100) / 100.0;
 					double rMi = (23 + r.nextInt(120))*10;
@@ -334,7 +334,7 @@ public class Place {
 					System.out.println(e);
 				}*/	
 				
-				for(int i=0; i<8; i++){
+				for(int i=0; i<howMany; i++){
 					Yoghurts x = new Yoghurts();
 					double rPr = 0.69 + 6*r.nextInt(100) / 100.0;
 					
