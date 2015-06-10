@@ -2,6 +2,7 @@ package shop;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.Timer;
 
@@ -51,12 +52,18 @@ public class Movement extends Board implements ActionListener {
 		//mainWindow.productsList.append("asdasdasdas"); // dodaje tekst do listy
 		if(MainWindow.board.shop[hor_k][vert_k] != null){
 			boolean wasTitle=false;
-			for(Product p: MainWindow.board.shop[hor_k][vert_k].productsList){
-				if(!wasTitle) {wasTitle=true; mainWindow.productsInShopList.append(p.getProductKind().toUpperCase()+"\n");}
-				productsInShop.add(p);
-				mainWindow.productsInShopList.append(p.getBrand()+" "+p.getAdditionalFeature()+" "+ p.getPrice()+"zł\n");
+			ArrayList<Product> list = new ArrayList<>();
+			list = MainWindow.board.shop[hor_k][vert_k].productsList;
+			
+			//sprawdzamy czy już tu bylismy = mamy produkty na liście
+			if(!productsInShop.containsAll(list)){
+				for(Product p: list){
+					if(!wasTitle) {wasTitle=true; mainWindow.getProductsInShopList().append(p.getProductKind().toUpperCase()+"\n");}				
+					productsInShop.add(p);
+					mainWindow.getProductsInShopList().append(p.getBrand()+" "+p.getAdditionalFeature()+" "+ p.getPrice()+"zł\n");
+				}
+				mainWindow.getProductsInShopList().append("\n");
 			}
-			mainWindow.productsInShopList.append("\n");
 		}
 		
 	}

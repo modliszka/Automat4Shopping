@@ -16,12 +16,14 @@ import javax.swing.JTextField;
 
 import vocabulary.Map;
 
-public class MainWindow extends JFrame implements KeyListener{
+public class MainWindow extends JFrame implements KeyListener, ActionListener{
 	public static MainWindow instance;
 	private static final long serialVersionUID = 1L;
 	public static int hor=300,vert=300;
 	public static Board board;
-	public static JTextArea productsList, productsInShopList, productsInTrolley;
+	public static JTextArea productsList;
+	private static JTextArea productsInShopList;
+	public static JTextArea productsInTrolley;
 	public static JLabel productsListTitle, productsInShopListTitle, productsInTrolleyTitle;
 	protected static JButton doProductListButton;
 	protected static JButton clearProductListButton;
@@ -54,12 +56,13 @@ public class MainWindow extends JFrame implements KeyListener{
 		doProductListButton.setVisible(true);
 		//doProductListButton.setLocation(700, 100);
 		
-		doProductListButton.addActionListener(new ActionListener() {				
+		doProductListButton.addActionListener(this);
+		/*(new ActionListener() {				
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				ProductHelper.function();				
+				AddProductWindow.function();				
 			}
-		});
+		});*/
 		add(doProductListButton);		
 		
 		clearProductListButton = new JButton("Wyczyść listę produktów");
@@ -125,15 +128,15 @@ public class MainWindow extends JFrame implements KeyListener{
 		productsInShopListTitle.setBounds(650, 300, 300, 30);
 		getContentPane().add(productsInShopListTitle);		
 		
-		productsInShopList = new JTextArea();
-		productsInShopList.setFocusable(false);
-		productsInShopList.setOpaque(false);//przezr.tlo
-		productsInShopList.setEnabled(true);
-		productsInShopList.setVisible(true);
-		getContentPane().add(productsInShopList);		
+		setProductsInShopList(new JTextArea());
+		getProductsInShopList().setFocusable(false);
+		getProductsInShopList().setOpaque(false);//przezr.tlo
+		getProductsInShopList().setEnabled(true);
+		getProductsInShopList().setVisible(true);
+		getContentPane().add(getProductsInShopList());		
 		
 		//dodaj scrolla do listy dostępnych produktów
-		JScrollPane areaScrollPane = new JScrollPane(productsInShopList);
+		JScrollPane areaScrollPane = new JScrollPane(getProductsInShopList());
 		areaScrollPane.setBounds(650, 335, 300, 250);
 		getContentPane().add(areaScrollPane);
 		
@@ -214,6 +217,20 @@ public class MainWindow extends JFrame implements KeyListener{
 			        break;
 		    }
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		//System.out.println("otwieram okno..");
+		new AddProductWindow();		
+	}
+
+	public static JTextArea getProductsInShopList() {
+		return productsInShopList;
+	}
+
+	public static void setProductsInShopList(JTextArea productsInShopList) {
+		MainWindow.productsInShopList = productsInShopList;
 	}
 	
 }

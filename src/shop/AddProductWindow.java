@@ -2,6 +2,7 @@ package shop;
 
 import java.awt.EventQueue;
 
+import javax.swing.AbstractButton;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -22,26 +23,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public class ProductHelper {
-
+public class AddProductWindow extends JFrame implements ActionListener {
+	private static final long serialVersionUID = 1L;
 	private JFrame frmProdhelper;
 	private JTextField textField;
 	private JTextArea textArea;
 	private DefaultListModel<String> listModel;
 	private JList productKindList, productsList;
-	private String[] kindsList;
+	private String[] kindsList, products= {"Czekolada","Sok/Napój","Herbata"};
+	public static int V=300, H=400;
 
 	/**
 	 * Launch the application.
-	 */
-	public static void function() {
 	
+	public static void function() {
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					
-					ProductHelper window = new ProductHelper();
+					AddProductWindow window = new AddProductWindow();
 					window.frmProdhelper.setVisible(true);
 					
 				} catch (Exception e) {
@@ -51,34 +52,28 @@ public class ProductHelper {
 		});
 		
 		
-	}
+	} */
 
 	/**
 	 * Create the application.
 	 */
-	public ProductHelper() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frmProdhelper = new JFrame();
+	public AddProductWindow() {
+		super("Add Product Window");
+		/*frmProdhelper = new JFrame();
 		frmProdhelper.setTitle("prodHelper");
 		frmProdhelper.setBounds(100, 100, 300, 400);
-		frmProdhelper.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmProdhelper.getContentPane().setLayout(null);
-		
-		
-		// tutaj lista dostępnych produktów
-		final String[] ar = {"Czekolada","Sok/Napój","Herbata"};//{"Mleko", "Bułka", "Lody"};
-		
-		listModel = new DefaultListModel();		
+		frmProdhelper.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmProdhelper.getContentPane().setLayout(null);*/
+		setSize(V, H); 
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setResizable(false);
+		setLayout(null);
+				
+		listModel = new DefaultListModel<String>();		
 		productKindList = new JList(listModel);		
 		productKindList.setBounds(10, 112, 98, 200);	
 		
-		productsList = new JList(ar);		
+		productsList = new JList(products);		
 		productsList.setBounds(10, 11, 98, 100);		
 		productsList.addListSelectionListener(new ListSelectionListener() {
 			@Override
@@ -106,10 +101,12 @@ public class ProductHelper {
 				}
 			}			
 		});
+		add(productsList);
+		add(productKindList);
 		
-		frmProdhelper.getContentPane().add(productsList);
-		frmProdhelper.getContentPane().add(productKindList);
-
+		//frmProdhelper.getContentPane().add(productsList);
+		//frmProdhelper.getContentPane().add(productKindList);
+		
 		
 		/*JLabel lblIlo = new JLabel("Ilosc");
 		lblIlo.setBounds(118, 44, 46, 14);
@@ -124,41 +121,50 @@ public class ProductHelper {
 		frmProdhelper.getContentPane().add(textField);
 		textField.setColumns(10);*/
 		
-		JButton btnNewButton = new JButton("Dodaj do listy produktów");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			    int indexPr = productsList.getSelectedIndex();
-                int indexKind = productKindList.getSelectedIndex();
-                
-                productsList.setSelectedIndex(indexPr);
-                productKindList.setSelectedIndex(indexKind);
-                
-				ProductToList product = new ProductToList();
-				product.name = ar[indexPr];
-				product.describe = kindsList[indexKind];
-				//product.count = textField.getText();
+		
+		
+		//przycisk do okna z tworzeniem listy zakupow
+		JButton addProd = new JButton("Dodaj do listy produktów");
+		addProd.setVerticalTextPosition(AbstractButton.CENTER);
+		addProd.setHorizontalTextPosition(AbstractButton.LEADING);
+		addProd.addActionListener(this);
+		addProd.setBounds(109, 223, 155, 23);
+		add(addProd);
 				
-				Shop.myProductsList.add(product);
+		setVisible(true);
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		int indexPr = productsList.getSelectedIndex();
+        int indexKind = productKindList.getSelectedIndex();
+        
+        productsList.setSelectedIndex(indexPr);
+        productKindList.setSelectedIndex(indexKind);
+        
+		ProductToList product = new ProductToList();
+		product.name = products[indexPr];
+		product.describe = kindsList[indexKind];
+		//product.count = textField.getText();
+		
+		Shop.myProductsList.add(product);
+		
+		if(!Shop.myProductsList.isEmpty()){   
+			MainWindow.productsList.setText("");
+			
+			for(int i = 0; i<Shop.myProductsList.size(); i++){
+				String text = (Shop.myProductsList.get(i)).name;
+				/*if((Shop.myProductsList.get(i)).count != ""){	//nie działa
+					text += " x "+(Shop.myProductsList.get(i)).count;
+				}*/
+				text += " "+(Shop.myProductsList.get(i)).describe;
 				
-				if(!Shop.myProductsList.isEmpty()){   
-					MainWindow.productsList.setText("");
-					
-					for(int i = 0; i<Shop.myProductsList.size(); i++){
-						String text = (Shop.myProductsList.get(i)).name;
-						/*if((Shop.myProductsList.get(i)).count != ""){	//nie działa
-							text += " x "+(Shop.myProductsList.get(i)).count;
-						}*/
-						text += " "+(Shop.myProductsList.get(i)).describe;
-						
-						MainWindow.productsList.append(text+"\n");
-					}
-				}
-				
-				frmProdhelper.dispose();
+				MainWindow.productsList.append(text+"\n");
 			}
-		});
-		btnNewButton.setBounds(109, 223, 155, 23);
-		frmProdhelper.getContentPane().add(btnNewButton);
-				
+		}
+		dispose();
+		//frmProdhelper.dispose();
+		
 	}
 }
