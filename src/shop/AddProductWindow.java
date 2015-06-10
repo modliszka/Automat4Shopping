@@ -164,34 +164,34 @@ public class AddProductWindow extends JFrame implements ActionListener {
 		int indexPr = productsList.getSelectedIndex();
         int indexKind = productKindList.getSelectedIndex();
         int indexAttr = productAttrList.getSelectedIndex();
-        
-        productsList.setSelectedIndex(indexPr);
-        productKindList.setSelectedIndex(indexKind);
-        productAttrList.setSelectedIndex(indexAttr);
-        
-		ProductToList product = new ProductToList();
-		product.name = products[indexPr];
-		product.describe = kindsList[indexKind];
-		product.attribute = attrList[indexAttr];
-		//product.count = textField.getText();
-		
-		MainWindow.myProductsList.add(product);
-		
-		if(!MainWindow.myProductsList.isEmpty()){   
-			MainWindow.productsShoppingList.setText("");
+        if(indexPr!=-1 && indexKind!=-1 && indexAttr!=-1){
+	        productsList.setSelectedIndex(indexPr);
+	        productKindList.setSelectedIndex(indexKind);
+	        productAttrList.setSelectedIndex(indexAttr);
+	        
+			ProductToList product = new ProductToList();
+			product.name = products[indexPr];
+			product.describe = kindsList[indexKind];
+			product.attribute = attrList[indexAttr];
+			//product.count = textField.getText();
 			
-			for(int i = 0; i<MainWindow.myProductsList.size(); i++){
-				String text = (MainWindow.myProductsList.get(i)).name;
-				/*if((Shop.myProductsList.get(i)).count != ""){	//nie działa
-					text += " x "+(Shop.myProductsList.get(i)).count;
-				}*/
-				text += " "+(MainWindow.myProductsList.get(i)).describe;
-				text += " "+(MainWindow.myProductsList.get(i)).attribute;
+			MainWindow.myProductsList.add(product);
+			
+			if(!MainWindow.myProductsList.isEmpty()){   
+				MainWindow.productsShoppingList.setText("");
 				
-				MainWindow.productsShoppingList.append(text+"\n");
+				for(int i = 0; i<MainWindow.myProductsList.size(); i++){
+					String text = (MainWindow.myProductsList.get(i)).name;
+					/*if((Shop.myProductsList.get(i)).count != ""){	//nie działa
+						text += " x "+(Shop.myProductsList.get(i)).count;
+					}*/
+					text += " "+(MainWindow.myProductsList.get(i)).describe;
+					text += " "+(MainWindow.myProductsList.get(i)).attribute;
+					
+					MainWindow.productsShoppingList.append(text+"\n");
+				}
 			}
-		}
-		dispose();
-		
+			dispose();
+        }
 	}
 }
