@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.event.ListSelectionEvent;
@@ -44,15 +45,21 @@ public class AddProductWindow extends JFrame implements ActionListener {
 				
 		listModel = new DefaultListModel<String>();		
 		productKindList = new JList(listModel);		
-		productKindList.setBounds(110, 11, 98, 100);	
+		//productKindList.setBounds(110, 11, 98, 100);	
+		JScrollPane productKindListScroll = new JScrollPane(productKindList);
+		productKindListScroll.setBounds(110, 11, 98, 100);	
+		getContentPane().add(productKindListScroll);
 		
 
 		listModelProdAttr = new DefaultListModel<String>();		
 		productAttrList = new JList(listModelProdAttr);	
-		productAttrList.setBounds(10, 112, 98, 200);		
+		//productAttrList.setBounds(10, 112, 98, 200);	
+		JScrollPane productAttrListScroll = new JScrollPane(productAttrList);
+		productAttrListScroll.setBounds(10, 112, 98, 200);
+		getContentPane().add(productAttrListScroll);
 		
 		productsList = new JList(products);		
-		productsList.setBounds(10, 11, 98, 100);		
+		//productsList.setBounds(10, 11, 98, 100);		
 		productsList.addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
@@ -117,9 +124,12 @@ public class AddProductWindow extends JFrame implements ActionListener {
 				}
 			}			
 		});
-		add(productsList);
-		add(productKindList);
-		add(productAttrList);
+		JScrollPane productsListScroll = new JScrollPane(productsList);
+		productsListScroll.setBounds(10, 11, 98, 100);
+		getContentPane().add(productsListScroll);
+//		add(productsList);
+//		add(productKindList);
+//		add(productAttrList);
 			
 		
 		/*JLabel lblIlo = new JLabel("Ilosc");
