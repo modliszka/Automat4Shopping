@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Shop{
 	
-	public static  List<ProductToList> myProductsList;
+	//public static  List<ProductToList> myProductsList;
 	
 	public static void main(String[] args){
 		
@@ -22,7 +22,7 @@ public class Shop{
 	          public void run() {
 	      //       if(FileHelper.ChangesInDirectorySieciNeuronowe())
 	       //      {
-	        		 myProductsList = new ArrayList<ProductToList>();
+	        		 //myProductsList = new ArrayList<ProductToList>();
 					new MainWindow();
 	     //        }
 					//	ProductHelper.function();

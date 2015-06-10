@@ -25,49 +25,19 @@ import java.util.ArrayList;
 
 public class AddProductWindow extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	private JFrame frmProdhelper;
-	private JTextField textField;
-	private JTextArea textArea;
 	private DefaultListModel<String> listModel;
-	private JList productKindList, productsList;
+	private JList<String> productKindList, productsList;
 	private String[] kindsList, products= {"Czekolada","Sok/Napój","Herbata"};
 	public static int V=300, H=400;
 
-	/**
-	 * Launch the application.
-	
-	public static void function() {
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					
-					AddProductWindow window = new AddProductWindow();
-					window.frmProdhelper.setVisible(true);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		
-		
-	} */
-
-	/**
-	 * Create the application.
-	 */
 	public AddProductWindow() {
 		super("Add Product Window");
-		/*frmProdhelper = new JFrame();
-		frmProdhelper.setTitle("prodHelper");
-		frmProdhelper.setBounds(100, 100, 300, 400);
-		frmProdhelper.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frmProdhelper.getContentPane().setLayout(null);*/
+
 		setSize(V, H); 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setLayout(null);
+		setFocusable(false);
 				
 		listModel = new DefaultListModel<String>();		
 		productKindList = new JList(listModel);		
@@ -103,22 +73,19 @@ public class AddProductWindow extends JFrame implements ActionListener {
 		});
 		add(productsList);
 		add(productKindList);
-		
-		//frmProdhelper.getContentPane().add(productsList);
-		//frmProdhelper.getContentPane().add(productKindList);
-		
+			
 		
 		/*JLabel lblIlo = new JLabel("Ilosc");
 		lblIlo.setBounds(118, 44, 46, 14);
-		frmProdhelper.getContentPane().add(lblIlo);
+		add(lblIlo);
 		
 		JLabel lblDodatkoweCechy = new JLabel("Dodatkowe cechy:");
 		lblDodatkoweCechy.setBounds(129, 97, 105, 14);
-		frmProdhelper.getContentPane().add(lblDodatkoweCechy);
+		add(lblDodatkoweCechy);
 		
 		textField = new JTextField();
 		textField.setBounds(164, 41, 86, 20);
-		frmProdhelper.getContentPane().add(textField);
+		add(textField);
 		textField.setColumns(10);*/
 		
 		
@@ -148,23 +115,22 @@ public class AddProductWindow extends JFrame implements ActionListener {
 		product.describe = kindsList[indexKind];
 		//product.count = textField.getText();
 		
-		Shop.myProductsList.add(product);
+		MainWindow.myProductsList.add(product);
 		
-		if(!Shop.myProductsList.isEmpty()){   
-			MainWindow.productsList.setText("");
+		if(!MainWindow.myProductsList.isEmpty()){   
+			MainWindow.productsShoppingList.setText("");
 			
-			for(int i = 0; i<Shop.myProductsList.size(); i++){
-				String text = (Shop.myProductsList.get(i)).name;
+			for(int i = 0; i<MainWindow.myProductsList.size(); i++){
+				String text = (MainWindow.myProductsList.get(i)).name;
 				/*if((Shop.myProductsList.get(i)).count != ""){	//nie działa
 					text += " x "+(Shop.myProductsList.get(i)).count;
 				}*/
-				text += " "+(Shop.myProductsList.get(i)).describe;
+				text += " "+(MainWindow.myProductsList.get(i)).describe;
 				
-				MainWindow.productsList.append(text+"\n");
+				MainWindow.productsShoppingList.append(text+"\n");
 			}
 		}
 		dispose();
-		//frmProdhelper.dispose();
 		
 	}
 }

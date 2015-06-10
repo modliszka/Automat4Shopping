@@ -15,7 +15,7 @@ public class Tea extends Product {
 		amount=-1;
 		price=-1;
 		
-		setProductKind("herbaty");
+		setProductKind("herbata");
 	}	
 	
 	public String[] getAllBrands() { return brands;}

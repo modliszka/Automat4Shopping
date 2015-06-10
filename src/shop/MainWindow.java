@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
@@ -14,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import ProductInterface.ProductToList;
 import vocabulary.Map;
 
 public class MainWindow extends JFrame implements KeyListener, ActionListener{
@@ -21,25 +24,32 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 	private static final long serialVersionUID = 1L;
 	public static int hor=300,vert=300;
 	public static Board board;
-	public static JTextArea productsList;
+	public static JTextArea productsShoppingList;
 	private static JTextArea productsInShopList;
 	public static JTextArea productsInTrolley;
-	public static JLabel productsListTitle, productsInShopListTitle, productsInTrolleyTitle;
+	public static JLabel productsShoppingListTitle, productsInShopListTitle, productsInTrolleyTitle;
 	protected static JButton doProductListButton;
-	protected static JButton clearProductListButton;
+	protected static JButton clearShoppingListButton;
 	protected static JTextField command;
 	public static boolean blockade=false;
 	public static Map custom_map = new Map();
 	
+	public static  List<ProductToList> myProductsList;
+	
 	public MainWindow(){
 		super("Shop");
 		instance=this;
+		myProductsList = new ArrayList<ProductToList>();
 
 		setSize(1024, 750); 
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLayout(null);
+		
+		addKeyListener(this);
+		setFocusable(true);
+		//requestFocus();
 
 		//Plansza
 		board=new Board();
@@ -47,7 +57,7 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 		add(board);		
 				
 		//przycisk do okna z tworzeniem listy zakupow
-		doProductListButton = new JButton("Dodaj produkty do listy zakupów...");
+		doProductListButton = new JButton("Dodaj produkt do listy zakupów...");
 		//doProductListButton.setBounds(60, 400, 220, 30);
 		doProductListButton.setBounds(675, 5, 240, 30);
 		doProductListButton.setVerticalTextPosition(AbstractButton.CENTER);
@@ -65,42 +75,42 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 		});*/
 		add(doProductListButton);		
 		
-		clearProductListButton = new JButton("Wyczyść listę produktów");
-		clearProductListButton.setBounds(675, 40, 240, 30);
-		clearProductListButton.setVerticalTextPosition(AbstractButton.CENTER);
-		clearProductListButton.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
-		clearProductListButton.setEnabled(true);
-		clearProductListButton.setVisible(true);
+		clearShoppingListButton = new JButton("Wyczyść listę zakupów");
+		clearShoppingListButton.setBounds(675, 40, 240, 30);
+		clearShoppingListButton.setVerticalTextPosition(AbstractButton.CENTER);
+		clearShoppingListButton.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
+		clearShoppingListButton.setEnabled(true);
+		clearShoppingListButton.setVisible(true);
 		//clearProductListButton.setLocation(700, 200);
 		
-		clearProductListButton.addActionListener(new ActionListener() {			
+		clearShoppingListButton.addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				productsList.setText("");
-				Shop.myProductsList.clear();
+				productsShoppingList.setText("");
+				myProductsList.clear();
 				
 			}
 		});
-		add(clearProductListButton);	
+		add(clearShoppingListButton);	
 
-		productsListTitle=new JLabel("Lista zakupów:");
-		productsListTitle.setBounds(650, 100, 150, 30);
-		getContentPane().add(productsListTitle);
+		productsShoppingListTitle=new JLabel("Lista zakupów:");
+		productsShoppingListTitle.setBounds(650, 100, 150, 30);
+		getContentPane().add(productsShoppingListTitle);
 		
 		//Lista produktow po prawej stronie
-		productsList=new JTextArea();
-		productsList.setFocusable(false);
-		productsList.setOpaque(false);//przezr.tlo
-		productsList.setBounds(650, 135, 150, 150);
+		productsShoppingList=new JTextArea();
+		productsShoppingList.setFocusable(false);
+		productsShoppingList.setOpaque(false);//przezr.tlo
+		productsShoppingList.setBounds(650, 135, 150, 150);
 		//productsList.setLineWrap(true);
 		//productsList.setWrapStyleWord(true);
-		productsList.setEnabled(true);
-		productsList.setVisible(true);
+		productsShoppingList.setEnabled(true);
+		productsShoppingList.setVisible(true);
 		//frmProdhelper.getContentPane().add(textArea);
-		getContentPane().add(productsList);
+		getContentPane().add(productsShoppingList);
 		//productsList.setText("yufutfty");
 		
-		JScrollPane areaScrollPL = new JScrollPane(productsList);
+		JScrollPane areaScrollPL = new JScrollPane(productsShoppingList);
 		areaScrollPL.setBounds(650, 135, 150, 150);
 		getContentPane().add(areaScrollPL);
 		
@@ -149,7 +159,7 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 		add(command);
 
 		setVisible(true);
-		command.requestFocusInWindow(); 
+		//command.requestFocusInWindow(); 
 		
 		
 		Movement.getInstance().setMainWindow(this);

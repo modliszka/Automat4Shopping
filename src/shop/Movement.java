@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.Timer;
 
+import ProductInterface.ProductToList;
 import frameSection.Product;
 
 
@@ -48,22 +49,70 @@ public class Movement extends Board implements ActionListener {
 		
 		move_yourself();
 		
-		System.out.println(hor_k+" "+vert_k);
+		//System.out.println(hor_k+" "+vert_k);
 		//mainWindow.productsList.append("asdasdasdas"); // dodaje tekst do listy
 		if(MainWindow.board.shop[hor_k][vert_k] != null){
 			boolean wasTitle=false;
 			ArrayList<Product> list = new ArrayList<>();
 			list = MainWindow.board.shop[hor_k][vert_k].productsList;
+			String productKind = "";
+			
+			//pobieram kategorie produktu, na jaki trafilismy
+			productKind = list.get(0).getProductKind().toLowerCase();
+			System.out.println("znalezione "+productKind);
 			
 			//sprawdzamy czy już tu bylismy = mamy produkty na liście
 			if(!productsInShop.containsAll(list)){
 				for(Product p: list){
-					if(!wasTitle) {wasTitle=true; mainWindow.getProductsInShopList().append(p.getProductKind().toUpperCase()+"\n");}				
+					if(!wasTitle) {
+						wasTitle=true; 
+						mainWindow.getProductsInShopList().append(productKind.toUpperCase()+"\n"); //p.getProductKind() = myProductList.name //toLowerCase
+					}				
 					productsInShop.add(p);
-					mainWindow.getProductsInShopList().append(p.getBrand()+" "+p.getAdditionalFeature()+" "+ p.getPrice()+"zł\n");
+					mainWindow.getProductsInShopList().append(p.getBrand()+" "+p.getAdditionalFeature()+" "+ p.getPrice()+"zł "+p.getIsGood()+"\n");
 				}
 				mainWindow.getProductsInShopList().append("\n");
 			}
+
+			//sprawdzam czy na liście jest produkt z listy zakupów
+			for(ProductToList ptl: mainWindow.myProductsList){
+				System.out.println("na liscie " +ptl.name.toLowerCase());
+				if(ptl.name.toLowerCase().equals(productKind)){
+					double maxPrice=0;
+					ArrayList<Product> chosenProducts = new ArrayList<>();
+					Product chosenProduct = new Product();
+					
+					// wybieramy produkty, ktore klient prawdopodobnie bedzie chcial
+					for(Product p: list){
+						if(p.getIsGood()){	
+							System.out.println(p.getAdditionalFeature());
+							chosenProducts.add(p);
+						}
+					}
+					//szukamy pierwszego lepszego zgodnego z rodzajem produktu na liście zakupów
+					for(Product p: chosenProducts){
+						System.out.println(p.getKind()+" "+ptl.describe);
+						if(p.getKind().equals(ptl.describe) && maxPrice<p.getPrice()){		//biorę najdroższy, no bo sklep musi zarobić, by utrzymać agenta :D
+							maxPrice= p.getPrice();
+							chosenProduct = p;
+						}
+					}
+					maxPrice=0;
+					//jesli nie znaleziono produktu z okreslona kategoria, to dajemy inny produkt
+					if(chosenProduct.getKind()==""){
+						for(Product p: chosenProducts){
+							if(maxPrice<p.getPrice()){
+								maxPrice= p.getPrice();
+								chosenProduct = p;
+							}
+						}
+					}
+					
+					mainWindow.productsInTrolley.append(chosenProduct.getBrand()+" "+chosenProduct.getAdditionalFeature()+" "+chosenProduct.getPrice()+"zł\n");
+					
+				}
+			}
+			
 		}
 		
 	}
