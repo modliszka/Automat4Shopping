@@ -3,7 +3,7 @@ package frameSection;
 public class Tea extends Product {
 	//double weight;
 	//Date expirationDate;
-	private String tPackage, tTaste; 
+	private String tPackage; 
 	
 	private String[] brands = {"lipton","tesco","tetley","herbapol","saga","dilmah","minutka","bigActive"};
 	private String[] tastes = {"zwykly","pomarancza","pokrzywy","rumianek","malinowy","melisa","mieta"};
@@ -11,7 +11,7 @@ public class Tea extends Product {
 	private String[] packages = {"torebki","sypana","granulowana"};
 	
 	public Tea(){
-		kind= tPackage= tTaste= brand="";
+		kind= tPackage= taste= brand="";
 		amount=-1;
 		price=-1;
 		
@@ -23,9 +23,6 @@ public class Tea extends Product {
 	public String[] getAllKinds() { return kinds;}
 	public String[] getAllPackages() { return packages;}
 	
-	public String getTaste() { return tTaste;}
-	public String getPackage() { return tPackage;}
-	
-	public void setTaste(String x) { this.tTaste = x;}
+	public String getPackage() { return tPackage;}	
 	public void setPackage(String x) { this.tPackage = x;}
 }

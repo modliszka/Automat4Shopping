@@ -16,6 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import frameSection.Product;
 import ProductInterface.ProductToList;
 import vocabulary.Map;
 
@@ -35,6 +36,7 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 	public static Map custom_map = new Map();
 	
 	public static  List<ProductToList> myProductsList;
+	public static  List<Product> myShoppingTrolleyList;
 	
 	public MainWindow(){
 		super("Shop");

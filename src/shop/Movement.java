@@ -75,8 +75,9 @@ public class Movement extends Board implements ActionListener {
 			}
 
 			//sprawdzam czy na liście jest produkt z listy zakupów
+			mainWindow.productsInTrolley.setText("");
 			for(ProductToList ptl: mainWindow.myProductsList){
-				System.out.println("na liscie " +ptl.name.toLowerCase());
+				//System.out.println("na liscie " +ptl.name.toLowerCase());
 				if(ptl.name.toLowerCase().equals(productKind)){
 					double maxPrice=0;
 					ArrayList<Product> chosenProducts = new ArrayList<>();
@@ -85,21 +86,46 @@ public class Movement extends Board implements ActionListener {
 					// wybieramy produkty, ktore klient prawdopodobnie bedzie chcial
 					for(Product p: list){
 						if(p.getIsGood()){	
-							System.out.println(p.getAdditionalFeature());
+							//System.out.println(p.getAdditionalFeature());
 							chosenProducts.add(p);
 						}
 					}
-					//szukamy pierwszego lepszego zgodnego z rodzajem produktu na liście zakupów
+					//szukamy pierwszego lepszego zgodnego z rodzajem i atrybutem produktu na liście zakupów
 					for(Product p: chosenProducts){
-						System.out.println(p.getKind()+" "+ptl.describe);
-						if(p.getKind().equals(ptl.describe) && maxPrice<p.getPrice()){		//biorę najdroższy, no bo sklep musi zarobić, by utrzymać agenta :D
+						//System.out.println(p.getKind()+"="+ptl.describe+" "+p.getTaste()+"="+ptl.attribute);
+						if(p.getKind().equals(ptl.describe) && p.getTaste().equals(ptl.attribute) && maxPrice < p.getPrice()){		
 							maxPrice= p.getPrice();
 							chosenProduct = p;
 						}
 					}
+					System.out.println("\n");
+					//szukamy pierwszego lepszego zgodnego z rodzajem produktu na liście zakupów
 					maxPrice=0;
-					//jesli nie znaleziono produktu z okreslona kategoria, to dajemy inny produkt
-					if(chosenProduct.getKind()==""){
+					if(chosenProduct.getKind()==null){
+						for(Product p: chosenProducts){
+							//System.out.println(p.getKind()+"="+ptl.describe);
+							if(p.getKind().equals(ptl.describe) && maxPrice<p.getPrice()){		//biorę najdroższy, no bo sklep musi zarobić, by utrzymać agenta :D
+								maxPrice= p.getPrice();
+								chosenProduct = p;
+							}
+						}
+					}
+					//System.out.println("\n");
+					//szukamy pierwszego lepszego zgodnego z atrybutem produktu na liście zakupów (domyślnie smak)
+					maxPrice=0;
+					if(chosenProduct.getKind()==null){
+						for(Product p: chosenProducts){
+							//System.out.println(p.getTaste()+"="+ptl.attribute);
+							if(p.getKind().equals(ptl.attribute) && maxPrice<p.getPrice()){		
+								maxPrice= p.getPrice();
+								chosenProduct = p;
+							}
+						}
+					}
+					//System.out.println("\n");
+					//jesli nie znaleziono produktu z okreslonym rodzajem i atrybutem, to dajemy inny produkt
+					maxPrice=0;
+					if(chosenProduct.getKind()==null){
 						for(Product p: chosenProducts){
 							if(maxPrice<p.getPrice()){
 								maxPrice= p.getPrice();
@@ -107,7 +133,6 @@ public class Movement extends Board implements ActionListener {
 							}
 						}
 					}
-					
 					mainWindow.productsInTrolley.append(chosenProduct.getBrand()+" "+chosenProduct.getAdditionalFeature()+" "+chosenProduct.getPrice()+"zł\n");
 					
 				}

@@ -7,7 +7,7 @@ import java.util.Random;
 import DecisionTrees.TreeLearning;
 
 public class Juice extends Product {
-	private String taste, wrapping, vitamin;
+	private String wrapping, vitamin;
 	private double carbohydrates;
 	private int energy;
 
@@ -37,13 +37,11 @@ public class Juice extends Product {
 	public String[] getAllWrappings() { return wrappings;}
 	public String[] getAllVitamins() { return vitamins;}
 	
-	public String getTaste() { return taste;}
 	public String getWrapping() { return wrapping;}
 	public String getVitamin() { return vitamin;}
 	public int getEnergy() { return energy;}
 	public double getCarbohydrates() { return carbohydrates;}
 	
-	public void setTaste(String x) { this.taste = x;}
 	public void setWrapping(String x) { this.wrapping = x;}
 	public void setEnergy(int x) { this.energy = x;} 
 	public void setCarbohydrates(double x) { this.carbohydrates = x;}

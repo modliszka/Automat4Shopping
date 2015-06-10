@@ -1,7 +1,7 @@
 package frameSection;
 
 public class Chocolate extends Product {
-	private String taste, additive;
+	private String additive;
 	private double fats,carbohydrates,protein,roughage;
 	private int cocoaContent,energy;
 
@@ -26,7 +26,6 @@ public class Chocolate extends Product {
 	public String[] getAllKinds() { return kinds;}
 	public String[] getAllAdditives() { return additives;}
 	
-	public String getTaste() { return taste;}
 	public String getAdditive() { return additive;}
 	public int getCocoaContent() { return cocoaContent;}
 	public int getEnergy() { return energy;}
@@ -35,7 +34,6 @@ public class Chocolate extends Product {
 	public double getProtein() { return protein;}
 	public double getRoughage() { return roughage;}
 	
-	public void setTaste(String x) { this.taste = x;}
 	public void setAdditive(String x) { this.additive = x;}
 	public void setCocoaContent(int x) { this.cocoaContent = x;}
 	public void setEnergy(int x) { this.energy = x;} 

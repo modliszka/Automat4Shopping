@@ -25,9 +25,9 @@ import java.util.ArrayList;
 
 public class AddProductWindow extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	private DefaultListModel<String> listModel;
-	private JList<String> productKindList, productsList;
-	private String[] kindsList, products= {"Czekolada","Sok/Napój","Herbata"};
+	private DefaultListModel<String> listModel, listModelProdAttr;
+	private JList<String> productKindList, productsList, productAttrList;
+	private String[] kindsList, attrList, products= {"Czekolada","Sok/Napój","Herbata"};
 	public static int V=300, H=400;
 
 	public AddProductWindow() {
@@ -41,7 +41,12 @@ public class AddProductWindow extends JFrame implements ActionListener {
 				
 		listModel = new DefaultListModel<String>();		
 		productKindList = new JList(listModel);		
-		productKindList.setBounds(10, 112, 98, 200);	
+		productKindList.setBounds(110, 11, 98, 100);	
+		
+
+		listModelProdAttr = new DefaultListModel<String>();		
+		productAttrList = new JList(listModelProdAttr);	
+		productAttrList.setBounds(10, 112, 98, 200);		
 		
 		productsList = new JList(products);		
 		productsList.setBounds(10, 11, 98, 100);		
@@ -49,30 +54,42 @@ public class AddProductWindow extends JFrame implements ActionListener {
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
 				listModel.removeAllElements();
+				listModelProdAttr.removeAllElements();
+				
 				switch(productsList.getSelectedIndex()){
 					case 0:
 						Chocolate c = new Chocolate();
 						kindsList = c.getAllKinds();
 						for(String s: kindsList)
 							listModel.addElement(s);
+						attrList = c.getAllTastes();
+						for(String s: attrList)
+							listModelProdAttr.addElement(s);
 						break;
 					case 1:
 						Juice j = new Juice();
 						kindsList = j.getAllKinds();
 						for(String s: kindsList)
 							listModel.addElement(s);
+						attrList = j.getAllTastes();
+						for(String s: attrList)
+							listModelProdAttr.addElement(s);
 						break;
 					case 2:
 						Tea t = new Tea();
 						kindsList = t.getAllKinds();
 						for(String s: kindsList)
 							listModel.addElement(s);
+						attrList = t.getAllTastes();
+						for(String s: attrList)
+							listModelProdAttr.addElement(s);
 						break;
 				}
 			}			
 		});
 		add(productsList);
 		add(productKindList);
+		add(productAttrList);
 			
 		
 		/*JLabel lblIlo = new JLabel("Ilosc");
@@ -106,13 +123,16 @@ public class AddProductWindow extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		int indexPr = productsList.getSelectedIndex();
         int indexKind = productKindList.getSelectedIndex();
+        int indexAttr = productAttrList.getSelectedIndex();
         
         productsList.setSelectedIndex(indexPr);
         productKindList.setSelectedIndex(indexKind);
+        productAttrList.setSelectedIndex(indexAttr);
         
 		ProductToList product = new ProductToList();
 		product.name = products[indexPr];
 		product.describe = kindsList[indexKind];
+		product.attribute = attrList[indexAttr];
 		//product.count = textField.getText();
 		
 		MainWindow.myProductsList.add(product);
@@ -126,6 +146,7 @@ public class AddProductWindow extends JFrame implements ActionListener {
 					text += " x "+(Shop.myProductsList.get(i)).count;
 				}*/
 				text += " "+(MainWindow.myProductsList.get(i)).describe;
+				text += " "+(MainWindow.myProductsList.get(i)).attribute;
 				
 				MainWindow.productsShoppingList.append(text+"\n");
 			}

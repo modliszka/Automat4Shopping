@@ -10,6 +10,7 @@ public class Product {
 	protected double price;
 	protected boolean isGood;	
 	protected String feature;
+	protected String taste;
 
 	public String getBrand() { return brand;}
 	public String getKind() { return kind;}
@@ -17,6 +18,7 @@ public class Product {
 	public double getPrice() { return price;}
 	public boolean getIsGood() { return isGood;}
 	public String getProductKind() { return productKind;}
+	public String getTaste() { return taste;}
 
 	public void setBrand(String x) { this.brand = x;}
 	public void setKind(String x) { this.kind = x;}
@@ -24,6 +26,7 @@ public class Product {
 	public void setPrice(double x) { this.price = x;} 
 	public void setIsGood(boolean x) { this.isGood = x;}
 	public void setProductKind(String x) { this.productKind = x;}
+	public void setTaste(String x) { this.taste = x;}
 	
 	public String getAdditionalFeature(){ return feature; }
 	public void setAdditionalFeature(String x){ this.feature = x; }
