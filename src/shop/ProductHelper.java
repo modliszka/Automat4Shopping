@@ -61,8 +61,8 @@ public class ProductHelper {
 		frmProdhelper.getContentPane().setLayout(null);
 		
 		
-		// tutaj lista dostêpnych produktów
-		final String[] ar = {"Mleko", "Bu³ka", "Lody"};
+		// tutaj lista dostï¿½pnych produktï¿½w
+		final String[] ar = {"Czekolada","Sok/NapÃ³j","Herbata"};//{"Mleko", "BuÅ‚ka", "Lody"};
 		final JList list = new JList(ar);
 		
 		list.setBounds(10, 11, 98, 200);
@@ -86,7 +86,7 @@ public class ProductHelper {
 		textArea.setBounds(118, 122, 132, 90);
 		frmProdhelper.getContentPane().add(textArea);
 		
-		JButton btnNewButton = new JButton("Dodaj do listy produkt\u00F3w");
+		JButton btnNewButton = new JButton("Dodaj do listy produktÃ³w");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			    int index = list.getSelectedIndex();

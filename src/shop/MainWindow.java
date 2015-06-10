@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -20,7 +21,8 @@ public class MainWindow extends JFrame implements KeyListener{
 	private static final long serialVersionUID = 1L;
 	public static int hor=300,vert=300;
 	public static Board board;
-	public static JTextArea productsList,productsListTitle, productsInShopList, productsInShopListTitle, productsInTrolley, productsInTrolleyTitle;
+	public static JTextArea productsList, productsInShopList, productsInTrolley;
+	public static JLabel productsListTitle, productsInShopListTitle, productsInTrolleyTitle;
 	protected static JButton doProductListButton;
 	protected static JButton clearProductListButton;
 	protected static JTextField command;
@@ -78,12 +80,8 @@ public class MainWindow extends JFrame implements KeyListener{
 		});
 		add(clearProductListButton);	
 
-		productsListTitle=new JTextArea("Lista zakupów:");
+		productsListTitle=new JLabel("Lista zakupów:");
 		productsListTitle.setBounds(650, 100, 150, 30);
-		productsListTitle.setFocusable(false);
-		productsListTitle.setOpaque(false);//przezr.tlo
-		productsListTitle.setEnabled(true);
-		productsListTitle.setVisible(true);
 		getContentPane().add(productsListTitle);
 		
 		//Lista produktow po prawej stronie
@@ -105,12 +103,8 @@ public class MainWindow extends JFrame implements KeyListener{
 		
 		
 		//Lista produktow w koszyku
-		productsInTrolleyTitle=new JTextArea("Lista produktów w koszyku:");
-		productsInTrolleyTitle.setBounds(830, 100, 150, 30);
-		productsInTrolleyTitle.setFocusable(false);
-		productsInTrolleyTitle.setOpaque(false);//przezr.tlo
-		productsInTrolleyTitle.setEnabled(true);
-		productsInTrolleyTitle.setVisible(true);
+		productsInTrolleyTitle=new JLabel("Lista produktów w koszyku:");
+		productsInTrolleyTitle.setBounds(830, 100, 200, 30);
 		getContentPane().add(productsInTrolleyTitle);
 		
 		productsInTrolley=new JTextArea();
@@ -127,14 +121,9 @@ public class MainWindow extends JFrame implements KeyListener{
 		//Utwórz instancje produktów ze sklepu i dodaj je do planszy
 		addProductsToBoard();
 		
-		productsInShopListTitle = new JTextArea("Lista produktów w sklepie:");
+		productsInShopListTitle = new JLabel("Lista produktów w sklepie:");
 		productsInShopListTitle.setBounds(650, 300, 300, 30);
-		productsInShopListTitle.setFocusable(false);
-		productsInShopListTitle.setOpaque(false);//przezr.tlo
-		productsInShopListTitle.setEnabled(true);
-		productsInShopListTitle.setVisible(true);
-		getContentPane().add(productsInShopListTitle);
-		
+		getContentPane().add(productsInShopListTitle);		
 		
 		productsInShopList = new JTextArea();
 		productsInShopList.setFocusable(false);
