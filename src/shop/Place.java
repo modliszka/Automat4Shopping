@@ -79,6 +79,8 @@ public class Place {
 					x.setKind(rKi);
 					x.setAdditive(rAd);
 					
+					x.setAdditionalFeature(rTa+" "+rKi+" "+rAd);
+					
 					//sprawdz czy klient bedzie chcial ten produkt
 					String isGood="";
 					try {
@@ -128,6 +130,8 @@ public class Place {
 					x.setTaste(rTa);
 					x.setKind(rKi);
 					x.setPackage(rPa);
+					
+					x.setAdditionalFeature(rKi+" "+rTa+" "+rPa);
 					
 					//sprawdz czy klient bedzie chcial ten produkt
 					String isGood="";
@@ -190,6 +194,8 @@ public class Place {
 					x.setKind(rKi);
 					x.setWrapping(rWr);			
 					
+					x.setAdditionalFeature(rKi+" "+rTa+" "+rWr+" "+rAm+"0ml");
+										
 					//sprawdz czy klient bedzie chcial ten produkt
 					String isGood="";
 					try {

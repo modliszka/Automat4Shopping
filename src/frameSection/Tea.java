@@ -11,10 +11,11 @@ public class Tea extends Product {
 	private String[] packages = {"torebki","sypana","granulowana"};
 	
 	public Tea(){
-		super();
 		kind= tPackage= tTaste= brand="";
 		amount=-1;
 		price=-1;
+		
+		setProductKind("herbaty");
 	}	
 	
 	public String[] getAllBrands() { return brands;}

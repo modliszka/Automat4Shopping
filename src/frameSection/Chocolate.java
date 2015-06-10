@@ -17,6 +17,8 @@ public class Chocolate extends Product {
 		additive="";
 		fats=carbohydrates=protein=roughage=price=-1;
 		amount=cocoaContent=energy=-1;
+		
+		setProductKind("czekolady");
 	}
 	
 	public String[] getAllBrands() { return brands;}

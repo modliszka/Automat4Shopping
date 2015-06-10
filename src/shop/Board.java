@@ -2,9 +2,12 @@ package shop;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import frameSection.Product;
 
 
 public class Board extends JPanel {
@@ -15,6 +18,7 @@ public class Board extends JPanel {
 	static int option=1;
 	static String abc="b";
 	public Place[][] shop;//=new Place[10][10];
+	public ArrayList<Product> productsInShop;
 	
 //	public static Board getInstance(){
 //		if (instance == null){
@@ -26,6 +30,8 @@ public class Board extends JPanel {
 		//RozmiescRegaly();
 		
 		shop=new Place[10][10];
+		productsInShop = new ArrayList<>();
+		
 		setFocusable(true);
 	}
 	

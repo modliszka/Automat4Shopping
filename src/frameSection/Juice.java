@@ -26,6 +26,8 @@ public class Juice extends Product {
 		wrapping="";
 		carbohydrates=-1;
 		amount=energy=-1;
+		
+		setProductKind("soki/napoje");
 	}
 
 	public int[] getAllAmounts() { return amounts;}
