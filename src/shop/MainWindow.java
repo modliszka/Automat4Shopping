@@ -1,6 +1,8 @@
 package shop;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -13,7 +15,7 @@ import javax.swing.JTextField;
 import vocabulary.Map;
 
 
-public class MainWindow extends JFrame implements KeyListener{
+public class MainWindow extends JFrame implements KeyListener, ActionListener{
 	public static MainWindow instance;
 	private static final long serialVersionUID = 1L;
 	public static int hor=300,vert=300;
@@ -23,11 +25,12 @@ public class MainWindow extends JFrame implements KeyListener{
 	protected static JTextField command;
 	public static boolean blockade=false;
 	public static Map custom_map = new Map();
+	//private static AddProductWindow addProductWindow;
 	
 	public MainWindow(){
 		super("Shop");
 		instance=this;
-		setSize(800, 750); 
+		setSize(800, 800); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLayout(null);
@@ -41,17 +44,18 @@ public class MainWindow extends JFrame implements KeyListener{
 		productsList=new JTextArea();
 		productsList.setFocusable(false);
 		productsList.setOpaque(false);//przezr.tlo
-		productsList.setBounds(615, 5, 100, 100);
+		productsList.setBounds(615, 5, 170, 100);
 		productsList.setLineWrap(true);
 		productsList.setWrapStyleWord(true);
 		add(productsList);
 		
 		//przycisk do okna z tworzeniem listy zakupow
 		doProductListButton = new JButton("Dodaj produkty do listy");
+		doProductListButton.setBounds(615, 670, 170, 20);
 		doProductListButton.setVerticalTextPosition(AbstractButton.CENTER);
 		doProductListButton.setHorizontalTextPosition(AbstractButton.LEADING); //aka LEFT, for left-to-right locales
 		doProductListButton.setEnabled(true);
-		//doProductListButton.addActionListener(this);
+		doProductListButton.addActionListener(this);
 		add(doProductListButton);
 		
 		//pole do poleceń dot. chodzenia
@@ -86,6 +90,14 @@ public class MainWindow extends JFrame implements KeyListener{
 		Board.shop[0][1]=new Place("R","chocolates","candies");
 		Board.shop[0][3]=new Place("R","teas","teas");
 		Board.shop[0][6]=new Place("R","juices","beverages");
+	}
+	
+	public static void updateProductList(String name, int amount, String characteristics){
+		String x="";
+		if(amount>0){
+			if(amount>1)x=" x"+amount;
+			productsList.setText(productsList.getText()+"\n"+name+x);
+		}
 	}
 
 	@Override
@@ -129,6 +141,12 @@ public class MainWindow extends JFrame implements KeyListener{
 			        break;
 		    }
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		new AddProductWindow();
 	}
 	
 }
