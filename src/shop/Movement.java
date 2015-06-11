@@ -140,6 +140,16 @@ public class Movement extends Board implements ActionListener {
 		}
 		
 	}
+	
+	public void doMoves() {
+		//Movement.getInstance().move_yourself(0, -1); //poziom,pion (na minus to w górę)
+		move_yourself(0, -1);//g
+		move_yourself(-1, 0);//l
+		for(int i=1;i<9;i++)
+			move_yourself(0, -1); //gx8
+		move_yourself(1, 0);	//p
+		
+	}
 
 	
 	public void actionPerformed(ActionEvent e){

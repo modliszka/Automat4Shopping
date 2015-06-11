@@ -165,8 +165,10 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 		
 		
 		Movement.getInstance().setMainWindow(this);
+		
+		Movement.getInstance().doMoves();
 	}
-	
+
 	private void addProductsToBoard() {
 		board.shop[5][6]=new Place("R","chocolates","candies",3);
 		board.shop[6][6]=new Place("R","chocolates","candies",2);
