@@ -202,6 +202,7 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 		
 		///
 		board.shop[0][1]=new Place();
+		addPasta();
 		///
 		/*for(Product p: Board.shop[0][6].productsList){
 			productsList.append(p.getBrand()+" "+p.getKind());			
@@ -218,6 +219,33 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 			p.dodRozroznik="";
 			Board.shop[0][0].add(p);
 		}*/
+	}
+
+	private void addPasta() {
+		// TODO Auto-generated method stub        
+		ProductToList product = new ProductToList();
+		product.name = "Makaron";
+		product.describe = "piora";
+		product.attribute = "jajeczny";
+		//product.count = textField.getText();
+		
+		MainWindow.myProductsList.add(product);
+		
+		if(!MainWindow.myProductsList.isEmpty()){   
+			MainWindow.productsShoppingList.setText("");
+			
+			for(int i = 0; i<MainWindow.myProductsList.size(); i++){
+				String text = (MainWindow.myProductsList.get(i)).name;
+				/*if((Shop.myProductsList.get(i)).count != ""){	//nie działa
+					text += " x "+(Shop.myProductsList.get(i)).count;
+				}*/
+				text += " "+(MainWindow.myProductsList.get(i)).describe;
+				text += " "+(MainWindow.myProductsList.get(i)).attribute;
+				
+				MainWindow.productsShoppingList.append(text+"\n");
+			}
+		}
+		
 	}
 
 	@Override

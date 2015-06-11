@@ -14,6 +14,8 @@ public class Start {
 	 
 	      Search.szukanyTowar = Integer.parseInt( in.nextLine());
 	      Search.szukanyTowar = a;
+	      System.out.println();
+	      System.out.println("Szukamy nr: "+Search.szukanyTowar+"\n");
 	      int n;
 	      for(int j=0;j<4;++j){
 	    	  int i;
@@ -27,7 +29,7 @@ public class Start {
 		    //  System.out.println(i+">>"+Search.boxes[j][i]);
 	      }
 	      
-	      System.out.println();
+	    //  System.out.println();
 	      
 	      in.close();
 	      

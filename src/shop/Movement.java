@@ -136,7 +136,7 @@ public class Movement extends Board implements ActionListener {
 				//System.out.println(hor_k+" "+vert_k+"\n");
 				if(hor_k==0 && vert_k==1)
 				try {
-					System.out.println(chosenProduct.getBrand()+" "+chosenProduct.getAdditionalFeature());
+					//System.out.println(chosenProduct.getBrand()+" "+chosenProduct.getAdditionalFeature());
 					new Start(2);
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
