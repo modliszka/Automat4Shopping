@@ -7,7 +7,49 @@ import java.util.Stack;
 
 public class Start {
 	static String f="baza1.txt";
-	public static void main(String[] args) throws FileNotFoundException{
+	
+	public Start(int a) throws FileNotFoundException{
+		 File file = new File(f);
+	      Scanner in = new Scanner(file);
+	 
+	      Search.szukanyTowar = Integer.parseInt( in.nextLine());
+	      Search.szukanyTowar = a;
+	      int n;
+	      for(int j=0;j<4;++j){
+	    	  int i;
+	    	  n=Integer.parseInt( in.nextLine());
+		      for(i=0;i<n;++i){
+		    	  Search.boxes[j][i]=Integer.parseInt( in.nextLine());
+		    //	  System.out.println(i+">>"+Search.boxes[j][i]);
+		      }
+		      Search.boxes[j][i]=-1;
+		    //  System.out.println("////");
+		    //  System.out.println(i+">>"+Search.boxes[j][i]);
+	      }
+	      
+	      System.out.println();
+	      
+	      in.close();
+	      
+	      Stack<Change> stos=Search.start();
+	      while(!stos.empty()){
+	    	  Change ch=stos.pop();
+	    	  if(ch.operation=='m'){
+	    		  show();
+	    		  System.out.println("Przemieœæ: "+ch.box+" ze stosu "+(ch.from+1)+" na stos "+(ch.to+1));
+	    		  Search.move(ch.from, ch.to);
+	    	  }
+	    	  if(ch.operation=='t'){
+	    		  show();
+	    		  System.out.println("Zabierz: "+ch.box+" ze stosu "+(ch.from+1));
+	    		  Search.take(ch.from);
+	    	  }
+	    	  
+	      }
+	      show();
+	      System.out.println("Koniec");
+	}
+	/*public static void main(String[] args) throws FileNotFoundException{
 	      File file = new File(f);
 	      Scanner in = new Scanner(file);
 	 
@@ -47,6 +89,7 @@ public class Start {
 	      show();
 	      System.out.println("Koniec");
 	  }
+	*/
 	static void show(){
 		
 		int i=0;

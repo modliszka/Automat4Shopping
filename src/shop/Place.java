@@ -17,6 +17,51 @@ public class Place {
 	boolean problem;
 	ArrayList<Product> productsList;
 	
+	protected Place(){
+		productsList= new ArrayList<>();
+		int[] cookingTime={5,10,3,15,10,5,8,7,12,8};
+		String[] brands = {"adriana","animak","barilla","lubella","malma","melissa","tesco","animak","barilla","lubella"};
+		String[] kinds = {"spaghetti","piora","swiderki","krajanka","muszelki","nitki","wstazki","rurki","lasagne","bucatini"};
+		String[] flourKinds = {"zwykly","jajeczny","wyborowy","zMakiGraham","zwykly","jajeczny","wyborowy","zMakiGraham","jajeczny","wyborowy"};
+
+		int[] amounts = {300,400,500,500,650,300,650,400,500,400}; //g
+		double[] prices = {2.5, 1.4, 6.12, 7.1, 6.0, 2.15, 4.2, 6.75, 2.65, 3.20};
+		
+		for(int i=0; i<10; i++){
+			Pasta x = new Pasta();
+
+			//en od 310 do 420
+			//ct 6-15
+			//am 300,400,500,500,650
+			//pr 2.1-9.5
+			
+			x.setAmount(amounts[i]);
+			x.setPrice(prices[i]);//
+			x.setBrand(brands[i]);
+			x.setTaste(flourKinds[i]);
+			x.setKind(kinds[i]);
+			x.setCookingTime(cookingTime[i]);//
+			
+			x.setAdditionalFeature(kinds[i]+" "+flourKinds[i]+" "+amounts[i]+"g");
+			
+			//String[] yn = {"tak","nie"};
+			String[] isGood={"nie","tak","nie","tak","nie","tak","tak","nie","tak","nie"};
+			
+			//sprawdz czy klient bedzie chcial ten produkt
+			/*String isGood="";
+			try {
+				isGood = treeP.checkTea(x);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}*/
+			
+			if(isGood[i]=="tak") x.setIsGood(true);
+			else x.setIsGood(false);
+			
+			productsList.add(x);
+		}
+	}
+	
 	protected Place(String shelfSide, String product, String productKind, int howMany){
 		switch (shelfSide) {
 			case "L"://left

@@ -2,12 +2,14 @@ package shop;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.Timer;
 
 import ProductInterface.ProductToList;
 import frameSection.Product;
+import searchingShelf.*;
 
 
 public class Movement extends Board implements ActionListener {
@@ -54,7 +56,7 @@ public class Movement extends Board implements ActionListener {
 		if(MainWindow.board.shop[hor_k][vert_k] != null){
 			boolean wasTitle=false;
 			ArrayList<Product> list = new ArrayList<>();
-			list = MainWindow.board.shop[hor_k][vert_k].productsList;
+			list = MainWindow.board.shop[hor_k][vert_k].productsList; 
 			String productKind = "";
 			
 			//pobieram kategorie produktu, na jaki trafilismy
@@ -131,11 +133,29 @@ public class Movement extends Board implements ActionListener {
 					}
 				}
 				//if(ifCleaningTrolleyIsNeeding)
+				//System.out.println(hor_k+" "+vert_k+"\n");
+				if(hor_k==0 && vert_k==1)
+				try {
+					System.out.println(chosenProduct.getBrand()+" "+chosenProduct.getAdditionalFeature());
+					new Start(2);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 				if(chosenProduct.getKind()!=null)
 					mainWindow.productsInTrolley.append(chosenProduct.getBrand()+" "+chosenProduct.getAdditionalFeature()+" "+
 							String.format("%.2f", chosenProduct.getPrice())+"zł\n");
 			}
+//			System.out.println(hor_k+" "+vert_k+"\n");
+//			if(hor_k==0 && vert_k==1)
+//			try {
+//				System.out.println("??");
+//				new Start(2);
+//			} catch (FileNotFoundException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			
 		}
 		

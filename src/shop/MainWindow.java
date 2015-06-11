@@ -200,6 +200,9 @@ public class MainWindow extends JFrame implements KeyListener, ActionListener{
 		board.shop[3][3]=new Place("R","yoghurts","dairy",5);
 		board.shop[3][4]=new Place("R","yoghurts","dairy",4);
 		
+		///
+		board.shop[0][1]=new Place();
+		///
 		/*for(Product p: Board.shop[0][6].productsList){
 			productsList.append(p.getBrand()+" "+p.getKind());			
 			
