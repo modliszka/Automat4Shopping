@@ -12,4 +12,9 @@ public class Change {
 		this.from=from;
 		this.to=to;
 	}
+
+	public static Change copy(Change ch){
+		Change c=new Change(ch.box,ch.operation,ch.from,ch.to);
+		return c;
+	}
 }
